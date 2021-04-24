@@ -1,3 +1,8 @@
-# Camp App
+# Little Cabin
 
-_Management app for our family's "camp" in Maine_
+> Securely share your family get-away, and the memories memories made there. 
+
+## Tech 
+
+Fullstack Python App with Django
+
