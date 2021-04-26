@@ -1,0 +1,1 @@
+web: gunicorn littlecabin_project.wsgi
