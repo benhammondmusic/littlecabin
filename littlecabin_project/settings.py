@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 # DEBUG = True
 DEBUG = False 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['herokuapp.com','.localhost', '127.0.0.1', '[::1]']
 
 # INTERNAL_IPS = [
 #     "127.0.0.1",
