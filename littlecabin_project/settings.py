@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 
 """
-# import os
+import os
 from pathlib import Path
 from decouple import config
 import django_on_heroku
@@ -30,8 +30,9 @@ SECRET_KEY = config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 # DEBUG = False
+DEBUG = os.environ.get('DEBUG' ,False)
 
 ALLOWED_HOSTS = ['herokuapp.com','.localhost', '127.0.0.1', '[::1]']
 
