@@ -1,6 +1,19 @@
 # Little Cabin
 
-> Securely share your family get-away, and the memories memories made there.
+> Securely share your family's get-away and memories.
+
+## Pages
+
+- Home (current weather)
+- Login
+- Signup
+- Calendar
+- Postcards
+- Requests
+- Family Tree / History
+- Chores
+- Important Info
+- Report A Bug
 
 ## Tech
 

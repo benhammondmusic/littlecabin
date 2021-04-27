@@ -1,5 +1,27 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-<h1 class="d-flex justify-content-center">Little Cabin</h1>
+<!-- Hero Section Start-->
+
+<section class="hero bg-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-12 col-lg-6 order-2 order-lg-1 mt-4 mt-lg-0 pt-4 pt-lg-0">
+        <div class="hero-content pe-md-0 pe-lg-5">
+          <span class="pre-title text-dark small fw-bold inline-block position-relative text-uppercase">Welcome!</span>
+          <h1 class="hero-title text-dark mt-3">Little Cabin<br class="d-none d-lg-block" /></h1>
+          <p class="hero-text mt-3 mb-0">Securely share your family's get-away and memories</p>
+          <a href="#" class="btn btn-warning shadow-sm mt-4 fw-bold">Log In</a>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6 order-1 order-lg-2">
+        <div class="hero-image wings position-relative mx-3 mx-md-4 ms-lg-5">
+          <img class="rounded img-fluid w-100 position-relative" src="{% static 'assets/images/hero.jpg' %}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hero Section End-->
 
 {% endblock %}
