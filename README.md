@@ -17,7 +17,7 @@
 
 ## ERD (Entity Relationship Diagram)
 
-![ERD of Project Models](./erd.drawio.svg)
+![ERD of Project Models](https://raw.githubusercontent.com/benhammondmusic/littlecabin/main/erd.drawio.svg)
 
 ## Tech
 
