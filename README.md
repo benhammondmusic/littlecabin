@@ -15,6 +15,10 @@
 - Important Info
 - Report A Bug
 
+## ERD (Entity Relationship Diagram)
+
+![ERD of Project Models](./erd.drawio.svg)
+
 ## Tech
 
 Fullstack Python App with Django
