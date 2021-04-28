@@ -1,5 +1,122 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
+<section class="postcard-posts section section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Postcards</span>
+          <h2 class="section-title text-dark mt-3">Memories and More</h2>
+          <p class="section-subtitle mt-3 mb-0">View recent postcards, and create your own (no picture required).</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/ben-little.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Ben and Cassie by the lake</a></h3>
+            <span class="post-date d-inline-block mt-2 small">24 mins. ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/bud-joan-wilbur-bette.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Uncle Bud and Aunt Joan; Wilbur (Grampa) and Better (Nana)</a></h3>
+            <span class="post-date d-inline-block mt-2 small">5 hrs. ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/cady-nemo.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Acadia (Greta's Lab)</a></h3>
+            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/doggo.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Willie</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Doggo</a></h3>
+            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/flags.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Remembering those who served including Grampa and Uncle Bud</a></h3>
+            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/mom-tube.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Debbie relaxing</a></h3>
+            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+    </div>
+  </div>
+</section>
+{% comment %}
+<section class="cta section bg-dark position-relative pb-5">
+  <svg class="cta-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffc107" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-7">
+        <div class="cta-content">
+          <h3 class="cta-title text-white">Get in Touch with Us</h3>
+          <p class="cta-text mt-3">Vnterdum et malesuada fames ac ante ipsum primis in faucibus. Duis blandit massa a metus sodales, non aliquam lacus pretium.</p>
+          <a href="#" class="btn btn-warning mt-4 fw-bold">Say hi!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomment %} {% comment %}
 <!-- postcard Section Start-->
 
 <section class="postcard bg-white">
@@ -121,6 +238,85 @@
     </div>
   </div>
 </section>
+{% endcomment %}
 
 <!-- postcard Section End-->
 {% endblock %}
+
+<!-- postcard Start-->
+{% comment %}
+<section class="postcard-posts section section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">postcard</span>
+          <h2 class="section-title text-dark mt-3">Read latest stories from our postcard</h2>
+          <p class="section-subtitle mt-3 mb-0">Proin consectetur euismod blandit. Praesent blandit ut neque at tempus. Cras in dui vel diam tempor commodo. Aliquam vel diam vel nunc sollicitudin malesuada in a sem.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">BenBusiness</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">How to find a brandable domain name for your business?</a></h3>
+            <span class="post-date d-inline-block mt-2 small">24 mins. ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">BenMarketing</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">10 best PPC campaign planning tools for paid marketing experts</a></h3>
+            <span class="post-date d-inline-block mt-2 small">5 hrs. ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+      <!-- postcard Post Start-->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+          <img src="{% static 'assets/images/kezar/.jpg' %}" class="postcard-thumb img-fluid w-100" />
+          <div class="postcard-post-body p-4">
+            <div class="postcard-post-meta clearfix">
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
+            </div>
+            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Top 10 tips to increase focus and at work</a></h3>
+            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
+          </div>
+        </div>
+      </div>
+      <!-- postcard Post End-->
+    </div>
+  </div>
+</section>
+<section class="cta section bg-dark position-relative pb-5">
+  <svg class="cta-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffc107" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-7">
+        <div class="cta-content">
+          <h3 class="cta-title text-white">Get in Touch with Us</h3>
+          <p class="cta-text mt-3">Vnterdum et malesuada fames ac ante ipsum primis in faucibus. Duis blandit massa a metus sodales, non aliquam lacus pretium.</p>
+          <a href="#" class="btn btn-warning mt-4 fw-bold">Say hi!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomment %}
+<!--postcard End-->

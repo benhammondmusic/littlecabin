@@ -222,7 +222,7 @@ h6 {
 }
 
 /*-- Portfolio --*/
-.postcard {
+/* .postcard {
   margin-top: 120px;
 }
 .postcard-item-img {
@@ -243,7 +243,7 @@ h6 {
 }
 .project-title {
   font-size: 1.325rem;
-}
+} */
 
 /*-- login --*/
 .login-box-icon {
@@ -302,16 +302,16 @@ form ul li {
   color: var(--darkest);
 } */
 
-/*-- Blog --*/
-.blog-thumb {
+/*-- postcard --*/
+.postcard-thumb {
   max-height: 230px;
   object-fit: cover;
 }
-.blog-post-title {
+.postcard-post-title {
   font-size: 1.425rem;
   font-weight: 800;
 }
-.blog-post-title a {
+.postcard-post-title a {
   text-decoration: none;
 }
 
@@ -413,7 +413,7 @@ form ul li {
   .login-box-icon {
     height: 50px;
   }
-  .blog-post-title {
+  .postcard-post-title {
     font-size: 1.2rem;
   }
 }
