@@ -284,15 +284,15 @@ h6 {
   background: var(--flash);
 }
 
-/*-- Stats --*/
-.stats-box {
+/*-- about --*/
+.about-box {
   box-shadow: 0 0 2rem rgb(0 0 0 / 0.1);
 }
-.stats-icon {
+.about-icon {
   height: 100%;
   font-size: 3rem;
 }
-.stats-title {
+.about-title {
   font-weight: 800;
 }
 

@@ -26,7 +26,7 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
             {% comment %}
             <li class="nav-item">
@@ -71,7 +71,7 @@
               <a class="nav-link px-0 active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-0" href="#">About</a>
+              <a class="nav-link px-0" href="#about">About</a>
             </li>
             {% comment %}
             <li class="nav-item">
@@ -601,14 +601,9 @@
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-6">
             <div class="footer-col mt-5 pe-4">
-              <img src="{% static 'assets/images/logo-2-white.png' %}" class="footer-logo mb-4" alt="Little Cabing Logo" />
-              <p class="mb-0">Little Cabin securely provides your family:</p>
-              <ul>
-                <li>property calendar management</li>
-                <li>group "postcards"</li>
-                <li>shared "requests"</li>
-                <li>important info</li>
-              </ul>
+              <h3 class="footer-title text-white mb-4">Little Cabin</h3>
+              {% comment %} <img src="{% static 'assets/images/logo-2-white.png' %}" class="footer-logo mb-4" alt="Little Cabing Logo" /> {% endcomment %}
+              <p class="mb-0">Little Cabin App was created by Ben Hammond, and the <a href="https://github.com/benhammondmusic/littlecabin/">open-sourced code is on GitHub</a>. Please <a href="mailto:hello@benhammond.tech">reach out</a> if you would like to build something together, and view my portfolio at <a href="https://benhammond.tech">benhammond.tech</a></p>
             </div>
           </div>
 
