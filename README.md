@@ -49,3 +49,4 @@ Fullstack Python App with Django
 
 - [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/)
 - [Font Awesome Icons](https://fontawesome.com/)
+- https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/

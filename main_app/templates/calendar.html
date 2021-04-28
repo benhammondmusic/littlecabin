@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- content calendar-->
+
+<section class="content-box section section-bg position-relative">
+  <img class="down-arrow-img position-absolute top-0 d-none d-lg-block" src="{% static 'assets/images/section-arrow.svg' %}" />
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-6">
+        <div class="content-box-text pe-0 pe-md-5">
+          <span class="pre-title text-dark small position-relative fw-bold text-uppercase">Calendar</span>
+          <h2 class="content-box-title text-dark section-title mt-3 mb-4">View Your Weeks; Offer Swaps or Sales</h2>
+          <p>Your upcoming weeks:</p>
+          <ul>
+            <lh>2021</lh>
+            <li>July 14-21</li>
+            <li>August 14-21</li>
+            <li>September 14-21</li>
+          </ul>
+
+          <a href="#" class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm">View 2022</a>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="wings position-relative mt-5 mt-lg-0">
+          <div class="video-box shadow-lg ps-0 ps-md-5 position-relative"><img width="75%" src="../static/assets/images/cal.png" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- content calendar-->
+
+{% endblock %}
