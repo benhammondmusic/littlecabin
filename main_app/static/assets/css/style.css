@@ -222,14 +222,14 @@ h6 {
 }
 
 /*-- Portfolio --*/
-.portfolio {
+.postcard {
   margin-top: 120px;
 }
-.portfolio-item-img {
+.postcard-item-img {
   object-fit: cover;
   height: 300px;
 }
-.portfolio-item-content {
+.postcard-item-content {
   background: rgb(36 43 49 / 80%);
   visibility: hidden;
   top: 20px;
@@ -238,7 +238,7 @@ h6 {
   left: 20px;
   cursor: pointer;
 }
-.portfolio-item:hover .portfolio-item-content {
+.postcard-item:hover .postcard-item-content {
   visibility: visible;
 }
 .project-title {
@@ -251,6 +251,14 @@ h6 {
 }
 .login-box-title {
   font-size: 1.225rem;
+}
+
+/*-- register --*/
+.helptext,
+form ul li {
+  font-size: 0.8rem;
+  font-style: italic;
+  display: block;
 }
 
 /*-- Content Section --*/
@@ -381,7 +389,7 @@ h6 {
 
 /*-- Max Width Media Queries --*/
 @media (max-width: 1399.98px) {
-  .portfolio {
+  .postcard {
     margin-top: 80px;
   }
   .section {

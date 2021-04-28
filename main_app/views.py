@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
@@ -30,7 +30,7 @@ def register(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('index')
+      return redirect('postcards')
     else:
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render register.html with an empty form
