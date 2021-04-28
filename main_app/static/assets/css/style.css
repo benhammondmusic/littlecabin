@@ -115,6 +115,11 @@ h6 {
   transform: rotate(-3deg);
   z-index: 1;
 }
+.error {
+  font-size: 1.2rem;
+  color: var(--wood);
+  font-style: italic;
+}
 
 /*-- Top Header Menu --*/
 .primary-nav {

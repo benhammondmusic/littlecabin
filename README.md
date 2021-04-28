@@ -42,6 +42,7 @@ Secure, family-only web application providing:
 - integrating an existing design into an extensible Django base template
 - fixing deployment issues with DEBUG config vars
 - integrating css variables (custom properties) with existing design to make future changes as simple as possible
+- extending Django's `UserCreationForm`; requiring `first_name`, `last_name`, and `email`, and removing the field for `username`.
 
 ## ERD (Entity Relationship Diagram)
 
@@ -55,4 +56,5 @@ Fullstack Python App with Django
 
 - [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/)
 - [Font Awesome Icons](https://fontawesome.com/)
-- https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/
+- [Route Back To Section IDs](https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/)
+- [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9)

@@ -9,6 +9,9 @@
         <div class="section-head text-center mx-auto narrow">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Accounts</span>
           <h2 class="section-title text-dark mt-3">Request New User Access</h2>
+
+          <h3 class="error">{{error_message}}</h3>
+
           <form method="post" action="{% url 'register' %}">
             {% csrf_token %} {{ form.as_p }}
             <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Request Access" />
