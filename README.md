@@ -11,21 +11,25 @@ Secure, family-only web application providing:
 
 ## Pages
 
+> Home page (not logged in) will display info mainly about Little Cabin the app. All other pages are only available if logged in, and will display information about the actual family and property
+
 ### Account
 
-- Home (current weather)
-- Login
-- Signup
-- Family Tree / History
+- Home (open)
+- Login (open)
+- Signup (open)
+- App Info (open)
 
 ### Options
 
 - Calendar
 - Postcards
 - Requests
-- Info
+- Camp Info / Family History
 
-- Report A Bug
+### Report A Bug
+
+- Email Admin
 
 # Problems Solved
 
@@ -44,3 +48,4 @@ Fullstack Python App with Django
 ## Resources
 
 - [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/)
+- [Font Awesome Icons](https://fontawesome.com/)
