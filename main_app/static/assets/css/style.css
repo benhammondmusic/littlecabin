@@ -276,10 +276,17 @@ form ul li {
   height: 10px;
 }
 
-/*-- Testimonials --*/
-.testimonial-img {
+/*-- info --*/
+.info-green-img {
   height: 100px;
 }
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .splide__pagination {
   bottom: -1rem;
 }
@@ -367,7 +374,7 @@ form ul li {
     border-radius: 0 0 5px 5px;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
   }
-  .team-member .card-title {
+  .info-white-member .card-title {
     letter-spacing: 0.1rem;
   }
 }
@@ -437,7 +444,7 @@ form ul li {
   .hero {
     margin-top: 140px;
   }
-  .team-member .card-title {
+  .info-white-member .card-title {
     font-size: 0.925rem !important;
   }
   .cta-title {

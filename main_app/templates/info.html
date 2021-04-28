@@ -1,4 +1,143 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<!-- info-white Start-->
+<section class="info-white section section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          {% comment %} <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Info</span> {% endcomment %}
+          <h2 class="section-title text-dark mt-3">In An Emergency <a href="tel:911">Call 911</a></h2>
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Property Info</span>
+          <ul class="info-list mb-0">
+            <li>Landline: <a href="tel:012-345-6789">012-345-6789</a></li>
+            <li>Address: Camp Road, Camptown, ME</li>
+            <li>Directions: Fire Lane #5 down the hill through a marsh and take a left at the fork</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Services</span>
+          <h2 class="section-title text-dark mt-3">Local Businesses</h2>
+          <p class="section-subtitle mt-3 mb-0">Restaurants, Groceries, Boat Rentals, Lodging</p>
+        </div>
+      </div>
+    </div>
+    <div class="row gx-3">
+      <!-- info-white Member-->
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="info-white-member mt-3 mt-md-5">
+          <div class="card border-0 shadow-sm">
+            <img src="{% static 'assets/images/biz-1.png' %}" class="card-img-top rounded" />
+            <div class="card-body py-4 text-center">
+              <h5 class="card-title fs-6 fw-bold text-uppercase">Ebenezer's Pub</h5>
+              <h6 class="card-subtitle mb-0 small">Dining</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- info-white Member-->
+      <!-- info-white Member-->
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="info-white-member mt-3 mt-md-5">
+          <div class="card border-0 shadow-sm">
+            <img src="{% static 'assets/images/biz-2.png' %}" class="card-img-top rounded" />
+            <div class="card-body py-4 text-center">
+              <h5 class="card-title fs-6 fw-bold text-uppercase">Center Lovell Market</h5>
+              <h6 class="card-subtitle mb-0 small">Groceries</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- info-white Member-->
+      <!-- info-white Member-->
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="info-white-member mt-3 mt-md-5">
+          <div class="card border-0 shadow-sm">
+            <img src="{% static 'assets/images/biz-1.png' %}" class="card-img-top rounded" />
+            <div class="card-body py-4 text-center">
+              <h5 class="card-title fs-6 fw-bold text-uppercase">Ebenezer's Pub</h5>
+              <h6 class="card-subtitle mb-0 small">Dining</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- info-white Member-->
+      <!-- info-white Member-->
+      <div class="col-6 col-md-6 col-lg-3">
+        <div class="info-white-member mt-3 mt-md-5">
+          <div class="card border-0 shadow-sm">
+            <img src="{% static 'assets/images/biz-2.png' %}" class="card-img-top rounded" />
+            <div class="card-body py-4 text-center">
+              <h5 class="card-title fs-6 fw-bold text-uppercase">Center Lovell Market</h5>
+              <h6 class="card-subtitle mb-0 small">Groceries</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- info-white Member-->
+    </div>
+  </div>
+</section>
+<!-- info-white End-->
+<!-- info-green Start-->
+<section class="info-green section bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          <span class="pre-title small position-relative fw-bold text-white text-uppercase">Background</span>
+          <h2 class="section-title text-white mt-3">Family Tree and Property History</h2>
+          <p class="section-subtitle mt-3 text-muted mb-0">Proin consectetur euismod blandit. Praesent blandit ut neque at tempus. Cras in dui vel diam tempor commodo. Aliquam vel diam vel nunc sollicitudin malesuada in a sem.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3 mt-md-5">
+    <div class="row">
+      <div class="col px-0">
+        <!-- Slider Start-->
+        <div class="splide">
+          <div class="splide__track">
+            <div class="splide__list">
+              <div class="splide__slide">
+                <div class="info-green text-center p-3 p-md-5 rounded shadow-sm">
+                  <img class="info-green-img rounded-circle" src="{% static 'assets/images/info-green-1.jpg' %}" />
+                  <h4 class="info-green-name text-white fs-5 fw-bold mt-3">Bhola Baker</h4>
+                  <p class="info-green-text text-muted fs-6 fst-italic mt-2 mb-0">&ldquo; Proin consectetur euismod blandit. Praesent blandit ut neque at tempus. Cras in dui vel diam tempor commodo. Aliquam vel diam vel nunc sollicitudin malesuada in a sem.&rdquo;</p>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="info-green text-center p-3 p-md-5 rounded shadow-sm">
+                  <img class="info-green-img rounded-circle" src="{% static 'assets/images/info-green-2.jpg' %}" />
+                  <h4 class="info-green-name text-white fs-5 fw-bold mt-3">Amro Abney</h4>
+                  <p class="info-green-text text-muted fst-italic mt-2 mb-0">&ldquo; Proin consectetur euismod blandit. Praesent blandit ut neque at tempus. Cras in dui vel diam tempor commodo. Aliquam vel diam vel nunc sollicitudin malesuada in a sem.&rdquo;</p>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="info-green text-center p-3 p-md-5 rounded shadow-sm">
+                  <img class="info-green-img rounded-circle" src="{% static 'assets/images/info-green-3.jpg' %}" />
+                  <h4 class="info-green-name text-white fs-5 fw-bold mt-3">Magh Mackin</h4>
+                  <p class="info-green-text text-muted fst-italic mt-2 mb-0">&ldquo; Proin consectetur euismod blandit. Praesent blandit ut neque at tempus. Cras in dui vel diam tempor commodo. Aliquam vel diam vel nunc sollicitudin malesuada in a sem.&rdquo;</p>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="info-green text-center p-3 p-md-5 rounded shadow-sm">
+                  <img class="info-green-img rounded-circle" src="{% static 'assets/images/info-green-2.jpg' %}" />
+                  <h4 class="info-green-name text-white fs-5 fw-bold mt-3">Amro Abney</h4>
+                  <p class="info-green-text text-muted fst-italic mt-2 mb-0">&ldquo; Proin consectetur euismod blandit. Praesent blandit ut neque at tempus. Cras in dui vel diam tempor commodo. Aliquam vel diam vel nunc sollicitudin malesuada in a sem.&rdquo;</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Slider End-->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- info-green End-->
 
-<h1>Info</h1>
 {% endblock %}

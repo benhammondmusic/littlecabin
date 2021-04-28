@@ -19,6 +19,12 @@ Secure, family-only web application providing:
 - Login (open)
 - Signup (open)
 - App Info (open)
+  - Emergency Info
+  - Weekly Chores
+  - Local Business Recommendations
+  - Property History
+  - Family Tree
+  - Legal Trust Info
 
 ### Options
 
