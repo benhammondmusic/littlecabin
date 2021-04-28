@@ -1,5 +1,73 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
-<h1>Requests</h1>
+<!-- requests Start-->
+<section class="requests section bg-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-6">
+        <div class="requests-img me-0 me-lg-5">
+          <img src="{% static 'assets/images/requests.jpg' %}" class="img-fluid rounded shadow-sm" />
+          <div class="mt-3 clearfix">
+            <div class="w-50 float-start pe-2">
+              <img src="{% static 'assets/images/requests-2.jpg' %}" class="img-fluid rounded shadow-sm" />
+            </div>
+            <div class="w-50 float-end ps-2">
+              <img src="{% static 'assets/images/requests-3.jpg' %}" class="img-fluid rounded shadow-sm" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="section-head mt-5 mt-lg-0">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Requests</span>
+          <h2 class="section-title text-dark mt-3">Ideas, Broken Items, and Other To-Do's</h2>
+          <p class="section-subtitle mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check it off ✔</p>
+
+          <ul class="check-list list-unstyled mb-0">
+            <li>Replace Vacuum Cleaner</li>
+            <li>New Grill Brush</li>
+            <li>Take a nap</li>
+          </ul>
+        </div>
+        {% comment %}
+        <div class="requests-content mt-2 me-0 me-md-5">
+          <div class="row">
+            <div class="col-12">
+              <div class="mt-4">
+                <div class="clearfix">
+                  <span class="d-block w-50 float-start fw-bold small">Design</span>
+                  <span class="d-block w-50 float-end fw-bold small text-end">95%</span>
+                </div>
+                <div class="progress mt-2">
+                  <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <div class="clearfix">
+                  <span class="d-block w-50 float-start fw-bold small">Development</span>
+                  <span class="d-block w-50 float-end fw-bold small text-end">90%</span>
+                </div>
+                <div class="progress mt-2">
+                  <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <div class="clearfix">
+                  <span class="d-block w-50 float-start fw-bold small">Marketing</span>
+                  <span class="d-block w-50 float-end fw-bold small text-end">93%</span>
+                </div>
+                <div class="progress mt-2">
+                  <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- requests End-->
 
 {% endblock %}
