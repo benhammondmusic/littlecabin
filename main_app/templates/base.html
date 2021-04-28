@@ -19,16 +19,41 @@
   <body>
     <nav id="primary-navbar" class="primary-nav navbar navbar-expand-lg navbar-light bg-white fixed-top font-nunito">
       <div class="container px-4 px-sm-0">
-        <a class="navbar-brand" href="#"><img src="{% static 'assets/images/logo-2.png' %}" /></a>
+        <a class="navbar-brand" href="{% url 'home' %}">Little Cabin</a>
+
+        {% comment %} <img src="{% static 'assets/images/logo-2.png' %}" /> {% endcomment %}
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
+
+            {% if user.is_authenticated %}
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'postcards' %}">Postcards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'requests' %}">Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'info' %}">Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% anchor 'home' 'about' %}">About</a>
             </li>
-            {% comment %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %} {% comment %}
             <li class="nav-item">
               <a class="nav-link" href="#">Work</a>
             </li>
@@ -68,12 +93,35 @@
         <div class="sidenav-menu mt-5">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link px-0 active" aria-current="page" href="#">Home</a>
+              <a class="nav-link px-0" href="{% url 'home' %}">Home</a>
             </li>
+            {% if user.is_authenticated %}
+
+            <li class="nav-item">
+              <a class="nav-link px-0" href="{% url 'postcards' %}">Postcards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="{% url 'calendar' %}">Calendar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="{% url 'requests' %}">Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="{% url 'info' %}">Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+            {% else %}
             <li class="nav-item">
               <a class="nav-link px-0" href="{% anchor 'home' 'about' %}">About</a>
             </li>
-            {% comment %}
+
+            <li class="nav-item">
+              <a class="nav-link px-0" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %} {% comment %}
             <li class="nav-item">
               <a class="nav-link px-0" href="#">Work</a>
             </li>
@@ -246,53 +294,6 @@
     </section>
     {% endcomment %}
     <!-- Portfolio Section End-->
-    <!-- Services Start-->
-    {% comment %}
-    <section class="services section bg-white">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="section-head text-center mx-auto narrow">
-              <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Services</span>
-              <h2 class="section-title text-dark mt-3">What We Do</h2>
-              <p class="section-subtitle mt-3 mb-0">Proin consectetur euismod blandit. Praesent blandit ut neque at tempus. Cras in dui vel diam tempor commodo. Aliquam vel diam vel nunc sollicitudin malesuada in a sem.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="service-box text-center mt-5">
-              <img class="service-box-icon" src="{% static 'assets/images/branding.svg' %}" />
-              <h3 class="service-box-title text-dark mt-4 text-uppercase">Design</h3>
-              <p class="service-box-text mt-3 mb-0">Duis vulputate neque sed justo varius, vel lobortis sed lacus.</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="service-box text-center mt-5">
-              <img class="service-box-icon" src="{% static 'assets/images/dev.svg' %}" />
-              <h3 class="service-box-title text-dark mt-4 text-uppercase">Development</h3>
-              <p class="service-box-text mt-3 mb-0">Duis vulputate neque sed justo varius, vel lobortis sed lacus.</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="service-box text-center mt-5">
-              <img class="service-box-icon" src="{% static 'assets/images/marketing.svg' %}" />
-              <h3 class="service-box-title text-dark mt-4 text-uppercase">Marketing</h3>
-              <p class="service-box-text mt-3 mb-0">Duis vulputate neque sed justo varius, vel lobortis sed lacus.</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="service-box text-center mt-5">
-              <img class="service-box-icon" src="{% static 'assets/images/scale.svg' %}" />
-              <h3 class="service-box-title text-dark mt-4 text-uppercase">Scale</h3>
-              <p class="service-box-text mt-3 mb-0">Duis vulputate neque sed justo varius, vel lobortis sed lacus.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    {% endcomment %}
-    <!-- Services End-->
 
     <!-- Testimonials Start-->
     {% comment %}
@@ -510,7 +511,7 @@
             <div class="footer-col mt-5 pe-4">
               <h3 class="footer-title text-white mb-4">Little Cabin</h3>
               {% comment %} <img src="{% static 'assets/images/logo-2-white.png' %}" class="footer-logo mb-4" alt="Little Cabing Logo" /> {% endcomment %}
-              <p class="mb-0">Little Cabin App by <a href="https://benhammond.tech">Ben Hammond</a> is open-sourced on <a href="https://github.com/benhammondmusic/littlecabin/">GitHub</a>. Please <a href="mailto:hello@benhammond.tech">Reach out</a> if you'd like to build something together</p>
+              <p class="mb-0">Little Cabin App by <a href="https://benhammond.tech">Ben Hammond</a> is open-sourced on <a href="https://github.com/benhammondmusic/littlecabin/">GitHub</a>. Please <a href="mailto:hello@benhammond.tech">reach out</a> if you'd like to build something together.</p>
             </div>
           </div>
 
@@ -518,21 +519,21 @@
             <div class="footer-col mt-5">
               <h3 class="footer-title text-white mb-4">Account</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-2"><a href="#">Home</a></li>
-                <li class="mb-2"><a href="#">Login</a></li>
-                <li class="mb-2"><a href="#">Signup</a></li>
+                <li class="mb-2"><a href="{% url 'home' %}">Home</a></li>
+                <li class="mb-2"><a href="{% url 'login' %}">Login</a></li>
+                <li class="mb-2"><a href="{% url 'register' %}">Register</a></li>
                 <li class="mb-0"><a href="{% anchor 'home' 'about' %}">About</a></li>
               </ul>
             </div>
           </div>
           <div class="col-12 col-sm-6 col-md-4 col-lg-2">
             <div class="footer-col mt-5">
-              <h3 class="footer-title text-white mb-4">Services</h3>
+              <h3 class="footer-title text-white mb-4">Apps</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-2"><a href="#">Calendar</a></li>
-                <li class="mb-2"><a href="#">Postcards</a></li>
-                <li class="mb-2"><a href="#">Requests</a></li>
-                <li class="mb-0"><a href="#">Info</a></li>
+                <li class="mb-2"><a href="{% url 'calendar' %}">Calendar</a></li>
+                <li class="mb-2"><a href="{% url 'postcards' %}">Postcards</a></li>
+                <li class="mb-2"><a href="{% url 'requests' %}">Requests</a></li>
+                <li class="mb-0"><a href="{% url 'info' %}">Info</a></li>
               </ul>
             </div>
           </div>
@@ -544,7 +545,11 @@
               {% endcomment %} {% comment %}
               <div class="mb-3"><img class="me-2" src="{% static 'assets/images/phone.svg' %}" /><span>719-240-7593</span></div>
               {% endcomment %}
-              <div><img class="me-2" src="{% static 'assets/images/mail.svg' %}" /><a href="mailto:hello@benhammond.tech"> Email Admin</a></div>
+              <div>
+                {% comment %} <img class="me-2" src="{% static 'assets/images/mail.svg' %}" /> {% endcomment %}
+                <i class="far fa-paper-plane me-2 email-me"></i>
+                <a href="mailto:hello@benhammond.tech"> Email Admin</a>
+              </div>
             </div>
           </div>
         </div>

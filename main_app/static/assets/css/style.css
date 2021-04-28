@@ -14,26 +14,21 @@ Designer Website - https://angrystudio.com
 #638129
 #346d7e
 #6da6b1
+#ffc107
 #e1d7bc
 #5E0B15
 */
 
   --white: #ffffff;
-  /* --white: #e1d7bc; */
   --flash: #ffc107;
-  /* --flash: #6da6b1; */
 
-  /* --grey: #8e98a2; */
   --grey: #e1d7bc;
   --midgrey: #5f7383;
   --slate: #3d4852;
-  /* --slate: #29461a; */
   --dark: #2c333a;
-  /* --dark: #29461a; */
   --darker: #212529;
-  /* --darker: #29461a; */
-  /* --darkest: #0e1d2c; */
   --darkest: #29461a;
+  --wood: #5e0b15;
 }
 
 /*-- General Styles --*/
@@ -69,7 +64,7 @@ h6 {
   font-family: 'Nunito', sans-serif;
 }
 .text-muted {
-  color: var(--grey) !important;
+  color: var(--white) !important;
 }
 .bg-dark {
   background: var(--darkest) !important;
@@ -250,11 +245,11 @@ h6 {
   font-size: 1.325rem;
 }
 
-/*-- Services --*/
-.service-box-icon {
-  height: 60px;
+/*-- login --*/
+.login-box-icon {
+  font-size: 3rem;
 }
-.service-box-title {
+.login-box-title {
   font-size: 1.225rem;
 }
 
@@ -295,6 +290,9 @@ h6 {
 .about-title {
   font-weight: 800;
 }
+/* .about-text {
+  color: var(--darkest);
+} */
 
 /*-- Blog --*/
 .blog-thumb {
@@ -321,6 +319,9 @@ h6 {
 }
 
 /*--Footer --*/
+.footer .email-me {
+  color: var(--flash);
+}
 .footer a {
   color: var(--grey);
   text-decoration: none;
@@ -398,10 +399,10 @@ h6 {
   .section-title {
     font-size: 2.4rem;
   }
-  .service-box-title {
+  .login-box-title {
     font-size: 1.3rem;
   }
-  .service-box-icon {
+  .login-box-icon {
     height: 50px;
   }
   .blog-post-title {
@@ -463,7 +464,7 @@ h6 {
   .section-title {
     font-size: 1.4rem;
   }
-  .service-box-title {
+  .login-box-title {
     font-size: 1.2rem;
   }
   .cta-title {
