@@ -33,6 +33,7 @@ def postcards(request):
 def calendar(request):
     if request.method == 'POST':
         print("POST")
+        print("!!!", request.POST['display_year'])
     else:
         print("GET")
 

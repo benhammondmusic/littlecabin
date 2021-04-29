@@ -20,8 +20,11 @@
 
           <form action="{% url 'calendar' %}" method="post">
             {% csrf_token %}
-
-            <input class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm" type="submit" name="display_year" value="2022" />
+            <button name="display_year" value="2022" class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm" type="submit">2022</button>
+          </form>
+          <form action="{% url 'calendar' %}" method="post">
+            {% csrf_token %}
+            <button name="display_year" value="2023" class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm" type="submit">2023</button>
           </form>
           {% comment %}
           <form action="{% url 'assoc_toy' cat.id toy.id %}" method="post">
