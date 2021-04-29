@@ -2,6 +2,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 
+credentials.json
+main_app/credentials.json
+token.json
+main_app/token.json
+
 ### Django ###
 *.log
 *.pot

@@ -8,6 +8,10 @@ from .forms import UserForm
 from django.contrib.auth.views import LoginView
 from .forms import CustomAuthenticationForm
 
+# for Google Calendar API
+from .fetch_calendar import get_next_10_events
+
+
 # when start to use classes
 # from django.contrib.auth.mixins import LoginRequiredMixin
 # class EntityCreate(LoginRequiredMixin, CreateView): 
@@ -22,6 +26,7 @@ def postcards(request):
 
 @login_required
 def calendar(request):
+    get_next_10_events()
     return render(request, 'calendar.html')
 
 @login_required
