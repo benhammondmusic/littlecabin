@@ -43,6 +43,7 @@ Secure, family-only web application providing:
 - fixing deployment issues with DEBUG config vars
 - integrating css variables (custom properties) with existing design to make future changes as simple as possible
 - extending Django's `UserCreationForm`; requiring `first_name`, `last_name`, and `email`, and removing the field for `username`; actually presented `username` as **Email** to user for all account related services (Register, Login, etc), since all the solutions recommended creating a custom user model _before starting the project_..... too late.
+- custom pagination (view one year at a time). sending value out from form btn into the views. saving fetched data in big chunk into db, and reading from there unless data is stale then refetching
 
 ## ERD (Entity Relationship Diagram)
 
@@ -63,4 +64,3 @@ Fullstack Python App with Django
   https://stackoverflow.com/questions/63956706/google-drive-api-quickstart-py-error-400-redirect-uri-mismatch
   need to add credentials file, and need to gitignore it
   need to run Google's Python "quickstart" commands INSIDE the env
-- custom pagination (view one year at a time)

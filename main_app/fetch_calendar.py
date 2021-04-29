@@ -55,7 +55,7 @@ def get_upcoming_events(number_of_events, display_year):
         # extract useable date info
         clean_event = {"start_month_date": start_date[5:], "detail": detail, "year":start_date[0:4]}
         # only return events matching "display date"
-        if int(clean_event["year"]) == display_year:
+        if int(clean_event["year"]) == int(display_year):
             cleaned_events.append(clean_event)
 
     return cleaned_events

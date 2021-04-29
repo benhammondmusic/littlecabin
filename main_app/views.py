@@ -31,16 +31,17 @@ def postcards(request):
 
 @login_required
 def calendar(request):
+    # POST request comes with a display year; comes from user clicking "next year" btn/form on calendar
     if request.method == 'POST':
-        print("POST")
-        print("!!!", request.POST['display_year'])
+        # print("POST")
+        # print("!!!", request.POST['display_year'])
+        display_year = request.POST['display_year']
+    # GET request should display current year; comes from nav links, etc    
     else:
-        print("GET")
+        # print("GET")
+        display_year = datetime.date.today().year
 
-    display_year = datetime.date.today().year
-    print("display year", display_year)
-
-
+# ! NEED TO CHECK DB FIRST, THEN ONLY FETCH IF DB EVENTS ARE STALE/NOT SET YET
     events = get_upcoming_events(18*10, display_year)
     context = {"display_year": display_year, "events": events}
     return render(request, 'calendar.html', context)
