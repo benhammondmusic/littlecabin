@@ -1,4 +1,5 @@
 import datetime
+from django.http.response import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -11,6 +12,9 @@ from .forms import CustomAuthenticationForm
 
 # for Google Calendar API
 from .fetch_calendar import get_upcoming_events
+from django.http import HttpResponse
+
+
 
 
 # when start to use classes
@@ -26,14 +30,37 @@ def postcards(request):
     return render(request, 'postcards.html')
 
 @login_required
-def calendar(request, display_year = datetime.date.today().year):
-    # request.session['display_year'] = display_year
+def calendar(request):
+    if request.method == 'POST':
+        print("POST")
+    else:
+        print("GET")
 
-    display_year = 2021 
+    display_year = datetime.date.today().year
+    print("display year", display_year)
+
 
     events = get_upcoming_events(18*10, display_year)
     context = {"display_year": display_year, "events": events}
     return render(request, 'calendar.html', context)
+
+# @login_required
+# def show_year(request, display_year):
+
+#     print("CAL_YR: display year", display_year)
+
+#     events = get_upcoming_events(18*10, display_year)
+#     context = {"display_year": display_year, "events": events}
+#     return render(request, 'calendar.html', context)    
+
+""" 
+def assoc_toy(request, cat_id, toy_id):
+    # Note that you can pass a toy's id instead of the whole object
+    Cat.objects.get(id=cat_id).toys.add(toy_id)
+    return redirect('detail', cat_id=cat_id)
+
+ """
+
 
 # def post_comment(request, new_comment):
 #     if request.session.get('has_commented', False):

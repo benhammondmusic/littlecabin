@@ -18,7 +18,17 @@
             {% endfor %}
           </ul>
 
-          <a href="#" class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm">View 2022</a>
+          <form action="{% url 'calendar' %}" method="post">
+            {% csrf_token %}
+
+            <input class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm" type="submit" name="display_year" value="2022" />
+          </form>
+          {% comment %}
+          <form action="{% url 'assoc_toy' cat.id toy.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn">Add</button>
+          </form>
+          {% endcomment %}
         </div>
       </div>
       <div class="col-12 col-lg-6">
