@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -9,7 +10,7 @@ from django.contrib.auth.views import LoginView
 from .forms import CustomAuthenticationForm
 
 # for Google Calendar API
-from .fetch_calendar import get_next_10_events
+from .fetch_calendar import get_upcoming_events
 
 
 # when start to use classes
@@ -25,11 +26,23 @@ def postcards(request):
     return render(request, 'postcards.html')
 
 @login_required
-def calendar(request):
-    events= get_next_10_events()
-    
-    context = {"events": events}
+def calendar(request, display_year = datetime.date.today().year):
+    request.session['display_year'] = display_year
+
+    display_year = 2023
+
+    events = get_upcoming_events(18*10, display_year)
+    context = {"display_year": display_year, "events": events}
     return render(request, 'calendar.html', context)
+
+# def post_comment(request, new_comment):
+#     if request.session.get('has_commented', False):
+#         return HttpResponse("You've already commented.")
+#     c = comments.Comment(comment=new_comment)
+#     c.save()
+#     request.session['has_commented'] = True
+#     return HttpResponse('Thanks for your comment!')
+
 
 @login_required
 def requests(request):
