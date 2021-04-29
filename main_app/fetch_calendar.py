@@ -36,33 +36,26 @@ def get_upcoming_events(number_of_events, display_year):
 
     service = build('calendar', 'v3', credentials=creds)
 
-    # Call the Calendar API
+    # today will be the earliest date for fetched events
     display_start = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    print(display_start)
     print(f'Getting the upcoming {number_of_events} events')
-    events_result = service.events().list(calendarId='92vin6vuv0aqqvqtnmcjq1lq1s@group.calendar.google.com', timeMin=display_start, 
-                                        maxResults=number_of_events, singleEvents=True,
-                                        orderBy='startTime').execute()
+    # call the API
+    events_result = service.events().list(calendarId='92vin6vuv0aqqvqtnmcjq1lq1s@group.calendar.google.com', timeMin=display_start, maxResults=number_of_events, singleEvents=True, orderBy='startTime').execute()
     events = events_result.get('items', [])
 
+    # event list with irrelevant info cleaned up
     cleaned_events = []
     
+    # iterate and return event info to VIEWS.PY
     if not events:
        return cleaned_events
- 
     for event in events:
         start_date = event["start"]["date"]
         detail = event['summary']
-        print(start_date, detail)
+        # extract useable date info
         clean_event = {"start_month_date": start_date[5:], "detail": detail, "year":start_date[0:4]}
-        # print(">",int(clean_event["year"]), ">>", type(display_year))
+        # only return events matching "display date"
         if int(clean_event["year"]) == display_year:
             cleaned_events.append(clean_event)
-        print(cleaned_events)
-        # start = event['start'].get('dateTime', event['start'].get('date'))
-        # print(start, event['summary'])
 
     return cleaned_events
-
-# if __name__ == '__get_next_10_events__':
-#     main()

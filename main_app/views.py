@@ -27,9 +27,9 @@ def postcards(request):
 
 @login_required
 def calendar(request, display_year = datetime.date.today().year):
-    request.session['display_year'] = display_year
+    # request.session['display_year'] = display_year
 
-    display_year = 2023
+    display_year = 2021 
 
     events = get_upcoming_events(18*10, display_year)
     context = {"display_year": display_year, "events": events}
