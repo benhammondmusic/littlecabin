@@ -58,6 +58,7 @@ Fullstack Python App with Django
 - [Font Awesome Icons](https://fontawesome.com/)
 - [Route Back To Section IDs](https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/)
 - [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9)
+  https://developers.google.com/calendar/quickstart/python
   https://github.com/googleworkspace/python-samples/issues/134
   https://stackoverflow.com/questions/63956706/google-drive-api-quickstart-py-error-400-redirect-uri-mismatch
   need to add credentials file, and need to gitignore it

@@ -26,8 +26,10 @@ def postcards(request):
 
 @login_required
 def calendar(request):
-    get_next_10_events()
-    return render(request, 'calendar.html')
+    events= get_next_10_events()
+    
+    context = {"events": events}
+    return render(request, 'calendar.html', context)
 
 @login_required
 def requests(request):
