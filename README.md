@@ -42,7 +42,7 @@ Secure, family-only web application providing:
 - integrating an existing design into an extensible Django base template
 - fixing deployment issues with DEBUG config vars
 - integrating css variables (custom properties) with existing design to make future changes as simple as possible
-- extending Django's `UserCreationForm`; requiring `first_name`, `last_name`, and `email`, and removing the field for `username`.
+- extending Django's `UserCreationForm`; requiring `first_name`, `last_name`, and `email`, and removing the field for `username`; actually presented `username` as **Email** to user for all account related services (Register, Login, etc), since all the solutions recommended creating a custom user model _before starting the project_..... too late.
 
 ## ERD (Entity Relationship Diagram)
 

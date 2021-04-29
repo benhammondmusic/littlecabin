@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 # import custom User form
 from .forms import UserForm
+from django.contrib.auth.views import LoginView
+from .forms import CustomAuthenticationForm
 
 # when start to use classes
 # from django.contrib.auth.mixins import LoginRequiredMixin
@@ -30,18 +32,6 @@ def requests(request):
 def info(request):
     return render(request, 'info.html')
 
-def register(request):
-    if request.method == 'POST':
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('postcards')
-    else:
-        form = UserForm()
-
-
-    return render(request, 'registration/register.html', {'form': form})
-
 # def register(request):
 #   error_message = ''
 #   if request.method == 'POST':
@@ -61,6 +51,24 @@ def register(request):
 #   form = UserForm()
 #   context = {'form': form, 'error_message': error_message}
 #   return render(request, 'registration/register.html', context)
+def register(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('postcards')
+    else:
+        form = UserForm()
+
+    return render(request, 'registration/register.html', {'form': form})
+
+class CustomLoginView(LoginView):
+    authentication_form = CustomAuthenticationForm
+
+
+
+
+
 
 # ! DELETE THIS
 def koka(request):
