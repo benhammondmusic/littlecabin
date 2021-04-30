@@ -16,9 +16,19 @@ from .fetch_calendar import get_upcoming_events
 from django.http import HttpResponse
 
 # for DB models
-from .models import Week, Postcard
+from .models import Week, Postcard, Photo
 from django.views.generic.edit import CreateView #, UpdateView, DeleteView
 
+# for AWS photos
+import uuid
+import boto3
+
+# for config vars
+from decouple import config
+
+# load config vars (from .env locally, config vars on heroku)
+S3_BASE_URL = config('S3_BASE_URL')
+BUCKET = config('BUCKET')
 
 
 # VIEWS
@@ -67,6 +77,46 @@ def register(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/register.html', context)
 
+
+
+@login_required
+def postcards_detail(request, postcard_id):
+    postcard = Postcard.objects.get(id=postcard_id)
+    context = { 'postcard': postcard }
+    return render(request, 'postcards/detail.html', context)
+
+class Create_Postcard(LoginRequiredMixin, CreateView):
+    model = Postcard
+    fields = ['greeting', 'message']
+    def form_valid(self, form):
+        # Assign the logged in user (self.request.user)
+        form.instance.user = self.request.user  # form.instance is the postcard
+        # Let the CreateView do its job as usual
+        return super().form_valid(form)  
+
+
+
+
+@login_required
+def add_photo(request, postcard_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + \
+            photo_file.name[photo_file.name.rfind('.'):]
+
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(url=url, postcard_id=postcard_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('detail', postcard_id=postcard_id)
+
+
+
+
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
 
@@ -74,11 +124,6 @@ class CustomLoginView(LoginView):
 class Create_Week(LoginRequiredMixin, CreateView):
     model = Week
     fields = '__all__'
-
-class Create_Postcard(LoginRequiredMixin, CreateView):
-    model = Postcard
-    fields = '__all__'
-
 
 
 

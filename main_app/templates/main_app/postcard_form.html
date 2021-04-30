@@ -17,10 +17,8 @@
     </div>
     <div class="row">
       <form action="" method="post">
-        {% csrf_token %}
-        <table>
-          {{ form.as_table }}
-        </table>
+        {% csrf_token %} {{ form.as_p }}
+
         <input type="submit" value="Create" class="btn btn-warning shadow-sm mt-4 fw-bold" />
       </form>
     </div>

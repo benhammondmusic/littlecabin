@@ -33,10 +33,18 @@ class Week(models.Model):
 
 
 class Postcard(models.Model):
+    # Postcard picture 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     greeting = models.CharField(max_length=50)
     message = models.CharField(max_length=500)
-    photo_url = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
 
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    # postcard = models.OneToOneField(Postcard, on_delete=models.CASCADE, primary_key=True)
+    postcard = models.ForeignKey(Postcard, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Photo for postcard_id: {self.postcard_id} @{self.url}'
 
