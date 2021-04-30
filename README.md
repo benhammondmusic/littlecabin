@@ -37,6 +37,14 @@ Secure, family-only web application providing:
 
 - Email Admin
 
+# Style Guide
+
+### Colors
+
+### Design
+
+### Terminology
+
 # Problems Solved
 
 - integrating an existing design into an extensible Django base template
@@ -51,6 +59,7 @@ Secure, family-only web application providing:
   need to add credentials file, and need to gitignore it
   need to run Google's Python "quickstart" commands INSIDE the env
   - use template filters to calculate previous and subsequent years for buttons and post request values
+  - different colors of icon/favicon/logo
 
 ## ERD (Entity Relationship Diagram)
 

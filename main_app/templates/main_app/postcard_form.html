@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %} {% if object %}
+<h1>Edit <span class="">{{object.name}}</span></h1>
+{% else %}
+<h1>Create a Postcard</h1>
+{% endif %}
+
+<section class="postcard-posts section section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Create a Postcard</span>
+          <h2 class="section-title text-dark mt-3">Memories and More</h2>
+          <p class="section-subtitle mt-3 mb-0">Add a short greeting, a message, and upload a photo (or leave blank for default artwork)</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <form action="" method="post">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" value="Create" class="btn btn-warning shadow-sm mt-4 fw-bold" />
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
