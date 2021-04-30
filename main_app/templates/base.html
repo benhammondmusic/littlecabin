@@ -54,6 +54,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Register</a>
+            </li>
             {% endif %} {% comment %}
             <li class="nav-item">
               <a class="nav-link" href="#">Work</a>
@@ -88,9 +91,11 @@
       <span class="sidenav-backdrop"></span>
       <div id="sidenav" class="sidenav font-nunito bg-dark px-4">
         <a href="#" id="close-sidenav" class="close-sidenav text-decoration-none text-white">&times;</a>
+        {% comment %}
         <div class="sidenav-logo mt-5 pt-5">
-          <a class="" href="#"><img src="{% static 'assets/images/logo-2-white.png' %}" /></a>
+          <a class="nav-link" href="{% url 'home' %}">Little Cabin</a>
         </div>
+        {% endcomment %}
         <div class="sidenav-menu mt-5">
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -121,6 +126,9 @@
 
             <li class="nav-item">
               <a class="nav-link px-0" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="{% url 'register' %}">Register</a>
             </li>
             {% endif %} {% comment %}
             <li class="nav-item">

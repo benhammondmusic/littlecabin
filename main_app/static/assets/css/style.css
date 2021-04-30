@@ -63,7 +63,8 @@ h6 {
   font-family: 'Raleway', sans-serif;
 }
 .font-nunito {
-  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Nunito', sans-serif; */
+  font-family: 'Raleway', sans-serif;
 }
 .text-muted {
   color: var(--white) !important;
@@ -255,6 +256,7 @@ h6 {
 /*-- login --*/
 .login-box-icon {
   font-size: 3rem;
+  color: var(--darkest);
 }
 .login-box-title {
   font-size: 1.225rem;
