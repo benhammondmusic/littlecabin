@@ -270,7 +270,7 @@ form ul li {
   display: block;
 }
 
-/*-- Content Section --*/
+/*-- Calendar Section --*/
 .down-arrow-img {
   right: 30%;
   transform: rotate(90deg);
@@ -279,7 +279,9 @@ form ul li {
 .video-box {
   z-index: 3;
 }
+/* .calendar-list-item {
 
+} */
 /*-- Requests --*/
 .progress {
   height: 10px;

@@ -9,6 +9,9 @@
         <div class="section-head text-center mx-auto narrow">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Accounts</span>
           <h2 class="section-title text-dark mt-3">Log In A Registered User</h2>
+          {% if user.is_authenticated %}
+          <h3 class="error">{{user.username}} is logged in</h3>
+          {% endif %}
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <div class="d-flex flex-column align-items-center">{{ form.as_p }}</div>
@@ -17,7 +20,7 @@
             <input type="hidden" name="next" value="{{ next }}" />
           </form>
 
-          <span class="helptext mt-4">Did you mean to <a class="text-dark" href="{% url 'register' %}">register a new user?</a></span>
+          <span class="helptext mt-4">Did you need to <a class="text-dark" href="{% url 'register' %}">register a new user?</a></span>
           <p class="section-subtitle mt-3 mb-0">Little Cabin App requires an administrator to approve ALL sign-ups before allowing access. Only authenticated family members will be able to utilize the app's features, such as calendar access, postcards and requests. Please enter your registered email address and password above, or select an account option below:</p>
         </div>
       </div>

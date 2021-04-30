@@ -50,7 +50,7 @@ Secure, family-only web application providing:
   https://stackoverflow.com/questions/63956706/google-drive-api-quickstart-py-error-400-redirect-uri-mismatch
   need to add credentials file, and need to gitignore it
   need to run Google's Python "quickstart" commands INSIDE the env
-  - Couldn't chain capitalize() onto first letter, so used template filter `
+  - use template filters to calculate previous and subsequent years for buttons and post request values
 
 ## ERD (Entity Relationship Diagram)
 

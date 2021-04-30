@@ -2,42 +2,37 @@
 
 <!-- content calendar-->
 
-<section class="content-box section section-bg position-relative">
+<section class="calendar section section-bg position-relative">
   <img class="down-arrow-img position-absolute top-0 d-none d-lg-block" src="{% static 'assets/images/section-arrow.svg' %}" />
   <div class="container">
     <div class="row align-items-center">
       <div class="col-12 col-lg-6">
-        <div class="content-box-text pe-0 pe-md-5">
+        <div class="calendar-text pe-0 pe-md-5">
           <span class="pre-title text-dark small position-relative fw-bold text-uppercase">Calendar</span>
-          <h2 class="content-box-title text-dark section-title mt-3 mb-4">View Your Weeks; Offer Swaps or Sales</h2>
-          <div class="year-buttons d-flex p-3 m-3">
-          <form action="{% url 'calendar' %}" method="post">
-            {% csrf_token %}
-            <button name="display_year" value="{{ display_year }}" class="btn btn-warning m-4  d-inline-block fw-bold shadow-sm" type="submit">{{ display_year}}</button>
-          </form>
-          <form action="{% url 'calendar' %}" method="post">
-            {% csrf_token %}
-            <button name="display_year" value="{{ display_year|add:"1"}}" class="btn btn-warning m-4 d-inline-block fw-bold shadow-sm" type="submit">{{ display_year|add:"1"}}</button>
-          </form>
-          <form action="{% url 'calendar' %}" method="post">
-            {% csrf_token %}
-            <button name="display_year" value="{{ display_year|add:"2"}}" class="btn btn-warning m-4 d-inline-block fw-bold shadow-sm" type="submit">{{ display_year|add:"2"}}</button>
-          </form>
-          </div>
+          <h2 class="calendar-title text-dark section-title mt-3 mb-4">View Your Weeks; Offer Swaps or Sales</h2>
+          
           <h3>{{display_year}} Schedule:</h3>
-          <ul>
+
+          <ul class="calendar-list">
             {% for event in events %}
 
-            <li>{{ event.start_month_date }}: {{ event.detail }}</li>
+            <li class="calendar-list-item my-0">{{ event.start_month_date }}: {{ event.detail }}</li>
             {% endfor %}
           </ul>
 
-          {% comment %}
-          <form action="{% url 'assoc_toy' cat.id toy.id %}" method="post">
+          <div class="year-buttons d-flex p-3 m-3">
+          <form action="{% url 'calendar' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn">Add</button>
+            <button name="display_year" value="{{ display_year|add:"-1" }}" class="btn btn-warning m-4  d-inline-block fw-bold shadow-sm" type="submit">&laquo; {{ display_year|add:"-1"}}</button>
           </form>
-          {% endcomment %}
+
+          
+
+          <form action="{% url 'calendar' %}" method="post">
+            {% csrf_token %}
+            <button name="display_year" value="{{ display_year|add:"1"}}" class="btn btn-warning m-4 d-inline-block fw-bold shadow-sm" type="submit">{{ display_year|add:"1"}} &raquo;</button>
+          </form>
+          </div>
         </div>
       </div>
       <div class="col-12 col-lg-6">
