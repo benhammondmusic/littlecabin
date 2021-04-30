@@ -10,18 +10,20 @@
         <div class="content-box-text pe-0 pe-md-5">
           <span class="pre-title text-dark small position-relative fw-bold text-uppercase">Calendar</span>
           <h2 class="content-box-title text-dark section-title mt-3 mb-4">View Your Weeks; Offer Swaps or Sales</h2>
+          <div class="year-buttons d-flex p-3 m-3">
           <form action="{% url 'calendar' %}" method="post">
             {% csrf_token %}
-            <button name="display_year" value="2021" class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm" type="submit">2021</button>
+            <button name="display_year" value="{{ display_year }}" class="btn btn-warning m-4  d-inline-block fw-bold shadow-sm" type="submit">{{ display_year}}</button>
           </form>
           <form action="{% url 'calendar' %}" method="post">
             {% csrf_token %}
-            <button name="display_year" value="2022" class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm" type="submit">2022</button>
+            <button name="display_year" value="{{ display_year|add:"1"}}" class="btn btn-warning m-4 d-inline-block fw-bold shadow-sm" type="submit">{{ display_year|add:"1"}}</button>
           </form>
           <form action="{% url 'calendar' %}" method="post">
             {% csrf_token %}
-            <button name="display_year" value="2023" class="btn btn-warning mt-4 d-inline-block fw-bold shadow-sm" type="submit">2023</button>
+            <button name="display_year" value="{{ display_year|add:"2"}}" class="btn btn-warning m-4 d-inline-block fw-bold shadow-sm" type="submit">{{ display_year|add:"2"}}</button>
           </form>
+          </div>
           <h3>{{display_year}} Schedule:</h3>
           <ul>
             {% for event in events %}

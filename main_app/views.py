@@ -101,15 +101,19 @@ def info(request):
 #   context = {'form': form, 'error_message': error_message}
 #   return render(request, 'registration/register.html', context)
 def register(request):
+    error_message = ''
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            login(request, user)
             return redirect('postcards')
-    else:
-        form = UserForm()
-
-    return render(request, 'registration/register.html', {'form': form})
+        else:
+            error_message = 'Invalid registration - try again'
+            
+    form = UserForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/register.html', context)
 
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
