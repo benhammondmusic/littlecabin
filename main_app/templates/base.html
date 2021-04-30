@@ -23,7 +23,7 @@
   <body>
     <nav id="primary-navbar" class="primary-nav navbar navbar-expand-lg navbar-light bg-white fixed-top font-nunito">
       <div class="container px-4 px-sm-0">
-        <a class="navbar-brand" href="{% url 'home' %}">Little Cabin</a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'assets/images/cabin.png' %}" class="cabin-icon px-1" />Little Cabin</a>
 
         {% comment %} <img src="{% static 'assets/images/logo-2.png' %}" /> {% endcomment %}
 
@@ -81,7 +81,7 @@
           </ul>
         </div>
         <button id="open-sidenav" class="open-sidenav bg-transparent border-0 ms-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2c333a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#212529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>

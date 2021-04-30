@@ -129,7 +129,8 @@ h6 {
   height: 80px;
 }
 .navbar-brand img {
-  max-width: 120px;
+  /* background-color: red; */
+  max-height: 1.2rem;
 }
 .primary-nav .navbar-nav .nav-link {
   color: var(--darkest);
@@ -182,7 +183,7 @@ h6 {
   max-width: 120px;
 }
 .sidenav-menu .nav-link {
-  color: var(--midgrey);
+  color: var(--white);
   font-size: 1.2rem;
   font-weight: 900;
 }
