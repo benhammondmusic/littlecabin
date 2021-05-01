@@ -88,9 +88,10 @@ def postcards_detail(request, postcard_id):
 class Create_Postcard(LoginRequiredMixin, CreateView):
     model = Postcard
     fields = ['greeting', 'message']
+    # fields = '__all__'
     def form_valid(self, form):
         # Assign the logged in user (self.request.user)
-        form.instance.user = self.request.user  # form.instance is the postcard
+        form.instance.owner = self.request.user  # form.instance is the postcard
         # Let the CreateView do its job as usual
         return super().form_valid(form)  
 
