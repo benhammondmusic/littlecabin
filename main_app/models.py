@@ -39,11 +39,16 @@ class Postcard(models.Model):
     message = models.CharField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
 
-    # Add this method
+    def __str__(self):
+        formatedDate = self.created.strftime("%Y-%m-%d")
+        return f'{self.greeting} - {self.owner} {formatedDate}'
+
     def get_absolute_url(self):
         return reverse('detail', kwargs={'postcard_id': self.id})  
         # class Meta:
         #     ordering = ['-date']
+
+
 
 
 class Photo(models.Model):

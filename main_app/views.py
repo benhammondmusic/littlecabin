@@ -37,7 +37,10 @@ def home(request):
 
 @login_required
 def postcards(request):
-    return render(request, 'postcards.html')
+
+    all_postcards = Postcard.objects.all()
+    context = {"all_postcards": all_postcards}
+    return render(request, 'postcards.html', context)
 
 @login_required
 def calendar(request):

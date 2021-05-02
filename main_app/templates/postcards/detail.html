@@ -13,11 +13,11 @@
     </div>
 
     <!-- Insert photo markup below this comment -->
-    {% for photo in postcard.photo_set.all %}
+    {% comment %} {% for photo in postcard.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}" />
     {% empty %}
     <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 
     <!-- new code below -->
     <form action="{% url 'add_photo' postcard.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
