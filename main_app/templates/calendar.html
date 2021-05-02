@@ -23,7 +23,10 @@
           <div class="year-buttons d-flex p-3 m-3">
           <form action="{% url 'calendar' %}" method="post">
             {% csrf_token %}
+            {% now "Y" as current_year %}
+            {% if display_year > current_year %}
             <button name="display_year" value="{{ display_year|add:"-1" }}" class="btn btn-warning m-4  d-inline-block fw-bold shadow-sm" type="submit">&laquo; {{ display_year|add:"-1"}}</button>
+            {% endif %}
           </form>
 
           
