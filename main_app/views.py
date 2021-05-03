@@ -90,9 +90,26 @@ def requests(request):
             error_message = 'Invalid Entry - try again'
             
     form = UserForm()
+
     unchecked_requests = Request.objects.filter(is_done = False).order_by('-created')
     checked_requests = Request.objects.filter(is_done = True).order_by('-created')
-    context = {'form': form, 'error_message': error_message, 'unchecked_requests': unchecked_requests, 'checked_requests': checked_requests}
+
+    today = datetime.datetime.now()
+    past_year_requests = Request.objects.filter(created__year=today.year)
+    past_year_complete = Request.objects.filter(created__year=today.year).filter(is_done=True)
+    completion_rate_past_year = 0
+    if len(past_year_requests) > 0:
+        completion_rate_past_year = int(100 * len(past_year_complete) / len(past_year_requests))
+
+    user_requests = Request.objects.filter(owner=request.user)
+    user_complete = Request.objects.filter(owner=request.user).filter(is_done=True)
+    completion_rate_user = 0
+    show_user_bar = False
+    if len(user_requests) > 0:
+        show_user_bar = True
+        completion_rate_user = int(100 * len(user_complete) / len(user_requests))
+
+    context = {'form': form, 'error_message': error_message, 'unchecked_requests': unchecked_requests, 'checked_requests': checked_requests, 'completion_rate_user': completion_rate_user, "completion_rate_past_year": completion_rate_past_year, "show_user_bar": show_user_bar}
     return render(request, 'requests.html', context)
 
 @login_required

@@ -21,11 +21,33 @@
         <div class="section-head mt-5 mt-lg-0">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Requests</span>
           <h2 class="section-title text-dark mt-3">Ideas, Broken Items, and Other To-Do's</h2>
-          <p class="section-subtitle mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check it off ✔</p>
+          <p class="section-subtitle mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check it off</p>
+        </div>
+        <div class="col-12">
+          {% if show_user_bar %}
+          <div class="mt-4">
+            <div class="clearfix">
+              <span class="d-block w-50 float-start fw-bold small">Your Requests (All Time ✔)</span>
+              <span class="d-block w-50 float-end fw-bold small text-end">{{completion_rate_user}}%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: {{completion_rate_user}}%" aria-valuenow="{{completion_rate_user}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          {% endif %}
+          <div class="mt-4">
+            <div class="clearfix">
+              <span class="d-block w-50 float-start fw-bold small">All Requests (Year to Date ✔)</span>
+              <span class="d-block w-50 float-end fw-bold small text-end">{{completion_rate_past_year}}%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-success text-dark" role="progressbar" style="width: {{completion_rate_past_year}}%" aria-valuenow="{{completion_rate_past_year}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
 
+          <hr />
           <a href="{% url 'create_request' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Add a Request</a>
         </div>
-
         <div class="requests-content mt-2 me-0 me-md-5">
           <div class="row">
             <ul class="check-list list-unstyled mb-0">
@@ -51,17 +73,6 @@
               </li>
               {% endfor%}
             </ul>
-            <div class="col-12">
-              <div class="mt-4">
-                <div class="clearfix">
-                  <span class="d-block w-50 float-start fw-bold small">Design</span>
-                  <span class="d-block w-50 float-end fw-bold small text-end">95%</span>
-                </div>
-                <div class="progress mt-2">
-                  <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
