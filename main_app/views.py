@@ -91,9 +91,6 @@ def requests(request):
             
     form = UserForm()
 
-    unchecked_requests = Request.objects.filter(is_done = False).order_by('-created')
-    checked_requests = Request.objects.filter(is_done = True).order_by('-created')
-
     today = datetime.datetime.now()
     past_year_requests = Request.objects.filter(created__year=today.year)
     past_year_complete = Request.objects.filter(created__year=today.year).filter(is_done=True)
@@ -108,6 +105,9 @@ def requests(request):
     if len(user_requests) > 0:
         show_user_bar = True
         completion_rate_user = int(100 * len(user_complete) / len(user_requests))
+
+    unchecked_requests = Request.objects.filter(is_done = False).filter(is_hidden = False).order_by('-created')
+    checked_requests = Request.objects.filter(is_done = True).filter(is_hidden = False).order_by('-created')
 
     context = {'form': form, 'error_message': error_message, 'unchecked_requests': unchecked_requests, 'checked_requests': checked_requests, 'completion_rate_user': completion_rate_user, "completion_rate_past_year": completion_rate_past_year, "show_user_bar": show_user_bar}
     return render(request, 'requests.html', context)
@@ -132,6 +132,15 @@ class Create_Request(LoginRequiredMixin, CreateView):
 
 @login_required
 def requests_detail(request, request_id):
+    return redirect('requests')
+
+@login_required
+def hide_completed_requests(request):
+    checked_requests = Request.objects.filter(is_done = True)
+    for todo in checked_requests:
+        todo.is_hidden = True
+        todo.save()
+
     return redirect('requests')
 
 

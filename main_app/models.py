@@ -59,6 +59,7 @@ class Request(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.CharField(max_length=300)
     is_done = models.BooleanField(default=False)
+    is_hidden = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
