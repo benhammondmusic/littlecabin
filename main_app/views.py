@@ -61,10 +61,8 @@ class CustomLoginView(LoginView):
 #
 @login_required
 def calendar(request):
-    # POST request comes with a display year; comes from user clicking "next year" btn/form on calendar
     if request.method == 'POST':
         display_year = request.POST['display_year']
-    # GET request should display current year; comes from nav links, etc    
     else: 
         display_year = datetime.date.today().year
 
@@ -92,9 +90,17 @@ def requests(request):
             error_message = 'Invalid Entry - try again'
             
     form = UserForm()
-    todo_requests = Request.objects.all().order_by('-created')
-    context = {'form': form, 'error_message': error_message, 'todo_requests': todo_requests}
+    unchecked_requests = Request.objects.filter(is_done = False).order_by('-created')
+    checked_requests = Request.objects.filter(is_done = True).order_by('-created')
+    context = {'form': form, 'error_message': error_message, 'unchecked_requests': unchecked_requests, 'checked_requests': checked_requests}
     return render(request, 'requests.html', context)
+
+@login_required
+def request_flip_is_done(request, request_id):
+    request_to_flip = Request.objects.get(id=request_id)
+    request_to_flip.is_done = True
+    request_to_flip.save()
+    return redirect('requests')
 
 class Create_Request(LoginRequiredMixin, CreateView):
     model = Request

@@ -26,13 +26,26 @@
           <a href="{% url 'create_request' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Add a Request</a>
 
           <ul class="check-list list-unstyled mb-0">
-            {% for todo_request in todo_requests %}
-            <li class="unchecked">{{todo_request.item}}</li>
-            {% endfor%}
+            {% for unchecked_request in unchecked_requests %}
+            <li class="unchecked">
+              <form action="{% url 'request_flip_is_done' unchecked_request.id %}" method="post">
+                {% csrf_token %}
 
-            <li class="checked">Replace Vacuum Cleaner</li>
-            <li class="checked">New Grill Brush</li>
-            <li class="checked">Take a nap</li>
+                <input type="submit" class="btn" value="{{unchecked_request.item}}" />
+              </form>
+            </li>
+            {% endfor%}
+          </ul>
+          <ul class="check-list list-unstyled mb-0">
+            {% for checked_request in checked_requests %}
+            <li class="checked">
+              <form action="{% url 'request_flip_is_done' checked_request.id %}" method="post">
+                {% csrf_token %}
+
+                <input type="submit" class="btn" value="{{checked_request.item}}" />
+              </form>
+            </li>
+            {% endfor%}
           </ul>
         </div>
         {% comment %}
