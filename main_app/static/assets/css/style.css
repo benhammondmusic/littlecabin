@@ -102,9 +102,6 @@ h6 {
 .checked {
   text-decoration: line-through;
 }
-/* 
-.check-list li.unchecked {
-} */
 
 .wings:before {
   content: '';
@@ -310,6 +307,11 @@ form ul li {
 .about-box {
   box-shadow: 0 0 2rem rgb(0 0 0 / 0.1);
 }
+.about-box a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
 .about-icon {
   height: 100%;
   font-size: 3rem;
@@ -317,6 +319,7 @@ form ul li {
 .about-title {
   font-weight: 800;
 }
+
 /* .about-text {
   color: var(--darkest);
 } */

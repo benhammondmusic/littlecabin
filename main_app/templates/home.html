@@ -49,34 +49,38 @@
           <div class="row gx-3">
             <div class="col-6 col-lg-6">
               <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
-                {% comment %} <img class="about-icon" src="{% static 'assets/images/years.svg' %}" /> {% endcomment %}
-                <i class="far fa-calendar-alt about-icon"></i>
-                <h4 class="about-title mt-3">Calendar</h4>
-                <p class="about-text mb-0 small">See, Swap and Sell Weeks</p>
+                <a href="{% url "calendar" %}">
+                  <i class="far fa-calendar-alt about-icon"></i>
+                  <h4 class="about-title mt-3">Calendar</h4>
+                  <p class="about-text mb-0 small">See, Swap and Sell Weeks</p>
+                </a>
               </div>
             </div>
             <div class="col-6 col-lg-6">
               <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
-                {% comment %} <img class="about-icon" src="{% static 'assets/images/clients.svg' %}" /> {% endcomment %}
-                <i class="fas fa-mail-bulk about-icon"></i>
-                <h4 class="about-title mt-3">Postcards</h4>
-                <p class="about-text mb-0 small">Notes and Snapshots</p>
+                <a href="{% url "postcards" %}">
+                  <i class="fas fa-mail-bulk about-icon"></i>
+                  <h4 class="about-title mt-3">Postcards</h4>
+                  <p class="about-text mb-0 small">Notes and Snapshots</p>
+                </a>
               </div>
             </div>
             <div class="col-6 col-lg-6">
               <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
-                {% comment %} <img class="about-icon" src="{% static 'assets/images/projects.svg' %}" /> {% endcomment %}
-                <i class="fas fa-tools about-icon"></i>
-                <h4 class="about-title mt-3">Requests</h4>
-                <p class="about-text mb-0 small">Shared To-Do List</p>
+                <a href="{% url "requests" %}">
+                  <i class="fas fa-tools about-icon"></i>
+                  <h4 class="about-title mt-3">Requests</h4>
+                  <p class="about-text mb-0 small">Shared To-Do List</p>
+                </a>
               </div>
             </div>
             <div class="col-6 col-lg-6">
               <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
-                {% comment %} <img class="about-icon" src="{% static 'assets/images/revenue.svg' %}" /> {% endcomment %}
-                <i class="fas fa-info-circle about-icon"></i>
-                <h4 class="about-title mt-3">Info</h4>
-                <p class="about-text mb-0 small">Knowledge Center</p>
+                <a href="{% url "info" %}">
+                  <i class="fas fa-info-circle about-icon"></i>
+                  <h4 class="about-title mt-3">Info</h4>
+                  <p class="about-text mb-0 small">Knowledge Center</p>
+                </a>
               </div>
             </div>
           </div>
