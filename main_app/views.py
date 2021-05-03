@@ -16,7 +16,7 @@ from .fetch_calendar import get_upcoming_events
 from django.http import HttpResponse
 
 # for DB models
-from .models import Week, Postcard, Photo, User
+from .models import Week, Postcard, Photo, User, Request
 from django.views.generic.edit import CreateView #, UpdateView, DeleteView
 
 # for AWS photos
@@ -31,45 +31,11 @@ S3_BASE_URL = config('S3_BASE_URL')
 BUCKET = config('BUCKET')
 
 
-# VIEWS
+#
+# USER VIEWS / CLASSES
+#
 def home(request):
     return render(request, 'home.html')
-
-@login_required
-def postcards(request):
-
-    all_postcards = Postcard.objects.all().order_by('-created')
-    postcards_with_authors = []
-
-    for postcard in all_postcards:
-        author = User.objects.get(username=postcard.owner)
-        postcards_with_authors.append({"postcard": postcard, "author": author})
-
-    context = {"postcards_with_authors": postcards_with_authors}
-    return render(request, 'postcards.html', context)
-
-@login_required
-def calendar(request):
-    # POST request comes with a display year; comes from user clicking "next year" btn/form on calendar
-    if request.method == 'POST':
-        display_year = request.POST['display_year']
-    # GET request should display current year; comes from nav links, etc    
-    else: 
-        display_year = datetime.date.today().year
-
-# ! NEED TO CHECK DB FIRST, THEN ONLY FETCH IF DB EVENTS ARE STALE/NOT SET YET
-    events = get_upcoming_events(18*10, display_year)
-    context = {"display_year": display_year, "events": events}
-    return render(request, 'calendar.html', context)
-
-
-@login_required
-def requests(request):
-    return render(request, 'requests.html')
-
-@login_required
-def info(request):
-    return render(request, 'info.html')
 
 def register(request):
     error_message = ''
@@ -86,7 +52,80 @@ def register(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/register.html', context)
 
+class CustomLoginView(LoginView):
+    authentication_form = CustomAuthenticationForm
 
+
+#
+# CALENDAR VIEWS / CLASSES
+#
+@login_required
+def calendar(request):
+    # POST request comes with a display year; comes from user clicking "next year" btn/form on calendar
+    if request.method == 'POST':
+        display_year = request.POST['display_year']
+    # GET request should display current year; comes from nav links, etc    
+    else: 
+        display_year = datetime.date.today().year
+
+    # ! NEED TO CHECK DB FIRST, THEN ONLY FETCH IF DB EVENTS ARE STALE/NOT SET YET
+    events = get_upcoming_events(18*10, display_year)
+    context = {"display_year": display_year, "events": events}
+    return render(request, 'calendar.html', context)
+
+class Create_Week(LoginRequiredMixin, CreateView):
+    model = Week
+    fields = '__all__'
+
+#
+# REQUEST VIEWS / CLASSES 
+#
+@login_required
+def requests(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('requests')
+        else:
+            error_message = 'Invalid Entry - try again'
+            
+    form = UserForm()
+    todo_requests = Request.objects.all().order_by('-created')
+    context = {'form': form, 'error_message': error_message, 'todo_requests': todo_requests}
+    return render(request, 'requests.html', context)
+
+class Create_Request(LoginRequiredMixin, CreateView):
+    model = Request
+    fields = ['item']
+    def form_valid(self, form):
+        form.instance.owner = self.request.user 
+        return super().form_valid(form)      
+
+@login_required
+def requests_detail(request, request_id):
+    todo_request = Request.objects.get(id=request_id)
+    context = { 'todo_request': todo_request }
+    return render(request, 'requests/detail.html', context)
+
+
+#
+# POSTCARD VIEWS / CLASSES
+#
+
+@login_required
+def postcards(request):
+
+    all_postcards = Postcard.objects.all().order_by('-created')
+    postcards_with_authors = []
+
+    for postcard in all_postcards:
+        author = User.objects.get(username=postcard.owner)
+        postcards_with_authors.append({"postcard": postcard, "author": author})
+
+    context = {"postcards_with_authors": postcards_with_authors}
+    return render(request, 'postcards.html', context)
 
 @login_required
 def postcards_detail(request, postcard_id):
@@ -100,9 +139,6 @@ class Create_Postcard(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user 
         return super().form_valid(form)  
-
-
-
 
 @login_required
 def add_photo(request, postcard_id):
@@ -122,21 +158,10 @@ def add_photo(request, postcard_id):
     return redirect('postcards')
 
 
+#
+# INFO VIEWS / CLASSES
+#
 
-
-class CustomLoginView(LoginView):
-    authentication_form = CustomAuthenticationForm
-
-
-class Create_Week(LoginRequiredMixin, CreateView):
-    model = Week
-    fields = '__all__'
-
-
-
-
-
-
-# ! DELETE THIS
-def koka(request):
-    return render(request, 'koka.html')
+@login_required
+def info(request):
+    return render(request, 'info.html')

@@ -9,12 +9,10 @@ urlpatterns = [
     path('postcards/<int:postcard_id>/add_photo/', views.add_photo, name='add_photo'),
     path('calendar/', views.calendar, name='calendar'),
     path('requests/', views.requests, name='requests'),
+    path('requests/<int:request_id>/', views.requests_detail, name='detail'),
+    path('requests/create/', views.Create_Request.as_view(), name='create_request'),
     path('info/', views.info, name='info'),
     path('accounts/register/', views.register, name='register'),
-    
 
-    # sample template with EVERYTHING available. Delete when done building pages
-    path('koka', views.koka, name='koka'),
-    
 ]
 

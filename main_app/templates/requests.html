@@ -23,10 +23,16 @@
           <h2 class="section-title text-dark mt-3">Ideas, Broken Items, and Other To-Do's</h2>
           <p class="section-subtitle mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check it off ✔</p>
 
+          <a href="{% url 'create_request' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Add a Request</a>
+
           <ul class="check-list list-unstyled mb-0">
-            <li>Replace Vacuum Cleaner</li>
-            <li>New Grill Brush</li>
-            <li>Take a nap</li>
+            {% for todo_request in todo_requests %}
+            <li class="unchecked">{{todo_request.item}}</li>
+            {% endfor%}
+
+            <li class="checked">Replace Vacuum Cleaner</li>
+            <li class="checked">New Grill Brush</li>
+            <li class="checked">Take a nap</li>
           </ul>
         </div>
         {% comment %}
@@ -70,4 +76,27 @@
 </section>
 <!-- requests End-->
 
-{% endblock %}
+{% endblock %} {% comment %}
+<div class="row">
+  {% for card in postcards_with_authors %}
+
+  <!-- postcard Start-->
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+      {% for photo in card.postcard.photo_set.all %}
+      <img class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
+      {% endfor %}
+      <div class="postcard-post-body p-4">
+        <div class="postcard-post-meta clearfix">
+          <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">{{ card.postcard.greeting }}</a>
+        </div>
+
+        <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
+        <span class="post-date d-inline-block mt-2 small">- {{ card.author.first_name }} {{ card.author.last_name }} {{ card.postcard.created|timesince}} ago</span>
+      </div>
+    </div>
+  </div>
+  <!-- postcard End-->
+  {% endfor %}
+</div>
+{% endcomment %}
