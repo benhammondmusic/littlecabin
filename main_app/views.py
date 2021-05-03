@@ -16,7 +16,7 @@ from .fetch_calendar import get_upcoming_events
 from django.http import HttpResponse
 
 # for DB models
-from .models import Week, Postcard, Photo
+from .models import Week, Postcard, Photo, User
 from django.views.generic.edit import CreateView #, UpdateView, DeleteView
 
 # for AWS photos
@@ -38,8 +38,14 @@ def home(request):
 @login_required
 def postcards(request):
 
-    all_postcards = Postcard.objects.all()
-    context = {"all_postcards": all_postcards}
+    all_postcards = Postcard.objects.all().order_by('-created')
+    postcards_with_authors = []
+
+    for postcard in all_postcards:
+        author = User.objects.get(username=postcard.owner)
+        postcards_with_authors.append({"postcard": postcard, "author": author})
+
+    context = {"postcards_with_authors": postcards_with_authors}
     return render(request, 'postcards.html', context)
 
 @login_required
@@ -91,11 +97,8 @@ def postcards_detail(request, postcard_id):
 class Create_Postcard(LoginRequiredMixin, CreateView):
     model = Postcard
     fields = ['greeting', 'message']
-    # fields = '__all__'
     def form_valid(self, form):
-        # Assign the logged in user (self.request.user)
-        form.instance.owner = self.request.user  # form.instance is the postcard
-        # Let the CreateView do its job as usual
+        form.instance.owner = self.request.user 
         return super().form_valid(form)  
 
 
@@ -116,7 +119,7 @@ def add_photo(request, postcard_id):
             photo.save()
         except:
             print('An error occurred uploading file to S3')
-    return redirect('detail', postcard_id=postcard_id)
+    return redirect('postcards')
 
 
 

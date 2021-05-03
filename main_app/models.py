@@ -59,3 +59,13 @@ class Photo(models.Model):
     def __str__(self):
         return f'Photo for postcard_id: {self.postcard_id} @{self.url}'
 
+
+class Request(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    isDone = models.BooleanField(default=False)
+
+
+class Agree(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    request = models.ForeignKey(Request, on_delete=models.CASCADE)    

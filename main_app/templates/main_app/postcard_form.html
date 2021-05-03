@@ -11,15 +11,16 @@
         <div class="section-head text-center mx-auto narrow">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Create a Postcard</span>
           <h2 class="section-title text-dark mt-3">Memories and More</h2>
-          <p class="section-subtitle mt-3 mb-0">Add a short greeting, a message, and upload a photo (or leave blank for default artwork)</p>
+          <p class="section-subtitle mt-3 mb-0">Add a short greeting and a message</p>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="d-flex row">
       <form action="" method="post">
         {% csrf_token %} {{ form.as_p }}
 
-        <input type="submit" value="Create" class="btn btn-warning shadow-sm mt-4 fw-bold" />
+        <input type="submit" value="Add A Photo" class="btn btn-warning shadow-sm mt-4 fw-bold" />
+        <a class="btn btn-light shadow-sm mt-4 fw-bold" href="{% url 'postcards'  %}">Cancel</a>
       </form>
     </div>
   </div>

@@ -14,111 +14,26 @@
       </div>
     </div>
     <div class="row">
-      {% for postcard in all_postcards %}
+      {% for card in postcards_with_authors %}
 
       <!-- postcard Start-->
       <div class="col-12 col-md-6 col-lg-4">
         <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-          {% for photo in postcard.photo_set.all %}
+          {% for photo in card.postcard.photo_set.all %}
           <img class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
           {% endfor %}
           <div class="postcard-post-body p-4">
             <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">{{ postcard.greeting }}</a>
+              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">{{ card.postcard.greeting }}</a>
             </div>
 
-            <h3 class="postcard-post-title mt-2 mb-0">{{ postcard.message }}</h3>
-            <span class="post-date d-inline-block mt-2 small">24 mins. ago</span>
+            <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
+            <span class="post-date d-inline-block mt-2 small">- {{ card.author.first_name }} {{ card.author.last_name }} {{ card.postcard.created|timesince}} ago</span>
           </div>
         </div>
       </div>
       <!-- postcard End-->
-      {% endfor %} {% comment %}
-      <!-- postcard Post Start-->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-          <img src="{% static 'assets/images/kezar/ben-little.jpg' %}" class="postcard-thumb img-fluid w-100" />
-          <div class="postcard-post-body p-4">
-            <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
-            </div>
-            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Ben and Cassie by the lake</a></h3>
-            <span class="post-date d-inline-block mt-2 small">24 mins. ago</span>
-          </div>
-        </div>
-      </div>
-      <!-- postcard Post End-->
-      <!-- postcard Post Start-->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-          <img src="{% static 'assets/images/kezar/bud-joan-wilbur-bette.jpg' %}" class="postcard-thumb img-fluid w-100" />
-          <div class="postcard-post-body p-4">
-            <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
-            </div>
-            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Uncle Bud and Aunt Joan; Wilbur (Grampa) and Better (Nana)</a></h3>
-            <span class="post-date d-inline-block mt-2 small">5 hrs. ago</span>
-          </div>
-        </div>
-      </div>
-      <!-- postcard Post End-->
-      <!-- postcard Post Start-->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-          <img src="{% static 'assets/images/kezar/cady-nemo.jpg' %}" class="postcard-thumb img-fluid w-100" />
-          <div class="postcard-post-body p-4">
-            <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
-            </div>
-            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Acadia (Greta's Lab)</a></h3>
-            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
-          </div>
-        </div>
-      </div>
-      <!-- postcard Post End-->
-      <!-- postcard Post Start-->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-          <img src="{% static 'assets/images/kezar/doggo.jpg' %}" class="postcard-thumb img-fluid w-100" />
-          <div class="postcard-post-body p-4">
-            <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Willie</a>
-            </div>
-            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Doggo</a></h3>
-            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
-          </div>
-        </div>
-      </div>
-      <!-- postcard Post End-->
-      <!-- postcard Post Start-->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-          <img src="{% static 'assets/images/kezar/flags.jpg' %}" class="postcard-thumb img-fluid w-100" />
-          <div class="postcard-post-body p-4">
-            <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
-            </div>
-            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Remembering those who served including Grampa and Uncle Bud</a></h3>
-            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
-          </div>
-        </div>
-      </div>
-      <!-- postcard Post End-->
-      <!-- postcard Post Start-->
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-          <img src="{% static 'assets/images/kezar/mom-tube.jpg' %}" class="postcard-thumb img-fluid w-100" />
-          <div class="postcard-post-body p-4">
-            <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">Ben</a>
-            </div>
-            <h3 class="postcard-post-title mt-2 mb-0"><a href="#" class="text-dark">Debbie relaxing</a></h3>
-            <span class="post-date d-inline-block mt-2 small">1 day ago</span>
-          </div>
-        </div>
-      </div>
-      <!-- postcard Post End-->
-      {% endcomment %}
+      {% endfor %}
     </div>
   </div>
 </section>
