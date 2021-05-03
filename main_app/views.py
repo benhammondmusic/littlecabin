@@ -98,7 +98,11 @@ def requests(request):
 @login_required
 def request_flip_is_done(request, request_id):
     request_to_flip = Request.objects.get(id=request_id)
-    request_to_flip.is_done = True
+    check_status = request_to_flip.is_done
+    if check_status is True: 
+        request_to_flip.is_done = False
+    else:
+        request_to_flip.is_done = True
     request_to_flip.save()
     return redirect('requests')
 
@@ -111,9 +115,7 @@ class Create_Request(LoginRequiredMixin, CreateView):
 
 @login_required
 def requests_detail(request, request_id):
-    todo_request = Request.objects.get(id=request_id)
-    context = { 'todo_request': todo_request }
-    return render(request, 'requests/detail.html', context)
+    return redirect('requests')
 
 
 #

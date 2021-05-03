@@ -24,33 +24,33 @@
           <p class="section-subtitle mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check it off ✔</p>
 
           <a href="{% url 'create_request' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Add a Request</a>
-
-          <ul class="check-list list-unstyled mb-0">
-            {% for unchecked_request in unchecked_requests %}
-            <li class="unchecked">
-              <form action="{% url 'request_flip_is_done' unchecked_request.id %}" method="post">
-                {% csrf_token %}
-
-                <input type="submit" class="btn" value="{{unchecked_request.item}}" />
-              </form>
-            </li>
-            {% endfor%}
-          </ul>
-          <ul class="check-list list-unstyled mb-0">
-            {% for checked_request in checked_requests %}
-            <li class="checked">
-              <form action="{% url 'request_flip_is_done' checked_request.id %}" method="post">
-                {% csrf_token %}
-
-                <input type="submit" class="btn" value="{{checked_request.item}}" />
-              </form>
-            </li>
-            {% endfor%}
-          </ul>
         </div>
-        {% comment %}
+
         <div class="requests-content mt-2 me-0 me-md-5">
           <div class="row">
+            <ul class="check-list list-unstyled mb-0">
+              {% for unchecked_request in unchecked_requests %}
+              <li class="unchecked">
+                <form action="{% url 'request_flip_is_done' unchecked_request.id %}" method="post">
+                  {% csrf_token %}
+
+                  <button name="submit" value="{{unchecked_request.id}}" class="btn"><img src="{% static 'assets/images/uncheck.svg' %}" /> <span class="unchecked">{{unchecked_request.item}}</span></button>
+                </form>
+              </li>
+              {% endfor%}
+            </ul>
+            <hr />
+            <ul class="check-list list-unstyled mb-0">
+              {% for checked_request in checked_requests %}
+              <li>
+                <form action="{% url 'request_flip_is_done' checked_request.id %}" method="post">
+                  {% csrf_token %}
+
+                  <button name="submit" value="{{checked_request.id}}" class="btn"><img src="{% static 'assets/images/check.svg' %}" /> <span class="checked">{{checked_request.item}}</span></button>
+                </form>
+              </li>
+              {% endfor%}
+            </ul>
             <div class="col-12">
               <div class="mt-4">
                 <div class="clearfix">
@@ -61,28 +61,9 @@
                   <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
-              <div class="mt-4">
-                <div class="clearfix">
-                  <span class="d-block w-50 float-start fw-bold small">Development</span>
-                  <span class="d-block w-50 float-end fw-bold small text-end">90%</span>
-                </div>
-                <div class="progress mt-2">
-                  <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="mt-4">
-                <div class="clearfix">
-                  <span class="d-block w-50 float-start fw-bold small">Marketing</span>
-                  <span class="d-block w-50 float-end fw-bold small text-end">93%</span>
-                </div>
-                <div class="progress mt-2">
-                  <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-        {% endcomment %}
       </div>
     </div>
   </div>

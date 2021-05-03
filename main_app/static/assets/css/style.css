@@ -99,21 +99,12 @@ h6 {
   font-size: 2.9rem;
   font-weight: 900;
 }
-.check-list li.checked {
-  background: url(../images/check.svg);
-  background-repeat: no-repeat;
-  background-size: 17px;
-  background-position: left center;
-  padding-left: 23px;
+.checked {
   text-decoration: line-through;
 }
+/* 
 .check-list li.unchecked {
-  background: url(../images/uncheck.svg);
-  background-repeat: no-repeat;
-  background-size: 17px;
-  background-position: left center;
-  padding-left: 23px;
-}
+} */
 
 .wings:before {
   content: '';
