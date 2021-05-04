@@ -49,6 +49,7 @@ class Postcard(models.Model):
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
+    alt_text = models.TextField(max_length=2000)
     postcard = models.ForeignKey(Postcard, on_delete=models.CASCADE)
 
     def __str__(self):

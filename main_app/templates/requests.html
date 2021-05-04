@@ -6,13 +6,13 @@
     <div class="row align-items-center">
       <div class="col-12 col-lg-6">
         <div class="requests-img me-0 me-lg-5">
-          <img src="{% static 'assets/images/requests.jpg' %}" class="img-fluid rounded shadow-sm" />
+          <img alt="" src="{% static 'assets/images/requests.jpg' %}" class="img-fluid rounded shadow-sm" />
           <div class="mt-3 clearfix">
             <div class="w-50 float-start pe-2">
-              <img src="{% static 'assets/images/requests-2.jpg' %}" class="img-fluid rounded shadow-sm" />
+              <img alt="" src="{% static 'assets/images/requests-2.jpg' %}" class="img-fluid rounded shadow-sm" />
             </div>
             <div class="w-50 float-end ps-2">
-              <img src="{% static 'assets/images/requests-3.jpg' %}" class="img-fluid rounded shadow-sm" />
+              <img alt="" src="{% static 'assets/images/requests-3.jpg' %}" class="img-fluid rounded shadow-sm" />
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
                 <form action="{% url 'request_flip_is_done' unchecked_request.id %}" method="post">
                   {% csrf_token %}
 
-                  <button name="submit" value="{{unchecked_request.id}}" class="btn"><img src="{% static 'assets/images/uncheck.svg' %}" /> <span class="unchecked">{{unchecked_request.item}}</span></button>
+                  <button name="submit" value="{{unchecked_request.id}}" class="btn"><img alt="unchecked item" src="{% static 'assets/images/uncheck.svg' %}" /> <span class="unchecked">{{unchecked_request.item}}</span></button>
                 </form>
               </li>
               {% endfor%}
@@ -68,7 +68,7 @@
                 <form action="{% url 'request_flip_is_done' checked_request.id %}" method="post">
                   {% csrf_token %}
 
-                  <button name="submit" value="{{checked_request.id}}" class="btn"><img src="{% static 'assets/images/check.svg' %}" /> <span class="checked">{{checked_request.item}}</span></button>
+                  <button name="submit" value="{{checked_request.id}}" class="btn"><img alt="checked item" src="{% static 'assets/images/check.svg' %}" /> <span class="checked">{{checked_request.item}}</span></button>
                 </form>
               </li>
               {% endfor%} {% if checked_requests|length > 0 %}
@@ -83,27 +83,4 @@
 </section>
 <!-- requests End-->
 
-{% endblock %} {% comment %}
-<div class="row">
-  {% for card in postcards_with_authors %}
-
-  <!-- postcard Start-->
-  <div class="col-12 col-md-6 col-lg-4">
-    <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
-      {% for photo in card.postcard.photo_set.all %}
-      <img class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
-      {% endfor %}
-      <div class="postcard-post-body p-4">
-        <div class="postcard-post-meta clearfix">
-          <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">{{ card.postcard.greeting }}</a>
-        </div>
-
-        <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
-        <span class="post-date d-inline-block mt-2 small">- {{ card.author.first_name }} {{ card.author.last_name }} {{ card.postcard.created|timesince}} ago</span>
-      </div>
-    </div>
-  </div>
-  <!-- postcard End-->
-  {% endfor %}
-</div>
-{% endcomment %}
+{% endblock %}

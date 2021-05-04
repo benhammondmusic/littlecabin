@@ -23,10 +23,7 @@
   <body>
     <nav id="primary-navbar" class="primary-nav navbar navbar-expand-lg navbar-light bg-white fixed-top font-nunito">
       <div class="container px-4 px-sm-0">
-        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'assets/images/cabin.png' %}" class="cabin-icon px-1" />Little Cabin</a>
-
-        {% comment %} <img src="{% static 'assets/images/logo-2.png' %}" /> {% endcomment %}
-
+        <a class="navbar-brand" href="{% url 'home' %}"><img alt="" src="{% static 'assets/images/cabin.png' %}" class="cabin-icon px-1" />Little Cabin</a>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -153,30 +150,20 @@
             {% endcomment %}
           </ul>
         </div>
-        {% comment %}
+
         <div class="sidenav-social mt-5">
           <ul class="list-unstyled">
             <li class="inline-block me-2">
-              <a href="#" class="text-white"><img src="{% static 'assets/images/twitter.svg' %}" /></a>
+              <a href="https://www.facebook.com/groups/120800281344839"><img alt="facebook icon" src="{% static 'assets/images/facebook.svg' %}" /></a>
             </li>
             <li class="inline-block me-2">
-              <a href="#" class="text-white"><img src="{% static 'assets/images/instagram.svg' %}" /></a>
-            </li>
-            <li class="inline-block me-2">
-              <a href="#" class="text-white"><img src="{% static 'assets/images/linkedin.svg' %}" /></a>
-            </li>
-            <li class="inline-block me-2">
-              <a href="#" class="text-white"><img src="{% static 'assets/images/youtube.svg' %}" /></a>
-            </li>
-            <li class="inline-block me-2">
-              <a href="#" class="text-white"><img src="{% static 'assets/images/dribbble.svg' %}" /></a>
+              <a href="https://www.youtube.com/playlist?list=PLmOUcKjFU7sjBvy6aUGOg0I1sGGfdobzN"><img alt="youtube icon" src="{% static 'assets/images/youtube.svg' %}" /></a>
             </li>
             <li class="inline-block">
-              <a href="#" class="text-white"><img src="{% static 'assets/images/github.svg' %}" /></a>
+              <a href="https://github.com/benhammondmusic/littlecabin/"><img alt="github icon" src="{% static 'assets/images/github.svg' %}" /></a>
             </li>
           </ul>
         </div>
-        {% endcomment %}
       </div>
     </div>
     <!-- Off Canvas Menu End-->
@@ -190,7 +177,6 @@
           <div class="col-12 col-sm-12 col-md-12 col-lg-6">
             <div class="footer-col mt-5 pe-4">
               <h3 class="footer-title text-white mb-4">Little Cabin</h3>
-              {% comment %} <img src="{% static 'assets/images/logo-2-white.png' %}" class="footer-logo mb-4" alt="Little Cabing Logo" /> {% endcomment %}
               <p class="mb-0">Little Cabin App by <a href="https://benhammond.tech">Ben Hammond</a> is open-sourced on <a href="https://github.com/benhammondmusic/littlecabin/">GitHub</a>. Please <a href="mailto:hello@benhammond.tech">reach out</a> if you'd like to build something together.</p>
             </div>
           </div>
@@ -220,13 +206,7 @@
           <div class="col-12 col-sm-12 col-md-4 col-lg-2">
             <div class="footer-col footer-contact mt-5">
               <h3 class="footer-title text-white mb-4">Report A Bug</h3>
-              {% comment %}
-              <div class="mb-3"><img class="me-2" src="{% static 'assets/images/map-pin.svg' %}" /><span>2132 Berry Street, Pueblo, Colorado</span></div>
-              {% endcomment %} {% comment %}
-              <div class="mb-3"><img class="me-2" src="{% static 'assets/images/phone.svg' %}" /><span>719-240-7593</span></div>
-              {% endcomment %}
               <div>
-                {% comment %} <img class="me-2" src="{% static 'assets/images/mail.svg' %}" /> {% endcomment %}
                 <i class="far fa-paper-plane me-2 email-me"></i>
                 <a href="mailto:hello@benhammond.tech"> Email Admin</a>
               </div>
@@ -243,13 +223,13 @@
             <div class="footer-social clearfix">
               <ul class="list-unstyled mb-0 float-md-none float-lg-end">
                 <li class="d-inline-block">
-                  <a href="https://www.facebook.com/groups/120800281344839"><img src="{% static 'assets/images/facebook.svg' %}" /></a>
+                  <a href="https://www.facebook.com/groups/120800281344839"><img alt="facebook icon" src="{% static 'assets/images/facebook.svg' %}" /></a>
                 </li>
                 <li class="d-inline-block me-2">
-                  <a href="https://www.youtube.com/playlist?list=PLmOUcKjFU7sjBvy6aUGOg0I1sGGfdobzN"><img src="{% static 'assets/images/youtube.svg' %}" /></a>
+                  <a href="https://www.youtube.com/playlist?list=PLmOUcKjFU7sjBvy6aUGOg0I1sGGfdobzN"><img alt="youtube icon" src="{% static 'assets/images/youtube.svg' %}" /></a>
                 </li>
                 <li class="d-inline-block me-2">
-                  <a href="https://github.com/benhammondmusic/littlecabin/"><img src="{% static 'assets/images/github.svg' %}" /></a>
+                  <a href="https://github.com/benhammondmusic/littlecabin/"><img alt="github icon" src="{% static 'assets/images/github.svg' %}" /></a>
                 </li>
               </ul>
             </div>
