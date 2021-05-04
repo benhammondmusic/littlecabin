@@ -28,7 +28,7 @@ def get_upcoming_events(number_of_events, display_year):
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'main_app/google-credentials.json', SCOPES)
+                'google-credentials.json', SCOPES)
             creds = flow.run_local_server(port=8080)
         # Save the credentials for the next run
         with open('token.json', 'w') as token:
