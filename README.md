@@ -1,28 +1,23 @@
-# Little Cabin
+# [Little Cabin App](https://littlecabin.herokuapp.com)
 
-> Securely share your family's get-away and memories.
-
-![Little Cabin Logo](littlecabin.png)
+![Securely share your family's get-away and memories](little-cabin-meta.png)
 
 Secure, family-only web application providing:
 
-- shared group calendar with permissions-based week swapping and selling
-- micro social media network offering "postcards" (short note with a photo)
+- **shared group calendar** with permissions-based week swapping and selling
+- **social network** offering "postcards" (short note with a photo)
+- **collaborative todo list** collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
+- **knowledge center** with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
 
-- collaborative "to-do" style list collecting suggestions from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
-- knowledge center with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
-
-## Planning
-
-### User Stories
+## Project Planning
 
 My initial planning started by writing out my user stories, and conceptually working through all of the actions I personally had wished I could do in an app to help manage our family's camp.
 
-_As A User I Want To:_
-
-**Not Logged In**
+_As A User (Who Isn't Logged In) I Want To:_
 
 - View information about the app itself, and understand why I would want to make an account for an existing managed property, or use the app for my own property
+
+_As An Authorized User I Want To:_
 
 **Account**
 
@@ -76,7 +71,7 @@ _As A User I Want To:_
 * View app in a variety of themes (dark, light, forest, beach, mountain, etc)
 * Signup for notifications (text, email) when actions occur such as a request for one of my weeks is made, or a family member reacts to one of my postcards
 
-## Structure
+### Structure
 
 After the stories were in place, I categorized those stories, leaving me with the general navigation structure of the entire site and its pages. The Home page (not logged in) would display info mainly about Little Cabin, the app. All other pages would be private and only available if logged in; those would display and manipulate information about the property itself.
 
@@ -110,11 +105,11 @@ On [Chuck](https://github.com/chuckchoiboi)'s recommendation, I used [Mockflow](
 
 I then used Google Slides to create a pitch deck to present to my stakeholders, and receive their feedback on project scope, tech and design pattern suggestions, and field initial questions and concerns.
 
-### Building
+## Building
 
 I intentionally started this project from the _user_ perspective; getting an attractive frontend built as quickly as possible (using Bootstrap) to help make the project "real" and inspire ideas for features at an early stage. In previous large projects I had started by building backend instead (API, and databases models), however using a new framework (Django) and new database (PostgreSQL) for this project meant it would be easiest to have the schema conceptually as complete as possible before starting to actually write to the database.
 
-## ERD
+### ERD
 
 To assist in developing the data models, I sketched an ERD (entity relationship diagram) to help visualize the way the various objects would interact. This working sketch also made it simple to conceptualize new features, and adapt the models' properties before committing them to database tables.
 
@@ -124,18 +119,18 @@ To assist in developing the data models, I sketched an ERD (entity relationship 
 
 Since I was creating this project on my own, the function of my style guide was more to help me keep track of design and copy ideas that I liked, rather than to strictly guide team members on a unified style. The choices certainly evolved and shifted as the app expanded, but updating the guide as the "source of truth" was essential to the workflow, even when working alone. It saves time to be able to copy/paste HEX color codes, font styles, terminology and slogans, etc, and reduces executive function required to make all of those tiny decisions over and over.
 
-#### Colors:
+### Colors:
 
 ![Screenshot of HEX codes from color scheme](little-cabin-colors.png)
 
-#### Terminology
+### Terminology
 
 - **Property**: the family location and structure being managed. Might refer to a "camp", "cabin", "lake house", "vacation home", "cottage", or other regional terms
 - **Request**: a ToDo-style item including maintenance requests, etc
 - **Week**: the unit of time a particular user or users has exclusive access to the property
 - **Postcard**: a social media post including a written note and an optional photograph
 
-#### Copy
+### Copy
 
 - **Title**: Little Cabin App
 - **Subtitle**: Securely share your family get-away
@@ -146,7 +141,7 @@ Since I was creating this project on my own, the function of my style guide was 
   - collaborative "to-do" style list collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
   - knowledge center with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
 
-### Tech
+## Tech Used
 
 - Python
 - Django
@@ -156,11 +151,11 @@ Since I was creating this project on my own, the function of my style guide was 
 - Google Calendar API
 - Heroku
 
-#### Django
+### Django
 
 I followed [my own blog post](https://blog.benhammond.tech/django-getting-started) to get a "Hello World" Django application running locally, and then again followed my post [part 2 to deploy to Heroku](https://blog.benhammond.tech/deploying-django-to-heroku). I wanted the simplest possible app deployed early, so that eventual troubleshooting would be easier to pinpoint.
 
-# Accessibility
+## Accessibility
 
 Following the ethos of "accessibility is not a feature", I am making an effort to improve my projects by making and keeping them accessible from the very start. I have _much_ to learn in this space, but to start I frequently run the Lighthouse report tool in Chrome Dev Tools. This is not a complete testing, but it helps with the lowest hanging fruit:
 
@@ -169,7 +164,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - organizing your headings hierarchy (`<h1>`-`<h6>`); in general there should only by one `<h1>`, and all subheadings should be in order (e.g. don't skip `<h3>` by going directly from an `<h2>` to an `<h4>`)
 - ensuring the color contrast every bit of text and its background is high enough to be read
 
-# Problems Solved (work in progress)
+## Problems Solved (work in progress)
 
 - Building the project from the user's perspective, i.e. getting a working frontend displayed as quickly as possible. integrating an existing design into an extensible Django base template
 - fixing deployment issues with DEBUG config vars
@@ -191,12 +186,17 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - adding checkbox _inside_ the to-do item; required using `<button>` instead of `<input />` to place the svg graphic inside each generated form.
 - todo list: conditional rendering of "hide completed" button; calculating completion rates in the view method and then sending through to display as progress bars.
 
+## Tools and Libraries
+
+- [Font Awesome](https://fontawesome.com/) - Icons
+- [Metatags.io](https://metatags.io/) - Meta Tags
+- [Mockflow](https://mockflow.com/) - Wireframes
+- [Figma](https://www.figma.com/) - Graphics
+
 ## Resources
 
-- [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/)
-- [Font Awesome Icons](https://fontawesome.com/)
+- [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/) - Bootstrap Template
 - [Route Back To Section IDs](https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/)
 - [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9)
 - [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python)
 - [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89)
-- [Metatags.io](https://metatags.io/)
