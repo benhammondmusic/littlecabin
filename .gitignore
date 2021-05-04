@@ -4,6 +4,8 @@
 
 credentials.json
 main_app/credentials.json
+google-credentials.json
+main_app/google-credentials.json
 token.json
 main_app/token.json
 

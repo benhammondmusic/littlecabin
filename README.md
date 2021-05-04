@@ -200,3 +200,4 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9)
 - [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python)
 - [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89)
+- [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku)
