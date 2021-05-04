@@ -135,6 +135,17 @@ Since I was creating this project on my own, the function of my style guide was 
 - **Week**: the unit of time a particular user or users has exclusive access to the property
 - **Postcard**: a social media post including a written note and an optional photograph
 
+#### Copy
+
+- **Title**: Little Cabin App
+- **Subtitle**: Securely share your family get-away
+- **Tagline**: Make Memories, Not Spreadsheets
+- **Summary**: Little Cabin is a...
+  - shared group calendar with permissions-based week swapping and selling
+  - micro social media network offering "postcards" (short note with a photo)
+  - collaborative "to-do" style list collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
+  - knowledge center with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
+
 ### Tech
 
 - Python
@@ -148,6 +159,15 @@ Since I was creating this project on my own, the function of my style guide was 
 #### Django
 
 I followed [my own blog post](https://blog.benhammond.tech/django-getting-started) to get a "Hello World" Django application running locally, and then again followed my post [part 2 to deploy to Heroku](https://blog.benhammond.tech/deploying-django-to-heroku). I wanted the simplest possible app deployed early, so that eventual troubleshooting would be easier to pinpoint.
+
+# Accessibility
+
+Following the ethos of "accessibility is not a feature", I am making an effort to improve my projects by making and keeping them accessible from the very start. I have _much_ to learn in this space, but to start I frequently run the Lighthouse report tool in Chrome Dev Tools. This is not a complete testing, but it helps with the lowest hanging fruit:
+
+- including a brief, descriptive `alt` attribute to add alternate text to your `<img>` tags. For _decorative_ images (those which are simply aesthetic or redundant based on adjacent text) it is recommended to set `alt=""` so that screen readers will know to skip it
+- setting an `aria-label` attribute on any links or buttons that don't include descriptive text. In my case, the template's hamburger menu was an svg file, so it made sense to also label that image as `aria-hidden="true"` to let the screen reader know it didn't need to interpret that graphic
+- organizing your headings hierarchy (`<h1>`-`<h6>`); in general there should only by one `<h1>`, and all subheadings should be in order (e.g. don't skip `<h3>` by going directly from an `<h2>` to an `<h4>`)
+- ensuring the color contrast every bit of text and its background is high enough to be read
 
 # Problems Solved (work in progress)
 
@@ -179,3 +199,4 @@ I followed [my own blog post](https://blog.benhammond.tech/django-getting-starte
 - [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9)
 - [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python)
 - [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89)
+- [Metatags.io](https://metatags.io/)

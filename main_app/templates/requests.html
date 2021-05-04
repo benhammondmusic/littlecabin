@@ -27,21 +27,21 @@
           {% if show_user_bar %}
           <div class="mt-4">
             <div class="clearfix">
-              <span class="d-block w-50 float-start fw-bold small">Your Requests (All Time ✔)</span>
+              <span id="user-requests" class="d-block w-50 float-start fw-bold small">Your Requests (All Time ✔)</span>
               <span class="d-block w-50 float-end fw-bold small text-end">{{completion_rate_user}}%</span>
             </div>
             <div class="progress mt-2">
-              <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: {{completion_rate_user}}%" aria-valuenow="{{completion_rate_user}}" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-warning text-dark" role="progressbar" aria-labelledby="user-requests" style="width: {{completion_rate_user}}%" aria-valuenow="{{completion_rate_user}}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
           {% endif %}
           <div class="mt-4">
             <div class="clearfix">
-              <span class="d-block w-50 float-start fw-bold small">All Requests (Year to Date ✔)</span>
+              <span id="all-requests-ytd" class="d-block w-50 float-start fw-bold small">All Requests (Year to Date ✔)</span>
               <span class="d-block w-50 float-end fw-bold small text-end">{{completion_rate_past_year}}%</span>
             </div>
             <div class="progress mt-2">
-              <div class="progress-bar bg-success text-dark" role="progressbar" style="width: {{completion_rate_past_year}}%" aria-valuenow="{{completion_rate_past_year}}" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-success text-dark" role="progressbar" aria-labelledby="all-requests-ytd" style="width: {{completion_rate_past_year}}%" aria-valuenow="{{completion_rate_past_year}}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
 
@@ -71,11 +71,12 @@
                   <button name="submit" value="{{checked_request.id}}" class="btn"><img alt="checked item" src="{% static 'assets/images/check.svg' %}" /> <span class="checked">{{checked_request.item}}</span></button>
                 </form>
               </li>
-              {% endfor%} {% if checked_requests|length > 0 %}
-              <a href="{% url 'hide_completed_requests' %}" class="btn btn-danger shadow-sm mt-4 fw-bold">Hide Completed Requests</a>
-              {% endif %}
+              {% endfor%}
             </ul>
           </div>
+          {% if checked_requests|length > 0 %}
+          <a href="{% url 'hide_completed_requests' %}" class="btn btn-danger shadow-sm mt-4 fw-bold">Hide Completed Requests</a>
+          {% endif %}
         </div>
       </div>
     </div>

@@ -20,11 +20,11 @@
       <div class="col-12 col-md-6 col-lg-4">
         <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
           {% for photo in card.postcard.photo_set.all %}
-          <img alt="{{photo.alt_text}}" class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
+          <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
           {% endfor %}
           <div class="postcard-post-body p-4">
             <div class="postcard-post-meta clearfix">
-              <a href="#" class="postcard-post-tag text-warning fw-bold text-decoration-none me-4 small">{{ card.postcard.greeting }}</a>
+              <a href="#" class="postcard-post-tag text-dark fw-bold text-decoration-none me-4 small">{{ card.postcard.greeting }}</a>
             </div>
 
             <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
