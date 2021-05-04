@@ -71,8 +71,9 @@
                   <button name="submit" value="{{checked_request.id}}" class="btn"><img src="{% static 'assets/images/check.svg' %}" /> <span class="checked">{{checked_request.item}}</span></button>
                 </form>
               </li>
-              {% endfor%}
-              <a href="{% url 'hide_completed_requests' %}" class="btn btn-danger shadow-sm mt-4 fw-bold">Hide Completed Tasks</a>
+              {% endfor%} {% if checked_requests|length > 0 %}
+              <a href="{% url 'hide_completed_requests' %}" class="btn btn-danger shadow-sm mt-4 fw-bold">Hide Completed Requests</a>
+              {% endif %}
             </ul>
           </div>
         </div>

@@ -10,18 +10,12 @@ Designer Website - https://angrystudio.com
 /*-- CSS Variables --*/
 :root {
   /* 
-#29461a 
-#638129
-#346d7e
-#6da6b1
-#ffc107
-#e1d7bc
-#5E0B15
+#29461a #638129 #5E0B15 #ffc107 #e1d7bc #ffffff
+#212529 #2c333a #3d4852 #5f7383 #346d7e #6da6b1 
 */
 
   --white: #ffffff;
   --flash: #ffc107;
-
   --grey: #e1d7bc;
   --midgrey: #5f7383;
   --slate: #3d4852;
