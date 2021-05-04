@@ -185,6 +185,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - naming collisions: bug with view method named "postcards" and list of objects from the database "postcards". Also, named my to-do items "Request" objects, which is confusing with the built in request keyword from Django's HTTP request/response framework
 - adding checkbox _inside_ the to-do item; required using `<button>` instead of `<input />` to place the svg graphic inside each generated form.
 - todo list: conditional rendering of "hide completed" button; calculating completion rates in the view method and then sending through to display as progress bars.
+- deploying to Heroku with Google Cloud Platform which requires a `credentials.json`, had to move the json file to the floor, change the name, install a special buildpack, and add two new config vars.
 
 ## Tools and Libraries
 
