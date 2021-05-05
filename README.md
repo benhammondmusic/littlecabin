@@ -13,7 +13,7 @@ Secure, family-only web application providing:
 
 My initial planning started by writing out my user stories, and conceptually working through all of the actions I personally had wished I could do in an app to help manage our family's camp.
 
-_As A User (Who Isn't Logged In) I Want To:_
+_As A User (Not Logged In) I Want To:_
 
 - View information about the app itself, and understand why I would want to make an account for an existing managed property, or use the app for my own property
 
