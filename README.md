@@ -197,8 +197,8 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 ## Resources
 
 - [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/) - Bootstrap Template
-- [Route Back To Section IDs](https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/)
-- [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9)
-- [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python)
-- [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89)
-- [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku)
+- [Route Back To Section IDs](https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/) - Blog Post
+- [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9) - Blog Post
+- [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python) - Guide
+- [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89) - Blog Post
+- [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku) - Blog Post
