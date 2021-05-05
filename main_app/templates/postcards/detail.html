@@ -1,25 +1,24 @@
 {% extends 'base.html' %} {% block content %}
+<section class="postcard-posts section section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">(Optional)</span>
+          <h2 class="section-title text-dark mt-3">"Choose File" To Upload A Picture</h2>
 
-<h1>Postcard</h1>
-
-<div class="row">
-  <div class="col s6">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ postcard.greeting }} </span>
-        <p>Message: {{ postcard.message }}</p>
+          <form action="{% url 'add_photo' postcard.id %}" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <input type="file" name="photo-file" class="btn btn-dark bg-dark" /><br />
+            <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Submit Postcard" />
+            <a class="btn btn-light shadow-sm mt-4 fw-bold" href="{% url 'postcards'  %}">Cancel</a>
+          </form>
+          <p class="section-subtitle mt-3 mb-0">&quot;{{ postcard.greeting }}: {{ postcard.message }}&quot;</p>
+        </div>
       </div>
-      <div class="card-action"></div>
     </div>
-
-    <!-- new code below -->
-    <form action="{% url 'add_photo' postcard.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-      {% csrf_token %}
-      <input type="file" name="photo-file" />
-      <br /><br />
-      <input type="submit" class="btn" value="Upload Photo" />
-    </form>
+    <div class="d-flex flex-column row align-center"></div>
   </div>
-</div>
+</section>
 
 {% endblock %}

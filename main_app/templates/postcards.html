@@ -7,7 +7,7 @@
         <div class="section-head text-center mx-auto narrow">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Postcards</span>
           <h2 class="section-title text-dark mt-3">Memories and More</h2>
-          <p class="section-subtitle mt-3 mb-0">View recent postcards, and create your own (no picture required).</p>
+          <p class="section-subtitle mt-3 mb-0">View recent postcards, and create your own.</p>
 
           <a href="{% url 'create_postcard' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Create a Postcard</a>
         </div>
@@ -28,7 +28,7 @@
             </div>
 
             <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
-            <span class="post-date d-inline-block mt-2 small">- {{ card.author.first_name }} {{ card.author.last_name }} {{ card.postcard.created|timesince}} ago</span>
+            <span class="post-date d-inline-block mt-2 small">- {{ card.author.first_name }} {{ card.author.last_name.0 }}. {{ card.postcard.created|timesince}} ago</span>
           </div>
         </div>
       </div>
