@@ -29,6 +29,10 @@
 
             <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
             <span class="post-date d-inline-block mt-2 small">- {{ card.author.first_name }} {{ card.author.last_name.0 }}. {{ card.postcard.created|timesince}} ago</span>
+
+            {% if card.postcard.owner|stringformat:"s" == user.username|stringformat:"s" %}
+            <span class="postcard-btns mx-3"> <i class="fas fa-pencil-alt mx-1"></i><i alt="delete postcard" class="fas fa-trash mx-1"></i> </span>
+            {% endif %}
           </div>
         </div>
       </div>
