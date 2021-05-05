@@ -30,6 +30,11 @@ from decouple import config
 S3_BASE_URL = config('S3_BASE_URL')
 BUCKET = config('BUCKET')
 
+def oauth2callback(request):
+    print("callback fn from google cal api oath register")
+    print(request)
+    return redirect('calendar')
+
 
 #
 # USER VIEWS / CLASSES
