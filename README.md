@@ -202,3 +202,5 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python) - Guide
 - [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89) - Blog Post
 - [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku) - Blog Post
+
+? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
