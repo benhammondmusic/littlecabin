@@ -30,16 +30,17 @@ SECRET_KEY = config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# on_heroku = False
+# if 'YOUR_ENV_VAR' in os.environ:
+#   on_heroku = True
+
+print("!*!*!*!*!*!*!", config('ENVIRONMENT'))
+
 DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['herokuapp.com','.localhost', '127.0.0.1', '[::1]']
 
-# INTERNAL_IPS = [
-#     "127.0.0.1",
-# ]
 
-
-# TAILWIND_APP_NAME = 'theme'
 
 # Application definition
 
