@@ -30,13 +30,13 @@ SECRET_KEY = config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# on_heroku = False
-# if 'YOUR_ENV_VAR' in os.environ:
-#   on_heroku = True
 
-print("!*!*!*!*!*!*!", config('ENVIRONMENT'))
-
-DEBUG = config('DEBUG')
+if config('ENVIRONMENT') == "production":
+    DEBUG=False
+    print("**!*!!*!*!*!**!!*", config('ENVIRONMENT'))
+if config('ENVIRONMENT') == "development":
+    DEBUG=True
+    print("**!*!!*!*!*!**!!*", config('ENVIRONMENT'))
 
 ALLOWED_HOSTS = ['herokuapp.com','.localhost', '127.0.0.1', '[::1]']
 
