@@ -6,13 +6,32 @@
     <div class="row align-items-center">
       <div class="col-12 col-lg-6">
         <div class="requests-img me-0 me-lg-5">
-          <img alt="" src="{% static 'assets/images/requests.jpg' %}" class="img-fluid rounded shadow-sm" />
           <div class="mt-3 clearfix">
             <div class="w-50 float-start pe-2">
-              <img alt="" src="{% static 'assets/images/requests-2.jpg' %}" class="img-fluid rounded shadow-sm" />
+              <img alt="" src="{% static 'assets/images/firewood.jpg' %}" class="img-fluid rounded shadow-sm" />
             </div>
             <div class="w-50 float-end ps-2">
-              <img alt="" src="{% static 'assets/images/requests-3.jpg' %}" class="img-fluid rounded shadow-sm" />
+              <img alt="" src="{% static 'assets/images/watering-can.jpg' %}" class="img-fluid rounded shadow-sm" />
+            </div>
+          </div>
+          {% if show_user_bar %}
+          <div class="my-4">
+            <div class="clearfix">
+              <span id="user-requests" class="d-block w-75 float-start fw-bold small">Your Requests (All Time ✔)</span>
+              <span class="d-block w-25 float-end fw-bold small text-end">{{completion_rate_user}}%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-warning text-dark" role="progressbar" aria-labelledby="user-requests" style="width: {{completion_rate_user}}%" aria-valuenow="{{completion_rate_user}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          {% endif %}
+          <div class="mt-4">
+            <div class="clearfix">
+              <span id="all-requests-ytd" class="d-block w-75 float-start fw-bold small">All Requests (Year to Date ✔)</span>
+              <span class="d-block w-25 float-end fw-bold small text-end">{{completion_rate_past_year}}%</span>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-success text-dark" role="progressbar" aria-labelledby="all-requests-ytd" style="width: {{completion_rate_past_year}}%" aria-valuenow="{{completion_rate_past_year}}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
         </div>
@@ -23,34 +42,10 @@
           <h2 class="section-title text-dark mt-3">Ideas, Broken Items, and Other To-Do's</h2>
           <p class="section-subtitle mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check it off</p>
         </div>
-        <div class="col-12">
-          {% if show_user_bar %}
-          <div class="mt-4">
-            <div class="clearfix">
-              <span id="user-requests" class="d-block w-50 float-start fw-bold small">Your Requests (All Time ✔)</span>
-              <span class="d-block w-50 float-end fw-bold small text-end">{{completion_rate_user}}%</span>
-            </div>
-            <div class="progress mt-2">
-              <div class="progress-bar bg-warning text-dark" role="progressbar" aria-labelledby="user-requests" style="width: {{completion_rate_user}}%" aria-valuenow="{{completion_rate_user}}" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-          {% endif %}
-          <div class="mt-4">
-            <div class="clearfix">
-              <span id="all-requests-ytd" class="d-block w-50 float-start fw-bold small">All Requests (Year to Date ✔)</span>
-              <span class="d-block w-50 float-end fw-bold small text-end">{{completion_rate_past_year}}%</span>
-            </div>
-            <div class="progress mt-2">
-              <div class="progress-bar bg-success text-dark" role="progressbar" aria-labelledby="all-requests-ytd" style="width: {{completion_rate_past_year}}%" aria-valuenow="{{completion_rate_past_year}}" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <hr />
-          <a href="{% url 'create_request' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Add a Request</a>
-        </div>
-        <div class="requests-content mt-2 me-0 me-md-5">
+        <div class="col-12"></div>
+        <div class="requests-content mt-5 me-0 me-md-5">
           <div class="row">
-            <ul class="check-list list-unstyled mb-0">
+            <ul class="check-list list-unstyled mb-4">
               {% for unchecked_request in unchecked_requests %}
               <li class="unchecked">
                 <form action="{% url 'request_flip_is_done' unchecked_request.id %}" method="post">
@@ -61,7 +56,7 @@
               </li>
               {% endfor%}
             </ul>
-            <hr />
+
             <ul class="check-list list-unstyled mb-0">
               {% for checked_request in checked_requests %}
               <li>
@@ -74,8 +69,9 @@
               {% endfor%}
             </ul>
           </div>
+          <a href="{% url 'create_request' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Add</a>
           {% if checked_requests|length > 0 %}
-          <a href="{% url 'hide_completed_requests' %}" class="btn btn-danger shadow-sm mt-4 fw-bold">Hide Completed Requests</a>
+          <a href="{% url 'hide_completed_requests' %}" class="btn btn-danger shadow-sm mt-4 fw-bold">Hide Completed</a>
           {% endif %}
         </div>
       </div>

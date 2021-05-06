@@ -200,7 +200,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 ## Resources
 
 - [Pngitem](https://www.pngitem.com/) - Icon
-- [Unsplash](https://unsplash.com/@olivier_twwli?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) - Cabin Photo on Homepage
+- Unsplash: [Cabin Photo](https://unsplash.com/@olivier_twwli?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText), [Firewood Photo](https://unsplash.com/@markuswinkler?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText), [Watering Can Photo](https://unsplash.com/photos/uWfYjWM8oGM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
 - [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/) - Bootstrap Template
 - [Route Back To Section IDs](https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/) - Blog Post
 - [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9) - Blog Post
