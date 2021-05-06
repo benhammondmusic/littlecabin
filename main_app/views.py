@@ -141,7 +141,11 @@ class Create_Request(LoginRequiredMixin, CreateView):
     fields = ['item']
     def form_valid(self, form):
         form.instance.owner = self.request.user 
-        return super().form_valid(form)      
+        return super().form_valid(form)    
+
+class Update_Request(LoginRequiredMixin, UpdateView):
+    model = Request
+    fields = ['item']  
 
 @login_required
 def requests_detail(request, request_id):
@@ -191,7 +195,6 @@ class Create_Postcard(LoginRequiredMixin, CreateView):
 
 class Update_Postcard(LoginRequiredMixin, UpdateView):
   model = Postcard
-  # Let's disallow renaming by excluding the name field!
   fields = ['greeting', 'message']
 
 class Delete_Postcard(LoginRequiredMixin, DeleteView, ):

@@ -14,6 +14,7 @@ urlpatterns = [
     path('requests/<int:request_id>/', views.requests_detail, name='detail'),
     path('requests/<int:request_id>/flip_is_done', views.request_flip_is_done, name='request_flip_is_done'),
     path('requests/create/', views.Create_Request.as_view(), name='create_request'),
+    path('requests/<int:pk>/edit/', views.Update_Request.as_view(), name='update_request'),
     path('hide_completed_requests/', views.hide_completed_requests, name='hide_completed_requests'),
     path('info/', views.info, name='info'),
     path('accounts/register/', views.register, name='register'),
