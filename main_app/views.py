@@ -175,7 +175,7 @@ def postcards(request):
         author = User.objects.get(username=postcard.owner)
         postcards_with_authors.append({"postcard": postcard, "author": author})
     
-    tilt_options = [-6,-2,0,2,5] 
+    tilt_options = [-2,-1,0,1,2] 
 
     context = {"postcards_with_authors": postcards_with_authors, "tilt_options": tilt_options}
     return render(request, 'postcards.html', context)
