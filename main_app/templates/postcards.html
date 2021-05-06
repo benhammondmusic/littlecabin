@@ -18,10 +18,6 @@
 
       <!-- postcard Start-->
       <div class="col-12 col-md-6 col-lg-4 position-relative">
-        {% if card.postcard.owner|stringformat:"s" == user.username|stringformat:"s" %}
-        <span class="postcard-btns bg-white rounded">
-          <a href="{% url 'update_postcard' card.postcard.id %}"><i alt="edit postcard" class="fas fa-pencil-alt mx-1 text-dark"></i></a><a href="{% url 'delete_postcard' card.postcard.id %}"><i alt="delete postcard" class="fas fa-trash mx-1 text-dark"></i></a>
-        </span>
         <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
           {% for photo in card.postcard.photo_set.all %}
           <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
@@ -33,8 +29,15 @@
 
             <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
 
-            <span class="post-date d-inline-block mt-2 small">{{ card.author.first_name }} {{ card.author.last_name.0 }}. {{ card.postcard.created|timesince}} ago</span>
-            {% endif %}
+            <p class="post-date d-inline-block mt-2 small">
+              {{ card.author.first_name }} {{ card.author.last_name.0 }}. {% if card.postcard.owner|stringformat:"s" == user.username|stringformat:"s" %}
+              <span class="postcard-btns bg-white rounded">
+                <a href="{% url 'update_postcard' card.postcard.id %}"><i alt="edit postcard" class="fas fa-pencil-alt mx-1 text-dark"></i></a><a href="{% url 'delete_postcard' card.postcard.id %}"><i alt="delete postcard" class="fas fa-trash mx-1 text-dark"></i></a>
+              </span>
+              {% endif %}
+            </p>
+
+            <em class="post-date d-block mt-2 small">{{ card.postcard.created|timesince}} ago</em>
           </div>
         </div>
       </div>
