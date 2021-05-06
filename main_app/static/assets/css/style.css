@@ -331,6 +331,16 @@ form ul li {
   text-decoration: none;
 }
 
+.postcard-post {
+  /* transform: rotate(-1.5deg); */
+  /* transition: transform 0.3s; */
+  /* z-index: 3; */
+}
+.postcard-post:hover {
+  transform: rotate(0deg) scale(1.3) !important;
+  z-index: 99 !important;
+}
+
 /*-- CTA --*/
 .cta-title {
   font-size: 3rem;

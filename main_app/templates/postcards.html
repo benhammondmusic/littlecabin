@@ -18,9 +18,10 @@
 
       <!-- postcard Start-->
       <div class="col-12 col-md-6 col-lg-4 position-relative">
-        <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
+        <div style="transform: rotate({{tilt_options|random}}deg)" class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5">
           {% for photo in card.postcard.photo_set.all %}
           <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
+
           {% endfor %}
           <div class="postcard-post-body p-4">
             <div class="postcard-post-meta clearfix">
