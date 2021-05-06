@@ -177,7 +177,9 @@ def postcards(request):
 @login_required
 def postcards_detail(request, postcard_id):
     postcard = Postcard.objects.get(id=postcard_id)
-    context = { 'postcard': postcard }
+    photos = Photo.objects.filter(postcard_id=postcard_id)
+    
+    context = { 'postcard': postcard, "photos": photos }
     return render(request, 'postcards/detail.html', context)
 
 class Create_Postcard(LoginRequiredMixin, CreateView):

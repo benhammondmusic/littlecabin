@@ -5,14 +5,19 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <div class="section-head text-center mx-auto narrow">
+        <div class="section-head text-center mx-auto narrow d-flex flex-column align-items-center">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Delete</span>
           <h2 class="section-title text-dark mt-3">Are You Sure?</h2>
-          {% for photo in photos %}
-          <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="30%" src="{{photo.url}}" />
-          {% endfor%}
-          <h4>{{postcard.greeting}}</h4>
-          <em>{{postcard.message}}</em>
+
+          <div class="col-10 col-md-6 col-lg-4">
+            <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5 text-center">
+              {% for photo in photos %}
+              <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
+              {% endfor%}
+              <h4 class="section-subtitle mt-3 mb-0">{{ postcard.greeting }}</h4>
+              <em>{{ postcard.message }}</em>
+            </div>
+          </div>
           <p class="section-subtitle mt-3 mb-0">This cannot be undone, and your postcard will be gone forever</p>
 
           <form action="" method="POST">

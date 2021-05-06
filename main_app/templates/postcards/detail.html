@@ -3,21 +3,28 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <div class="section-head text-center mx-auto narrow">
+        <div class="section-head text-center mx-auto narrow d-flex flex-column align-items-center">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">(Optional)</span>
-          <h2 class="section-title text-dark mt-3">"Choose File" To Upload A Picture</h2>
+          <h2 class="section-title text-dark mt-3">"Choose File" To Add A Picture</h2>
 
           <form action="{% url 'add_photo' postcard.id %}" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            <input type="file" name="photo-file" class="btn btn-dark bg-dark" /><br />
-            <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Submit Postcard" />
+            <input type="file" name="photo-file" class="btn btn-warning" /><br />
+            <input type="submit" class="btn btn-dark bg-dark shadow-sm mt-4 fw-bold" value="Submit Postcard" />
             <a class="btn btn-light shadow-sm mt-4 fw-bold" href="{% url 'postcards'  %}">Cancel</a>
           </form>
-          <p class="section-subtitle mt-3 mb-0">&quot;{{ postcard.greeting }}: {{ postcard.message }}&quot;</p>
+          <div class="col-10 col-md-6 col-lg-4">
+            <div class="postcard-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5 text-center">
+              {% for photo in photos %}
+              <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
+              {% endfor%}
+              <h4 class="section-subtitle mt-3 mb-0">{{ postcard.greeting }}</h4>
+              <em>{{ postcard.message }}</em>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="d-flex flex-column row align-center"></div>
   </div>
 </section>
 
