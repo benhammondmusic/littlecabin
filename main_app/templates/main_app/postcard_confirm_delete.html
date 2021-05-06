@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Delete Your Postcard?</h1>
+
+<section class="postcard-posts section section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Delete</span>
+          <h2 class="section-title text-dark mt-3">Are You Sure?</h2>
+          {% for photo in photos %}
+          <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="30%" src="{{photo.url}}" />
+          {% endfor%}
+          <h4>{{postcard.greeting}}</h4>
+          <em>{{postcard.message}}</em>
+          <p class="section-subtitle mt-3 mb-0">This cannot be undone, and your postcard will be gone forever</p>
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Yes - Delete!" class="btn btn-warning shadow-sm mt-4 fw-bold" />
+            <a class="btn btn-light shadow-sm mt-4 fw-bold" href="{% url 'postcards' %}">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

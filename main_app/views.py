@@ -17,7 +17,7 @@ from django.http import HttpResponse
 
 # for DB models
 from .models import Week, Postcard, Photo, User, Request
-from django.views.generic.edit import CreateView #, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # for AWS photos
 import uuid
@@ -186,6 +186,26 @@ class Create_Postcard(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user 
         return super().form_valid(form)  
+
+class Update_Postcard(LoginRequiredMixin, UpdateView):
+  model = Postcard
+  # Let's disallow renaming by excluding the name field!
+  fields = ['greeting', 'message']
+
+class Delete_Postcard(LoginRequiredMixin, DeleteView, ):
+  model = Postcard
+  success_url = '/postcards/'
+
+  # overriding built in method
+  def get_context_data(self, **kwargs):
+        # set context object as normal
+        context = super().get_context_data(**kwargs)
+        # get id of postcard to be deleted
+        postcard_id = context["object"].id
+        # find the photo object whose postcard_id matches the postcard to be deleted
+        # add it to the context to send along to our template
+        context["photos"] = Photo.objects.filter(postcard_id=postcard_id)
+        return context
 
 @login_required
 def add_photo(request, postcard_id):

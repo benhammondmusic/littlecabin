@@ -36,7 +36,7 @@ if config('ENVIRONMENT') == "production":
     print("**!*!!*!*!*!**!!*", config('ENVIRONMENT'))
 if config('ENVIRONMENT') == "development":
     DEBUG=True
-    print("**!*!!*!*!*!**!!*", config('ENVIRONMENT'))
+    print("**!*!!*!*!*!**!!* DEBUG=", DEBUG,  config('ENVIRONMENT'))
 
 ALLOWED_HOSTS = ['herokuapp.com','.localhost', '127.0.0.1', '[::1]']
 

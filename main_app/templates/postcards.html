@@ -31,7 +31,9 @@
             <span class="post-date d-inline-block mt-2 small">- {{ card.author.first_name }} {{ card.author.last_name.0 }}. {{ card.postcard.created|timesince}} ago</span>
 
             {% if card.postcard.owner|stringformat:"s" == user.username|stringformat:"s" %}
-            <span class="postcard-btns mx-3"> <i class="fas fa-pencil-alt mx-1"></i><i alt="delete postcard" class="fas fa-trash mx-1"></i> </span>
+            <span class="postcard-btns mx-3">
+              <a href="{% url 'update_postcard' card.postcard.id %}"><i alt="edit postcard" class="fas fa-pencil-alt mx-1 text-dark"></i></a><a href="{% url 'delete_postcard' card.postcard.id %}"><i alt="delete postcard" class="fas fa-trash mx-1 text-dark"></i></a>
+            </span>
             {% endif %}
           </div>
         </div>
