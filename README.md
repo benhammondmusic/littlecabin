@@ -25,25 +25,17 @@ _As An Authorized User I Want To:_
 - Log in to my existing account, using the email address I registered with
 - Log out of an account
 
-- Log in using Facebook, Google, etc
-
 **Postcards**
 
 - View existing postcards, with the most recent at the top
 - Create a new postcard (greeting and message)
 - Upload a photo to my postcard
-
-* Delete one of my existing postcards
-* Edit one of my existing postcards
-* Add an emoji reaction to someone's post
+- Delete one of my existing postcards
+- Edit one of my existing postcards
 
 **Calendar**
 
 - See existing property schedule
-
-* Offer one of my weeks up for sale
-* Offer to swap one of my weeks for another family's week
-* Request to purchase another family's week
 
 **Requests**
 
@@ -51,25 +43,35 @@ _As An Authorized User I Want To:_
 - Mark a request as completed
 - Hide completed tasks
 
-* "Agree" with an existing request to prioritize it
-
 **Info**
 
 - View emergency, legal, and other information about the property
-
-* View nearby businesses
-* Sort the businesses by family recommendations
-* Recommend a business on the list
-* View my family tree
-* Upload a photo for my leave of the tree
+- View nearby business info
 
 **UI/UX**
 
 - Report a bug to the property admin
 - View app on a variety of devices responsively
 
-* View app in a variety of themes (dark, light, forest, beach, mountain, etc)
-* Signup for notifications (text, email) when actions occur such as a request for one of my weeks is made, or a family member reacts to one of my postcards
+**Stretch Goals**
+
+- Log in using Facebook, Google, etc
+
+- View app in a variety of themes (dark, light, forest, beach, mountain, etc)
+- Signup for notifications (text, email) when actions occur such as a request for one of my weeks is made, or a family member reacts to one of my postcards
+
+- Sort the businesses by family recommendations, dynamically load via API
+- Recommend a business on the list
+- View my family tree
+- Upload a photo for my leave of the tree
+
+- "Agree" with an existing request to prioritize it
+
+- Offer one of my weeks up for sale
+- Offer to swap one of my weeks for another family's week
+- Request to purchase another family's week
+
+- Add an emoji reaction to someone's post
 
 ### Structure
 
