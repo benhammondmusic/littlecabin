@@ -8,21 +8,20 @@
       <div class="col">
         <div class="section-head text-center mx-auto narrow">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Accounts</span>
-          <h2 class="section-title text-dark mt-3">Request New User Access</h2>
+          <h2 class="section-title error mt-3">Account Pending Approval</h2>
           {% if user.is_authenticated %}
           <h3 class="error">{{user.username}} is logged in</h3>
           {% endif %}
           <h3 class="error">{{error_message}}</h3>
-
+          {% comment %}
           <form method="post" action="{% url 'register' %}">
             {% csrf_token %} {{ form.as_p }}
             <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Request Access" />
             <input type="hidden" name="next" value="{{ next }}" />
           </form>
+          {% endcomment %} {% comment %} <span class="helptext mt-4">Did you want to <a class="text-dark" href="{% url 'login' %}">login instead?</a></span> {% endcomment %}
 
-          <span class="helptext mt-4">Did you want to <a class="text-dark" href="{% url 'login' %}">login instead?</a></span>
-
-          <p class="section-subtitle mt-3 mb-0">Little Cabin App requires an administrator to approve ALL sign-ups before allowing access. Only authenticated family members will be able to utilize the app's features, such as calendar access, postcards and requests. If you have already been authorized, log in with an option below instead:</p>
+          <p class="section-subtitle mt-3 mb-0">Little Cabin App requires an administrator to approve ALL sign-ups before allowing access. Only authenticated family members will be able to utilize the app's features, such as calendar access, postcards and requests. If you have already been authorized, or want to register a new user, choose an option below:</p>
         </div>
       </div>
     </div>

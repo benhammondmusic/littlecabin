@@ -26,25 +26,18 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-6">
+        <div class="d-flex flex-column login-box text-center mt-5">
+          <a aria-label="log in" href="{% url 'login' %}"><i alt="" class="fas fa-sign-in-alt login-box-icon"></i></a>
+          <a class="btn btn-warning shadow-sm mt-4 fw-bold" href="{% url 'login' %}">Log In</a>
+          <p class="login-box-text mt-3 mb-0">Once an account been granted access, ecurely log in with your registered email and password</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
         <div class="d-flex flex-column login-box text-center mt-5">
           <a aria-label="request access" href="{% url 'register' %}"><i alt="" class="fas fa-user-plus login-box-icon"></i></a>
           <a class="btn btn-warning shadow-sm mt-4 fw-bold" href="{% url 'register' %}">Request Access</a>
-          <p class="login-box-text mt-3 mb-0">This will match your email against a "white-list" of approved family-member emails</p>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="d-flex flex-column login-box text-center mt-5">
-          <a aria-label="google login" href="#"><i alt="" class="fab fa-google login-box-icon"></i></a>
-          <a class="btn btn-warning shadow-sm mt-4 fw-bold" href="#">Log In (Google)</a>
-          <p class="login-box-text mt-3 mb-0">Secure, one-click login for registered family members with a Google Account</p>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="d-flex flex-column login-box text-center mt-5">
-          <a aria-label="facebook login" href="#"><i alt="" class="fab fa-facebook-square login-box-icon"></i></a>
-          <a class="btn btn-warning shadow-sm mt-4 fw-bold" href="#">Log In (Facebook)</a>
-          <p class="login-box-text mt-3 mb-0">Secure, one-click login for registered family members with a Facebook Account</p>
+          <p class="login-box-text mt-3 mb-0">Register a new user and request access from the property admin</p>
         </div>
       </div>
     </div>

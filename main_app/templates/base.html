@@ -63,7 +63,7 @@
               <a class="nav-link" href="{% url 'info' %}">Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout ({{user.first_name|title}})</a>
+              <a class="nav-link" href="{% url 'logout' %}">Logout ( {{user.first_name|title}} )</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -73,7 +73,7 @@
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Register</a>
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
             </li>
             {% endif %} {% comment %}
             <li class="nav-item">

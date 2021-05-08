@@ -18,6 +18,7 @@ urlpatterns = [
     path('hide_completed_requests/', views.hide_completed_requests, name='hide_completed_requests'),
     path('info/', views.info, name='info'),
     path('accounts/register/', views.register, name='register'),
+    path('accounts/pending/', views.pending, name='pending'),
     path('oauth2callback', views.oauth2callback, name='oauth2callback'),
 
 ]

@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserForm
 from django.contrib.auth.views import LoginView
 from .forms import CustomAuthenticationForm
+from django.contrib.auth.decorators import user_passes_test
 
 # for Google Calendar API
 from .fetch_calendar import get_upcoming_events
@@ -30,10 +31,21 @@ from decouple import config
 S3_BASE_URL = config('S3_BASE_URL')
 BUCKET = config('BUCKET')
 
+
 def oauth2callback(request):
     print("callback fn from google cal api oath register")
     print(request)
     return redirect('calendar')
+
+
+# restrict app usage to APPROVED family members (not just any logged in user)
+def is_family_member(user):
+    print("Checking if user is an approved family member")
+    if not user.is_active:
+       return False
+    return user.last_name.lower() == "hammond"
+
+
 
 
 #
@@ -46,6 +58,7 @@ def register(request):
     error_message = ''
     if request.method == 'POST':
         form = UserForm(request.POST)
+
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -57,6 +70,10 @@ def register(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/register.html', context)
 
+@login_required
+def pending(request):
+    return render(request, 'registration/pending.html')    
+
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
 
@@ -64,7 +81,7 @@ class CustomLoginView(LoginView):
 #
 # CALENDAR VIEWS / CLASSES
 #
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def calendar(request):
     if request.method == 'POST':
         display_year = request.POST['display_year']
@@ -91,7 +108,7 @@ class Create_Week(LoginRequiredMixin, CreateView):
 #
 # REQUEST VIEWS / CLASSES 
 #
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def requests(request):
     error_message = ''
     if request.method == 'POST':
@@ -125,7 +142,7 @@ def requests(request):
     context = {'form': form, 'error_message': error_message, 'unchecked_requests': unchecked_requests, 'checked_requests': checked_requests, 'completion_rate_user': completion_rate_user, "completion_rate_past_year": completion_rate_past_year, "show_user_bar": show_user_bar}
     return render(request, 'requests.html', context)
 
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def request_flip_is_done(request, request_id):
     request_to_flip = Request.objects.get(id=request_id)
     check_status = request_to_flip.is_done
@@ -147,11 +164,11 @@ class Update_Request(LoginRequiredMixin, UpdateView):
     model = Request
     fields = ['item']  
 
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def requests_detail(request, request_id):
     return redirect('requests')
 
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def hide_completed_requests(request):
     checked_requests = Request.objects.filter(is_done = True)
     for todo in checked_requests:
@@ -165,7 +182,7 @@ def hide_completed_requests(request):
 # POSTCARD VIEWS / CLASSES
 #
 
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def postcards(request):
 
     all_postcards = Postcard.objects.all().order_by('-created')
@@ -180,7 +197,7 @@ def postcards(request):
     context = {"postcards_with_authors": postcards_with_authors, "tilt_options": tilt_options}
     return render(request, 'postcards.html', context)
 
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def postcards_detail(request, postcard_id):
     postcard = Postcard.objects.get(id=postcard_id)
     photos = Photo.objects.filter(postcard_id=postcard_id)
@@ -214,7 +231,7 @@ class Delete_Postcard(LoginRequiredMixin, DeleteView, ):
         context["photos"] = Photo.objects.filter(postcard_id=postcard_id)
         return context
 
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def add_photo(request, postcard_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -236,6 +253,6 @@ def add_photo(request, postcard_id):
 # INFO VIEWS / CLASSES
 #
 
-@login_required
+@user_passes_test(is_family_member, login_url='/accounts/pending')
 def info(request):
     return render(request, 'info.html')

@@ -105,7 +105,7 @@ On [Chuck](https://github.com/chuckchoiboi)'s recommendation, I used [Mockflow](
 
 ### Pitch Deck
 
-I then used Google Slides to create a pitch deck to present to my stakeholders, and receive their feedback on project scope, tech and design pattern suggestions, and field initial questions and concerns.
+I then used Google Slides to create a [pitch deck](https://docs.google.com/presentation/d/1wABAwaZubhI4hExwqxWG6zBW7y5OyL_w92NW8NEWQnM/edit#slide=id.gd480e80180_0_52) to present to my stakeholders, and receive their feedback on project scope, tech and design pattern suggestions, and field initial questions and concerns.
 
 ## Building
 
