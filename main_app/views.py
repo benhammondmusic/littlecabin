@@ -38,8 +38,10 @@ def oauth2callback(request):
     print(request)
     return redirect('calendar')
 
+#
+# USER VIEWS / CLASSES
+#
 
-# restrict app usage to APPROVED family members by role
 def is_family_member(user):
     if not user.is_active:
        return False
@@ -51,20 +53,19 @@ def is_admin(user):
     return user.groups.filter(name='admin').exists()
 
 def get_pending_users(user):
-    print("Getting pending users")
     pending_users = []
     if user.is_active and user.groups.filter(name='admin').exists():
-        pending_users = User.objects.all()
-        print("logged in as admin")
-        print("these are pending users", pending_users)
+        pending_users = User.objects.all().exclude(groups__name='member')
+        print ("pending: ", pending_users)
     return pending_users
 
+def approve_user(request, pending_user_id):
+    member_group = Group.objects.get(name="member")
+    pending_user = User.objects.get(id=pending_user_id)
+    member_group.user_set.add(pending_user)
+    return redirect('home')
 
 
-
-#
-# USER VIEWS / CLASSES
-#
 def home(request):
     pending_users = get_pending_users(request.user)
     context = {"pending_users": pending_users}

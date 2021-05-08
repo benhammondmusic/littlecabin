@@ -2,6 +2,7 @@
 
 <!-- Hero Section Start-->
 
+
 <section class="hero bg-white">
   <div class="container">
     <div class="row align-items-center">
@@ -11,7 +12,9 @@
           <h1 class="hero-title text-dark mt-3">Little Cabin App<br class="d-none d-lg-block" /></h1>
           <h2 class="hero-subtitle text-dark mt-3">Make Memories, Not Spreadsheets</h2>
           <p class="hero-text mt-3 mb-0"></p>
+          {% if not user.is_authenticated %}
           <a href="{% url 'login' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Log In</a><a href="{% url 'register' %}" class="btn btn-dark bg-dark shadow-sm mx-3 mt-4 fw-bold">Register</a>
+          {% endif %}
         </div>
       </div>
       <div class="col-md-12 col-lg-6 order-1 order-lg-2">
@@ -24,19 +27,25 @@
   </div>
 </section>
 
+
 <!-- Hero Section End-->
 
-
+{% if pending_users %}
 <section class="mt-4 pending bg-white">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-md-12 col-lg-6 order-2 order-lg-1 mt-5 mt-lg-0 pt-4 pt-lg-0">
-        <div class="hero-content pe-md-0 pe-lg-5">
+      <div class="col-12 col-lg-6 order-2 order-lg-1 mt-5 mt-lg-0 pt-4 pt-lg-0">
+        <div class="pe-md-0 pe-lg-5">
           <span class="pre-title text-dark small fw-bold inline-block position-relative text-uppercase">Users Pending Approval</span>
 
+          <ul>
           {% for user in pending_users %}
-          <h3 class="text-dark mt-3"><br class="d-none d-lg-block" />{{user.username}}</h3>
+          <li class="text-dark align-middle mt-3">
+            <span class="align-middle">{{user.first_name|title}} {{user.last_name|title}} ({{user.username}})</span>
+            <a href="{% url 'approve_user' user.id %}" class="align-middle btn btn-sm btn-warning shadow-sm fw-bold">Approve</a>
+          </li>
           {% endfor %}
+          </ul>
        
         </div>
       </div>
@@ -45,7 +54,7 @@
     </div>
   </div>
 </section>
-
+{% endif %}
 
 
 

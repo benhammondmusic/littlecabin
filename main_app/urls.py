@@ -19,6 +19,7 @@ urlpatterns = [
     path('info/', views.info, name='info'),
     path('accounts/register/', views.register, name='register'),
     path('accounts/pending/', views.pending, name='pending'),
+    path('accounts/<int:pending_user_id>/approve/', views.approve_user, name='approve_user'),
     path('oauth2callback', views.oauth2callback, name='oauth2callback'),
 
 ]
