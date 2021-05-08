@@ -2,6 +2,7 @@ import datetime
 from django.http.response import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -38,12 +39,25 @@ def oauth2callback(request):
     return redirect('calendar')
 
 
-# restrict app usage to APPROVED family members (not just any logged in user)
+# restrict app usage to APPROVED family members by role
 def is_family_member(user):
-    print("Checking if user is an approved family member")
     if not user.is_active:
        return False
-    return user.last_name.lower() == "hammond"
+    return user.groups.filter(name='member').exists()
+
+def is_admin(user):
+    if not user.is_active:
+       return False
+    return user.groups.filter(name='admin').exists()
+
+def get_pending_users(user):
+    print("Getting pending users")
+    pending_users = []
+    if user.is_active and user.groups.filter(name='admin').exists():
+        pending_users = User.objects.all()
+        print("logged in as admin")
+        print("these are pending users", pending_users)
+    return pending_users
 
 
 
@@ -52,7 +66,9 @@ def is_family_member(user):
 # USER VIEWS / CLASSES
 #
 def home(request):
-    return render(request, 'home.html')
+    pending_users = get_pending_users(request.user)
+    context = {"pending_users": pending_users}
+    return render(request, 'home.html', context)
 
 def register(request):
     error_message = ''

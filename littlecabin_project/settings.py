@@ -136,7 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/postcards' # removed this trailing slash to get it to work
+LOGIN_REDIRECT_URL = '/' # removed this trailing slash to get it to work
 LOGOUT_REDIRECT_URL = '/'
 
 # Default primary key field type
