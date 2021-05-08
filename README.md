@@ -193,8 +193,17 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - Needed to extend the builtin DeleteView class, and also to my detail function (for create and update) to lookup the Photo(s) that contained the currently detailed Postcard. This allowed all of these views to display the postcard along with its photos, even though the relationship is 1 POSTCARD->MANY PHOTOS, and therefor it's the Photo class that contains a Postcard foreign key. Had to overwrite the `get_context_data()` method to do the lookup, and then bundle those Photos into the returned `context`.
 - Decided not to limit CRUD on the shared to do requests; this way anyone is able to edit an existing request (and fix a spelling error, or add details), complete a request, and then hide all complete requests. This only works since the view is for screened, authorized users. I decided to skip the pencil icon and instead make clicking the text of the request item the "edit" function, and then the complete/incomplete would be handled by the checkbox. I have some concerns that the way I've designed it might be less accessible than if I had relied on the browsers built-in check box.
 - Make the postcards feel more "real world" by adding a tiny bit of random tilt to their display, and having them straighten and expand when hovering with mouse.
-- Limit access to the app to users who have been approved; to od this I used the Group property of Django's built in User model. This creates a many-to-many relationship, and allows filter() and get() requests to the database to delegate functionality based on the group. I created a "member" which has access to full CRUD of postcards, requests and weeks, and an "admin" which will be able to approve new member requests, and access admin abilities through the built in admin panel.
-  ? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
+- Limit access to the app to users who have been approved; to do this I used the Group property of Django's built in User model. This creates a many-to-many relationship, and allows filter() and get() requests to the database to delegate functionality based on the group. I created a "member" group who's users have full create/read/update/destroy (CRUD) access to postcards, requests and weeks, and an "admin" group who's users will see and approve new member requests. Specifically, the admin `home` view queries the database for all users expect those who are already in the "member" group: `User.objects.all().exclude(groups__name='member')`, and then displays that list with associated "approve" buttons:
+  ```django
+  {% for pending_user in pending_users %}
+    <li>
+      <span>{{pending_user.first_name|title}} {{pending_user.last_name|title}} ({{pending_user.username}})</span>
+      <a href="{% url 'approve_user' pending_user.id %}">Approve</a>
+    </li>
+  {% endfor %}
+  ```
+
+? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
 
 ## Tools and Libraries
 

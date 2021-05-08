@@ -39,10 +39,10 @@
           <span class="pre-title text-dark small fw-bold inline-block position-relative text-uppercase">Users Pending Approval</span>
 
           <ul>
-          {% for user in pending_users %}
+          {% for pending_user in pending_users %}
           <li class="text-dark align-middle mt-3">
-            <span class="align-middle">{{user.first_name|title}} {{user.last_name|title}} ({{user.username}})</span>
-            <a href="{% url 'approve_user' user.id %}" class="align-middle btn btn-sm btn-warning shadow-sm fw-bold">Approve</a>
+            <span class="align-middle">{{pending_user.first_name|title}} {{pending_user.last_name|title}} ({{pending_user.username}})</span>
+            <a href="{% url 'approve_user' pending_user.id %}" class="align-middle btn btn-sm btn-warning shadow-sm fw-bold">Approve</a>
           </li>
           {% endfor %}
           </ul>
