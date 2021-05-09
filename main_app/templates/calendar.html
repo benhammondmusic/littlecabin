@@ -14,8 +14,11 @@
 
           <ul class="calendar-list">
             {% for event in events %}
-
-            <li class="calendar-list-item my-0">{{ event.start_month_date }}: {{ event.detail }}</li>
+            <li class="calendar-list-item my-2"><span class="align-middle">{{ event }} </span>
+            {% comment %} <a href="{% url 'offer_sell' event.id %}" class="align-middle btn btn-sm btn-dark shadow-sm fw-bold">Sell</a> {% endcomment %}
+            {% comment %} <a href="{% url 'offer_buy' event.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold">Buy</a> {% endcomment %}
+             <a href="{% url 'offer_swap' event.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold">Swap for this Week</a>
+          </li>
             {% endfor %}
           </ul>
 
