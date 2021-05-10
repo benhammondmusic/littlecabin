@@ -112,14 +112,19 @@ def calendar(request):
     if config("ENVIRONMENT") == "production":
         events = [{'start_month_date': '05-31', 'detail': 'Tom', 'year': '2021'}, {'start_month_date': '06-07', 'detail': 'Chris', 'year': '2021'}, {'start_month_date': '06-14', 'detail': 'Hammy', 'year': '2021'}, {'start_month_date': '06-21', 'detail': 'Toby', 'year': '2021'}, {'start_month_date': '06-28', 'detail': 'Connie', 'year': '2021'}, {'start_month_date': '07-05', 'detail': 'Cherie', 'year': '2021'}, {'start_month_date': '07-12', 'detail': 'Tom', 'year': '2021'}, {'start_month_date': '07-19', 'detail': 'Chris', 'year': '2021'}, {'start_month_date': '07-26', 'detail': 'Hammy', 'year': '2021'}, {'start_month_date': '08-02', 'detail': 'Toby', 'year': '2021'}, {'start_month_date': '08-09', 'detail': 'Connie', 'year': '2021'}, {'start_month_date': '08-16', 'detail': 'Cherie', 'year': '2021'}, {'start_month_date': '08-23', 'detail': 'Tom', 'year': '2021'}, {'start_month_date': '08-30', 'detail': 'Chris', 'year': '2021'}, {'start_month_date': '09-06', 'detail': 'Hammy', 'year': '2021'}, {'start_month_date': '09-13', 'detail': 'Toby', 'year': '2021'}, {'start_month_date': '09-20', 'detail': 'Connie', 'year': '2021'}, {'start_month_date': '09-27', 'detail': 'Cherie', 'year': '2021'}, {'start_month_date': '05-30', 'detail': 'Chris', 'year': '2022'}, {'start_month_date': '06-06', 'detail': 'Hammy', 'year': '2022'}, {'start_month_date': '06-13', 'detail': 'Toby', 'year': '2022'}, {'start_month_date': '06-20', 'detail': 'Connie', 'year': '2022'}, {'start_month_date': '06-27', 'detail': 'Cherie', 'year': '2022'}, {'start_month_date': '07-04', 'detail': 'Tom', 'year': '2022'}, {'start_month_date': '07-11', 'detail': 'Chris', 'year': '2022'}, {'start_month_date': '07-18', 'detail': 'Hammy', 'year': '2022'}, {'start_month_date': '07-25', 'detail': 'Toby', 'year': '2022'}, {'start_month_date': '08-01', 'detail': 'Connie', 'year': '2022'}, {'start_month_date': '08-08', 'detail': 'Cherie', 'year': '2022'}, {'start_month_date': '08-15', 'detail': 'Tom', 'year': '2022'}, {'start_month_date': '08-22', 'detail': 'Chris', 'year': '2022'}, {'start_month_date': '08-29', 'detail': 'Hammy', 'year': '2022'}, {'start_month_date': '09-05', 'detail': 'Toby', 'year': '2022'}, {'start_month_date': '09-12', 'detail': 'Connie', 'year': '2022'}, {'start_month_date': '09-19', 'detail': 'Cherie', 'year': '2022'}, {'start_month_date': '09-26', 'detail': 'Tom', 'year': '2022'}]
     
+    # if user has a pending swap, don't display the swap buttons
+    current_user_has_pending_swaps = Swap.objects.filter(initiator=request.user).exists()
+    print(current_user_has_pending_swaps)
+
+
     # format events and add user group info
     for event in events:
-        month_date = event.start_date.strftime("%b %w")
-        event.start_date = month_date
+        formatted_start_date = event.start_date.strftime("%b %-d")
+        event.start_date = formatted_start_date
 
         current_user_ownergroup = request.user.groups.all().exclude(name="member").exclude(name="admin").first()
         event.display_swap_btn = True
-        if event.owner_group == current_user_ownergroup:
+        if current_user_has_pending_swaps or event.owner_group == current_user_ownergroup:
             event.display_swap_btn = False
     
     # collect relevant swaps
@@ -161,14 +166,14 @@ def reset_weeks(request):
 
         first_start_date = datetime.datetime(yr, 5, may_mondays[-1])
         weeks_later = datetime.timedelta(days=7)
-        print(yr)
+        #print(yr)
         # each owner_group gets 3 weeks per year, in rotation
         for i in range(len(ownergroups) * 3):
             # weeks rotate through owner_groups 2 ways: 
             # YEARLY-the first week of the season will start with the next sibling in line from the previous year's first week
             # WEEKLY-every week of the 3-per owner season, the owner will advance from the previous week's owner
             week = Week(start_date=first_start_date + (i*weeks_later), owner_group=ownergroups[(yr-1+i) % len(ownergroups) ])
-            print(week)
+            #print(week)
             week.save()
 
 
@@ -187,20 +192,30 @@ def propose_swap(request, week_id):
     initiator_ownergroup = initiator.groups.all().exclude(name="member").exclude(name="admin").first()
     
     initiators_weeks = Week.objects.filter(owner_group=initiator_ownergroup)
-    print("** INITIATORS WEEKS:", initiators_weeks)
+    #print("** INITIATORS WEEKS:", initiators_weeks)
     offered_week = initiators_weeks[0]
 
     swap = Swap(initiator=initiator,desired_week=desired_week, offered_week=offered_week)
     swap.save()
 
-    print(swap)
+    #print(swap)
 
     return redirect('calendar')
 
 
 def approve_swap(request, swap_id):
     swap = Swap.objects.get(id=swap_id)
-    swap.accept()
+    
+    desired_week = swap.desired_week
+    offered_week = swap.offered_week
+
+    temp_owner_group = swap.get_desired_week_ownergroup()
+    desired_week.owner_group =  offered_week.owner_group
+    offered_week.owner_group = temp_owner_group
+    swap.has_been_accepted = True
+    swap.save()
+    desired_week.save()
+    offered_week.save()
 
 
     return redirect('calendar')

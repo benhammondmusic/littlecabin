@@ -12,7 +12,7 @@ class Week(models.Model):
     start_date = models.DateField('Start Date')
 
     def __str__(self):
-        return f'{self.start_date}: {self.owner_group}'
+        return f'{self.start_date}: [{self.owner_group}]'
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'week_id': self.id})
@@ -35,18 +35,12 @@ class Swap(models.Model):
         return Week.objects.filter(owner_group=self.get_initiator_ownergroup())
 
     def get_desired_week_ownergroup(self):
-        return Group.objects.get(name=self.desired_week.owner_group)
+        group = Group.objects.get(name=self.desired_week.owner_group)
+        print("got desired week's ownergroup:", group)
+        return group
     
     def get_reciprocators(self):
         return User.objects.filter(groups__name=self.desired_week.owner_group)
-    
-    def accept(self):
-        temp_owner_group = self.get_desired_week_ownergroup()
-        self.desired_week.owner_group = self.offered_week.owner_group
-        self.offered_week.owner_group = temp_owner_group
-        self.has_been_accepted = True
-        self.desired_week.save()
-        self.offered_week.save()
 
     
 

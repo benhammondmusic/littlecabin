@@ -50,7 +50,7 @@
           <h4>Outgoing Swaps:</h4>
           <ul>
           {% for swap in outgoing_swaps %}
-            <li><em>{{swap}}</em><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-light shadow-sm fw-bold">Withdraw</a></li>
+            <li><em>{{swap}}</em><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Withdraw</a></li>
           {% endfor %}
           </ul>
 
