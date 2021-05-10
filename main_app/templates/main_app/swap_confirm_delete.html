@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="swap-posts section section-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="section-head text-center mx-auto narrow d-flex flex-column align-items-center">
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Delete Swap</span>
+          <h2 class="section-title text-dark mt-3">Are You Sure?</h2>
+
+          <div class="col-10 col-md-6 col-lg-4">
+            <div class="swap-post bg-white rounded-3 shadow-sm overflow-hidden mt-4 mt-md-5 text-center">
+              <em>{{ swap }}</em>
+            </div>
+          </div>
+          <p class="section-subtitle mt-3 mb-0">This will deny or withdraw the offer to swap weeks.</p>
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Yes - Deny/Withdraw!" class="btn btn-warning shadow-sm mt-4 fw-bold" />
+            <a class="btn btn-light shadow-sm mt-4 fw-bold" href="{% url 'calendar' %}">Go Back</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

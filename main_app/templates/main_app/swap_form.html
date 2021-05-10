@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
-<section class="request-posts section section-bg">
+<section class="swap-posts section section-bg">
   <div class="container">
     <div class="row">
       <div class="col">
         <div class="section-head text-center mx-auto narrow">
-          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Create a Request</span>
-          <h2 class="section-title text-dark mt-3">To-Do, Suggestions, Repairs, etc</h2>
+          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Calendar</span>
+          <h2 class="section-title text-dark mt-3">Swap Weeks</h2>
         </div>
       </div>
     </div>
@@ -14,8 +14,8 @@
       <form action="" method="post">
         {% csrf_token %} {{ form.as_p }}
 
-        <input type="submit" value="Save" class="btn btn-warning shadow-sm mt-4 fw-bold" />
-        <a class="btn btn-light shadow-sm mt-4 fw-bold" href="{% url 'requests'  %}">Cancel</a>
+        <input type="submit" value="Offer Swap" class="btn btn-warning shadow-sm mt-4 fw-bold" />
+        <a class="btn btn-light shadow-sm mt-4 fw-bold" href="{% url 'calendar'  %}">Cancel</a>
       </form>
     </div>
   </div>

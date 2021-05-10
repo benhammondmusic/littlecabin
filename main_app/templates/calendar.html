@@ -5,7 +5,7 @@
 <section class="calendar section section-bg position-relative">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-lg-5">
         <div class="calendar-text pe-0 pe-md-5">
           <span class="pre-title text-dark small position-relative fw-bold text-uppercase">Calendar</span>
           <h2 class="calendar-title text-dark section-title mt-3 mb-4">View Your Weeks; Offer Swaps or Sales</h2>
@@ -44,9 +44,24 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-6">
-        <div class="wings position-relative mt-5 mt-lg-0">
-          <div class="video-box shadow-lg ps-0 ps-md-5 position-relative"><img alt="" width="75%" src="../static/assets/images/cal.png" /></div>
+      <div class="col-12 col-lg-7">
+        <div class="wings position-relative p-5 mt-5 mt-lg-0">
+          <div class="video-box shadow-lg p-3 ps-1 ps-md-5 position-relative bg-light">
+          <h4>Outgoing Swaps:</h4>
+          <ul>
+          {% for swap in outgoing_swaps %}
+            <li><em>{{swap}}</em><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-light shadow-sm fw-bold">Withdraw</a></li>
+          {% endfor %}
+          </ul>
+
+          <h4>Incoming Swaps:</h4>
+          <ul>
+          {% for swap in incoming_swaps %}
+            <li><em>{{swap}}</em><a href="{% url 'approve_swap' swap.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold">Approve</a><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-1">Deny</a></li>
+          {% endfor %}
+          </ul>
+
+          </div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ from django.urls import reverse
 
 class Week(models.Model):
     owner_group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    users = models.ManyToManyField(User)
+    # users = models.ManyToManyField(User)
     start_date = models.DateField('Start Date')
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Swap(models.Model):
     offered_week = models.ForeignKey(Week, related_name="offered_week",on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.initiator} desires ({self.desired_week}) and offers ({self.offered_week}). HAS BEEN ACCEPTED? {self.has_been_accepted}'
+        return f'{self.initiator}:\n- would like ({self.desired_week})\n- offers ({self.offered_week})'
 
     def get_initiator_ownergroup(self):
         return self.initiator.groups.all().exclude(name="member").exclude(name="admin").first()
@@ -38,6 +38,15 @@ class Swap(models.Model):
     
     def get_reciprocators(self):
         return User.objects.filter(groups__name=self.desired_week.owner_group)
+    
+    def accept(self):
+        temp_owner_group = self.get_desired_week_ownergroup()
+        self.desired_week.owner_group = self.offered_week.owner_group
+        self.offered_week.owner_group = temp_owner_group
+        self.has_been_accepted = True
+        self.desired_week.save()
+        self.offered_week.save()
+
     
 
 
