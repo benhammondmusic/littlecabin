@@ -10,6 +10,7 @@ urlpatterns = [
     path('postcards/<int:pk>/delete/', views.Delete_Postcard.as_view(), name='delete_postcard'),
     path('postcards/<int:postcard_id>/add_photo/', views.add_photo, name='add_photo'),
     path('calendar/', views.calendar, name='calendar'),
+    path('calendar/reset_weeks', views.reset_weeks, name='reset_weeks'),
     path('calendar/<int:week_id>/propose_swap/', views.propose_swap, name='propose_swap'),
     path('swaps/<int:swap_id>/approve', views.approve_swap, name='approve_swap'),
     path('swaps/<int:pk>/delete', views.Delete_Swap.as_view(), name='delete_swap'),

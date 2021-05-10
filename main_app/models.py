@@ -23,6 +23,7 @@ class Swap(models.Model):
     initiator= models.ForeignKey(User, on_delete=models.CASCADE)
     desired_week = models.ForeignKey(Week, related_name="desired_week", on_delete=models.CASCADE)
     offered_week = models.ForeignKey(Week, related_name="offered_week",on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.initiator}:\n- would like ({self.desired_week})\n- offers ({self.offered_week})'

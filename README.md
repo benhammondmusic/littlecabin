@@ -203,6 +203,10 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
   {% endfor %}
   ```
 - implementing Swap objects (pending offers to swap Week objects between Groups, initiated and approved by Users). LOTS OF STUFF. this was hard
+- error after adding "created"; used default value of `1` which didn't make sense, and wasn't able to run `migrate` even after dropping and recreating the db. Had to manually go into the migrations folder and alter the value of `default=1` to `default=django.utils.timezone.now`.
+- setting up automatic population of db
+- ordering my groups, decided to append a number so they were sortable
+- avoiding name collisions; used `import calendar as calendar_lib` since I was already using `calendar` as a view method
 
 ? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
 

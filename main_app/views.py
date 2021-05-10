@@ -1,4 +1,5 @@
 import datetime
+import calendar as calendar_lib
 from django.http.response import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -140,6 +141,42 @@ class Create_Week(LoginRequiredMixin, CreateView):
 
 
 
+
+
+
+
+# generate week events for testing
+def reset_weeks(request):
+
+    # delete all existing weeks from DB
+    Week.objects.all().delete()
+
+
+    ownergroups = Group.objects.all().exclude(name="member").exclude(name="admin").order_by('name')
+
+    # build Weeks for the next 10 years 
+    for yr in range(2021, 2031):
+        month = calendar_lib.monthcalendar(yr, 5)
+        may_mondays = [week[0] for week in month if week[0]>0]
+
+        first_start_date = datetime.datetime(yr, 5, may_mondays[-1])
+        weeks_later = datetime.timedelta(days=7)
+        print(yr)
+        # each owner_group gets 3 weeks per year, in rotation
+        for i in range(len(ownergroups) * 3):
+            # weeks rotate through owner_groups 2 ways: 
+            # YEARLY-the first week of the season will start with the next sibling in line from the previous year's first week
+            # WEEKLY-every week of the 3-per owner season, the owner will advance from the previous week's owner
+            week = Week(start_date=first_start_date + (i*weeks_later), owner_group=ownergroups[(yr-1+i) % len(ownergroups) ])
+            print(week)
+            week.save()
+
+
+    return redirect('calendar')
+
+
+
+
 #
 # Swap
 #
@@ -150,7 +187,7 @@ def propose_swap(request, week_id):
     initiator_ownergroup = initiator.groups.all().exclude(name="member").exclude(name="admin").first()
     
     initiators_weeks = Week.objects.filter(owner_group=initiator_ownergroup)
-
+    print("** INITIATORS WEEKS:", initiators_weeks)
     offered_week = initiators_weeks[0]
 
     swap = Swap(initiator=initiator,desired_week=desired_week, offered_week=offered_week)
