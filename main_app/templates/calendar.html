@@ -50,14 +50,18 @@
           <h4>Outgoing Swaps:</h4>
           <ul>
           {% for swap in outgoing_swaps %}
-            <li><em>{{swap}}</em><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Withdraw</a></li>
+            <li><em>{{swap}}</em><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-3">Withdraw</a></li>
+            {% empty %}
+            <li class="text-secondary"><em>You have no pending swaps</em></li>
           {% endfor %}
           </ul>
 
           <h4>Incoming Swaps:</h4>
           <ul>
           {% for swap in incoming_swaps %}
-            <li><em>{{swap}}</em><a href="{% url 'approve_swap' swap.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold">Approve</a><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-1">Deny</a></li>
+            <li><em>{{swap}}</em><a href="{% url 'approve_swap' swap.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold mx-3">Approve</a><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Deny</a></li>
+            {% empty %}
+            <li class="text-secondary"><em >No swaps are pending your approval</em></li>
           {% endfor %}
           </ul>
 

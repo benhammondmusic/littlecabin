@@ -228,4 +228,4 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python) - Guide
 - [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89) - Blog Post
 - [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku) - Blog Post
-- [500 Error When Debug False With Heroku And Django](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django) - Stack Overflow
+- Stack Overflow: [500 Error When Debug False With Heroku And Django](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django), [Getting last Monday of a month](https://stackoverflow.com/questions/12796389/python-get-last-monday-of-july-2010/12796542)
