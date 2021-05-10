@@ -202,6 +202,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
     </li>
   {% endfor %}
   ```
+- implementing Swap objects (pending offers to swap Week objects between Groups, initiated and approved by Users). LOTS OF STUFF. this was hard
 
 ? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
 
