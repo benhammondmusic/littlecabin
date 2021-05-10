@@ -18,7 +18,7 @@ from .fetch_calendar import get_upcoming_events
 from django.http import HttpResponse
 
 # for DB models
-from .models import Week, Postcard, Photo, User, Request
+from .models import Week, Postcard, Photo, User, Request, Swap
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # for AWS photos
@@ -113,10 +113,17 @@ def calendar(request):
     if config("ENVIRONMENT") == "production":
         events = [{'start_month_date': '05-31', 'detail': 'Tom', 'year': '2021'}, {'start_month_date': '06-07', 'detail': 'Chris', 'year': '2021'}, {'start_month_date': '06-14', 'detail': 'Hammy', 'year': '2021'}, {'start_month_date': '06-21', 'detail': 'Toby', 'year': '2021'}, {'start_month_date': '06-28', 'detail': 'Connie', 'year': '2021'}, {'start_month_date': '07-05', 'detail': 'Cherie', 'year': '2021'}, {'start_month_date': '07-12', 'detail': 'Tom', 'year': '2021'}, {'start_month_date': '07-19', 'detail': 'Chris', 'year': '2021'}, {'start_month_date': '07-26', 'detail': 'Hammy', 'year': '2021'}, {'start_month_date': '08-02', 'detail': 'Toby', 'year': '2021'}, {'start_month_date': '08-09', 'detail': 'Connie', 'year': '2021'}, {'start_month_date': '08-16', 'detail': 'Cherie', 'year': '2021'}, {'start_month_date': '08-23', 'detail': 'Tom', 'year': '2021'}, {'start_month_date': '08-30', 'detail': 'Chris', 'year': '2021'}, {'start_month_date': '09-06', 'detail': 'Hammy', 'year': '2021'}, {'start_month_date': '09-13', 'detail': 'Toby', 'year': '2021'}, {'start_month_date': '09-20', 'detail': 'Connie', 'year': '2021'}, {'start_month_date': '09-27', 'detail': 'Cherie', 'year': '2021'}, {'start_month_date': '05-30', 'detail': 'Chris', 'year': '2022'}, {'start_month_date': '06-06', 'detail': 'Hammy', 'year': '2022'}, {'start_month_date': '06-13', 'detail': 'Toby', 'year': '2022'}, {'start_month_date': '06-20', 'detail': 'Connie', 'year': '2022'}, {'start_month_date': '06-27', 'detail': 'Cherie', 'year': '2022'}, {'start_month_date': '07-04', 'detail': 'Tom', 'year': '2022'}, {'start_month_date': '07-11', 'detail': 'Chris', 'year': '2022'}, {'start_month_date': '07-18', 'detail': 'Hammy', 'year': '2022'}, {'start_month_date': '07-25', 'detail': 'Toby', 'year': '2022'}, {'start_month_date': '08-01', 'detail': 'Connie', 'year': '2022'}, {'start_month_date': '08-08', 'detail': 'Cherie', 'year': '2022'}, {'start_month_date': '08-15', 'detail': 'Tom', 'year': '2022'}, {'start_month_date': '08-22', 'detail': 'Chris', 'year': '2022'}, {'start_month_date': '08-29', 'detail': 'Hammy', 'year': '2022'}, {'start_month_date': '09-05', 'detail': 'Toby', 'year': '2022'}, {'start_month_date': '09-12', 'detail': 'Connie', 'year': '2022'}, {'start_month_date': '09-19', 'detail': 'Cherie', 'year': '2022'}, {'start_month_date': '09-26', 'detail': 'Tom', 'year': '2022'}]
     
-    # format display
+    # format events and add user group info
     for event in events:
         month_date = event.start_date.strftime("%b %w")
         event.start_date = month_date
+
+        current_user_ownergroup = request.user.groups.all().exclude(name="member").exclude(name="admin").first()
+        print("EVENT OWNER GROUP:", event.owner_group)
+        print("CURRENT USER OWNER GROUP:", current_user_ownergroup)
+        event.display_swap_btn = True
+        if event.owner_group == current_user_ownergroup:
+            event.display_swap_btn = False
 
     context = {"display_year": display_year, "events": events}
     return render(request, 'calendar.html', context)
@@ -126,33 +133,39 @@ class Create_Week(LoginRequiredMixin, CreateView):
     fields = '__all__'
 
 
-def offer_swap(request, week_id):
+def propose_swap(request, week_id):
     initiator = request.user # User
-    print("initiator:", initiator)
+    # print("initiator:", initiator)
     desired_week = Week.objects.get(id=week_id) # Week
-    print("desired_week:", desired_week)
-    desired_week_ownergroup = Group.objects.get(name=desired_week.owner_group)
-    print("desired_week_ownergroup:", desired_week_ownergroup)
-    reciprocators = User.objects.filter(groups__name=desired_week.owner_group) # Users Queryset
-    print("reciprocators:", reciprocators)
+    # print("desired_week:", desired_week)
     
-    initiator_ownergroup = initiator.groups.all().exclude(name="member").exclude(name="admin").first() # Group
-    print("initiator_ownergroup:", initiator_ownergroup)
-
-    # CHANGE DESIRED WEEKS OWNERGROUP TO INITIATOR'S OWNERGROUP
-    desired_week.owner_group = initiator_ownergroup
-    desired_week.save()
-    print("Current user just took ownership of desired week")
-
-    # offered_week = Week.objects.filter(users__contains=buyer)
-    # print(f'{buyer} is swapping for {desired_week} ')
-    # desired_week.owner = 0
-    # desired_week.save()
+    initiator_ownergroup = initiator.groups.all().exclude(name="member").exclude(name="admin").first()
     
+    initiators_weeks = Week.objects.filter(owner_group=initiator_ownergroup)
+
+    offered_week = initiators_weeks[0]
+
+    swap = Swap(initiator=initiator,desired_week=desired_week, offered_week=offered_week)
+
+    print(swap)
+
+    # print("desired_week_ownergroup:", swap.get_desired_week_ownergroup())
+    # print("get_initiator_ownergroup:", swap.get_initiator_ownergroup())
+    # print("get_initiators_weeks:", swap.get_initiators_weeks())
+    # print("get_reciprocators:", swap.get_reciprocators())
+
 
 
     return redirect('calendar')
 
+
+
+#
+# Swap
+#
+class Update_Swap(LoginRequiredMixin, UpdateView):
+    model = Swap
+    fields = '__all__'
 
 
 #
