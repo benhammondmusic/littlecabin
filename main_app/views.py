@@ -18,6 +18,8 @@ from django.contrib.auth.decorators import user_passes_test
 from .fetch_calendar import get_upcoming_events
 from django.http import HttpResponse
 
+from .populate_calendar import populate_google_calendar
+
 # for DB models
 from .models import Week, Postcard, Photo, User, Request, Swap
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -183,6 +185,11 @@ def reset_weeks(request):
             # WEEKLY-every week of the 3-per owner season, the owner will advance from the previous week's owner
             week = Week(start_date=first_start_date + (i*weeks_later), owner_group=ownergroups[(yr-1+i) % len(ownergroups) ])
             week.save()
+
+
+    # push to Google Calendar
+    populate_google_calendar()
+
 
     return redirect('calendar')
 

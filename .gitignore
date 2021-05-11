@@ -5,8 +5,11 @@
 credentials.json
 main_app/credentials.json
 google-credentials.json
+xgoogle-credentials.json
 main_app/google-credentials.json
+google-credentials-service.json
 token.json
+xtoken.json
 main_app/token.json
 
 ### Django ###

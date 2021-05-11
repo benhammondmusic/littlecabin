@@ -48,7 +48,7 @@
             {% csrf_token %}
             <input type="hidden" name="pending_user_id" value="{{pending_user.id}}" />
             <select name="pending_user_ownergroup" required>
-                <option value="" selected disabled hidden>Select Owner-Group</option>
+                <option value="" selected disabled hidden>Choose Owner-Group</option>
                 {% for owner_group in owner_groups %}
                 <option value="{{ owner_group }}">{{ owner_group }}</option>
                 {% endfor%}

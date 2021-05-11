@@ -105,7 +105,7 @@
             </svg>
           </button>
           {% if user.is_authenticated %}
-          <em class="mx-4 nav-item">{{user.first_name|title}}</em>
+          <em class="mx-4 nav-item">{{user.first_name|title}} {% if user.groups.all.0 == None %} (pending) {% endif %} </em>
           {% endif %}
         </div>
       </div>
