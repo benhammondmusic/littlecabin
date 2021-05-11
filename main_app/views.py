@@ -59,6 +59,7 @@ def get_pending_users(user):
         pending_users = User.objects.all().exclude(groups__name='member')
     return pending_users
 
+# called from within a home/ post request
 def approve_user(pending_user_id, pending_user_ownergroup):
     pending_user = User.objects.get(id=pending_user_id)
     
@@ -70,6 +71,12 @@ def approve_user(pending_user_id, pending_user_ownergroup):
     owner_group = Group.objects.get(name=pending_user_ownergroup)
     owner_group.user_set.add(pending_user)
     return
+
+
+def deny_user(request, pending_user_id):
+    pending_user = User.objects.get(id=pending_user_id)
+    pending_user.delete()
+    return redirect('home')
 
 
 def home(request):

@@ -43,18 +43,18 @@
           <li class="text-dark align-middle mt-3">
             <span class="align-middle">{{pending_user.first_name|title}} {{pending_user.last_name|title}} ({{pending_user.username}})</span>
 
-            {% comment %} <a href="{% url 'approve_user' pending_user.id %}" class="align-middle btn btn-sm btn-warning shadow-sm fw-bold">Approve</a> {% endcomment %}
-
+   
             <form action="" method="post">
             {% csrf_token %}
             <input type="hidden" name="pending_user_id" value="{{pending_user.id}}" />
-            <select name="pending_user_ownergroup">
-                <option value="none" selected disabled hidden>Select Owner-Group</option>
+            <select name="pending_user_ownergroup" required>
+                <option value="" selected disabled hidden>Select Owner-Group</option>
                 {% for owner_group in owner_groups %}
-                <option required value="{{ owner_group }}">{{ owner_group }}</option>
+                <option value="{{ owner_group }}">{{ owner_group }}</option>
                 {% endfor%}
             </select>
-            <button class="align-middle btn btn-sm btn-warning shadow-sm fw-bold" type="submit">Approve</button>
+            <button class="approve-btn align-middle btn btn-sm btn-warning shadow-sm fw-bold" type="submit">Approve</button>
+            <a href="{% url 'deny_user' pending_user.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Deny</a>
             </form>
   
 
