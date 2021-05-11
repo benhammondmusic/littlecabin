@@ -34,10 +34,10 @@ S3_BASE_URL = config('S3_BASE_URL')
 BUCKET = config('BUCKET')
 
 
-def oauth2callback(request):
-    print("callback fn from google cal api oath register")
-    print(request)
-    return redirect('calendar')
+# def oauth2callback(request):
+#     print("callback fn from google cal api oath register")
+#     print(request)
+#     return redirect('calendar')
 
 #
 # USER VIEWS / CLASSES
@@ -57,19 +57,29 @@ def get_pending_users(user):
     pending_users = []
     if user.is_active and user.groups.filter(name='admin').exists():
         pending_users = User.objects.all().exclude(groups__name='member')
-        print ("pending: ", pending_users)
     return pending_users
 
-def approve_user(request, pending_user_id):
-    member_group = Group.objects.get(name="member")
+def approve_user(pending_user_id, pending_user_ownergroup):
     pending_user = User.objects.get(id=pending_user_id)
+    
+    # add user to generic "member" group
+    member_group = Group.objects.get(name="member")
     member_group.user_set.add(pending_user)
-    return redirect('home')
+
+    # also add user to their specific owner group
+    owner_group = Group.objects.get(name=pending_user_ownergroup)
+    owner_group.user_set.add(pending_user)
+    return
 
 
 def home(request):
+    if request.method == 'POST':
+        approve_user(request.POST["pending_user_id"], request.POST["pending_user_ownergroup"])
+        return redirect('home')
+
     pending_users = get_pending_users(request.user)
-    context = {"pending_users": pending_users}
+    owner_groups = Group.objects.all().exclude(name="admin").order_by('name')
+    context = {"pending_users": pending_users, "owner_groups":owner_groups}
     return render(request, 'home.html', context)
 
 def register(request):
@@ -114,8 +124,6 @@ def calendar(request):
     
     # if user has a pending swap, don't display the swap buttons
     current_user_has_pending_swaps = Swap.objects.filter(initiator=request.user).exists()
-    print(current_user_has_pending_swaps)
-
 
     # format events and add user group info
     for event in events:
@@ -124,7 +132,7 @@ def calendar(request):
 
         current_user_ownergroup = request.user.groups.all().exclude(name="member").exclude(name="admin").first()
         event.display_swap_btn = True
-        if current_user_has_pending_swaps or event.owner_group == current_user_ownergroup:
+        if current_user_has_pending_swaps or event.owner_group == current_user_ownergroup or not current_user_ownergroup:
             event.display_swap_btn = False
     
     # collect relevant swaps
@@ -145,11 +153,6 @@ class Create_Week(LoginRequiredMixin, CreateView):
     fields = '__all__'
 
 
-
-
-
-
-
 # generate week events for testing
 def reset_weeks(request):
 
@@ -166,16 +169,13 @@ def reset_weeks(request):
 
         first_start_date = datetime.datetime(yr, 5, may_mondays[-1])
         weeks_later = datetime.timedelta(days=7)
-        #print(yr)
         # each owner_group gets 3 weeks per year, in rotation
         for i in range(len(ownergroups) * 3):
             # weeks rotate through owner_groups 2 ways: 
             # YEARLY-the first week of the season will start with the next sibling in line from the previous year's first week
             # WEEKLY-every week of the 3-per owner season, the owner will advance from the previous week's owner
             week = Week(start_date=first_start_date + (i*weeks_later), owner_group=ownergroups[(yr-1+i) % len(ownergroups) ])
-            #print(week)
             week.save()
-
 
     return redirect('calendar')
 
@@ -192,13 +192,10 @@ def propose_swap(request, week_id):
     initiator_ownergroup = initiator.groups.all().exclude(name="member").exclude(name="admin").first()
     
     initiators_weeks = Week.objects.filter(owner_group=initiator_ownergroup)
-    #print("** INITIATORS WEEKS:", initiators_weeks)
     offered_week = initiators_weeks[0]
 
     swap = Swap(initiator=initiator,desired_week=desired_week, offered_week=offered_week)
     swap.save()
-
-    #print(swap)
 
     return redirect('calendar')
 
@@ -216,7 +213,6 @@ def approve_swap(request, swap_id):
     swap.save()
     desired_week.save()
     offered_week.save()
-
 
     return redirect('calendar')
 

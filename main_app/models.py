@@ -36,7 +36,6 @@ class Swap(models.Model):
 
     def get_desired_week_ownergroup(self):
         group = Group.objects.get(name=self.desired_week.owner_group)
-        print("got desired week's ownergroup:", group)
         return group
     
     def get_reciprocators(self):

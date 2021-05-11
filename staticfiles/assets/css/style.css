@@ -140,6 +140,9 @@ h6 {
 /*--Off Canvas menu --*/
 .open-sidenav:focus {
   outline: none;
+
+  /* width: 100%; */
+  height: 100%;
 }
 .sidenav {
   height: 100%;

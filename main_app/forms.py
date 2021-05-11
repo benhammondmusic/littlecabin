@@ -11,8 +11,8 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        labels = {"username": "Email" }
-        fields = ('username','first_name','last_name', 'password1' ,'password2' )
+        labels = {"username": "Email" } #"groups": "Owner Group"
+        fields = ('username','first_name','last_name',  'password1' ,'password2' )   #'groups',
 
 
 # custom login form to display username as "email"

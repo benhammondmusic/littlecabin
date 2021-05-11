@@ -63,7 +63,7 @@
               <a class="nav-link" href="{% url 'info' %}">Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout ( {{user.first_name|title}} )</a>
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -95,13 +95,19 @@
             {% endcomment %}
           </ul>
         </div>
-        <button aria-label="open nav menu" id="open-sidenav" class="open-sidenav bg-transparent border-0 ms-2">
-          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#212529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
+
+        <div id="nav-menu-right" class="d-flex flex-nowrap align-items-center">
+          <button aria-label="open nav menu" id="open-sidenav" class="open-sidenav bg-transparent border-0 ms-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#212529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          {% if user.is_authenticated %}
+          <em class="mx-4 nav-item">{{user.first_name|title}}</em>
+          {% endif %}
+        </div>
       </div>
     </nav>
     <!-- Off Canvas Menu Start-->
