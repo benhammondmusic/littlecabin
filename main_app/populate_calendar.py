@@ -6,27 +6,7 @@ CAL_ID = config('CAL_ID')
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = './google-credentials.json'
 
-
-
-
-#   'recurrence': [
-#     'RRULE:FREQ=DAILY;COUNT=2'
-#   ],
-#   'attendees': [
-#     {'email': 'lpage@example.com'},
-#     {'email': 'sbrin@example.com'},
-#   ],
-#     'reminders': {
-#     'useDefault': False,
-#     'overrides': [
-#       {'method': 'email', 'minutes': 24 * 60},
-#       {'method': 'popup', 'minutes': 10},
-#     ],
-#   },
-
-
-
-def populate_google_calendar():
+def populate_google_calendar(all_weeks):
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     service = googleapiclient.discovery.build('calendar', 'v3', credentials=credentials)
 
@@ -40,21 +20,28 @@ def populate_google_calendar():
     for e in events:
         event_id = e['id']
         service.events().delete(calendarId=CAL_ID, eventId=event_id).execute()
+        print("DELETED", event_id)
 
     # FILL GOOGLE CAL WITH ALL WEEK EVENTS IN DB
-    # ! need to do this
-    new_event = {
-    'summary': 'Tom Week',
-    'location': 'Fire Land D, Lovell, ME',
-    'description': 'A sample description',
-    'start': {
-        'date': '2021-05-28',
-        'timeZone': 'America/New_York',
-    },
-    'end': {
-        'date': '2021-05-28',
-        'timeZone': 'America/New_York',
-    },
-    }
-    new_event = service.events().insert(calendarId=CAL_ID, body=new_event).execute()
-    print('Event created: %s' % (new_event.get('htmlLink')))
+
+
+    for week in all_weeks:
+        print(week)
+        new_event = {
+        'summary': f"{week.owner_group}'s Week",
+        'location': 'Fire Land D, Lovell, ME',
+        'description': 'A sample description',
+        'start': {
+            'date': f"{week.start_date}",
+            'timeZone': 'America/New_York',
+        },
+        'end': {
+            'date': f"{week.start_date}",
+            'timeZone': 'America/New_York',
+        },
+        }
+        print(new_event)
+        service.events().insert(calendarId=CAL_ID, body=new_event).execute()
+        print('Event created: %s' % (new_event.get('htmlLink')))
+
+
