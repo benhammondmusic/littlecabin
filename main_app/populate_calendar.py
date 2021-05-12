@@ -21,7 +21,7 @@ def populate_google_calendar(all_weeks):
     for e in events:
         event_id = e['id']
         service.events().delete(calendarId=CAL_ID, eventId=event_id).execute()
-        print("DELETED", event_id)
+        print("DELETED ", event_id)
 
     # FILL GOOGLE CAL WITH ALL WEEK EVENTS IN DB
 
