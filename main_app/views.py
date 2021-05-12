@@ -125,7 +125,7 @@ def calendar(request):
     else: 
         display_year = datetime.date.today().year
 
-    events = Week.objects.filter(start_date__year=display_year)
+    events = Week.objects.filter(start_date__year=display_year).order_by('start_date')
 
     # if user has a pending swap, don't display the swap buttons
     current_user_has_pending_swaps = Swap.objects.filter(initiator=request.user).filter(has_been_accepted=False).exists()
