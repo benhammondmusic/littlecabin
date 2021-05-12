@@ -1,6 +1,7 @@
 from decouple import config
 from google.oauth2 import service_account
 import googleapiclient.discovery
+import datetime
 
 CAL_ID = config('CAL_ID')
 SCOPES = ['https://www.googleapis.com/auth/calendar']
@@ -36,12 +37,12 @@ def populate_google_calendar(all_weeks):
             'timeZone': 'America/New_York',
         },
         'end': {
-            'date': f"{week.start_date}",
+            'date': f"{week.start_date + datetime.timedelta(days=7)}",
             'timeZone': 'America/New_York',
         },
         }
         print(new_event)
         service.events().insert(calendarId=CAL_ID, body=new_event).execute()
-        print('Event created: %s' % (new_event.get('htmlLink')))
+        print('Event created')
 
 

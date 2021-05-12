@@ -209,6 +209,8 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - avoiding name collisions; used `import calendar as calendar_lib` since I was already using `calendar` as a view method
 - displaying a dropdown `<select>` with every pending user displayed to an admin; admin can then choose the correct owner_group and approve, or deny the user and delete the uncredentialed user. This was also complex; mainly in deciding between using Django's built-in form handling, and digging through obscure and tangential examples. I decided to implement it myself, changing my approve button from being an `<a>` to being a `<button>` inside of a `<form`>, and then adding a hidden `<input>` to contain the `user.id` . I also placed the `<select>` inside the same form, and then made `home/` intercept post requests and process the incoming data by finding the User, finding the Group, then adding the user to that group.
 - I would love to have the "Approve" buttons stay disabled until the admin selects a Group; I tried using `required` in the `<select>` but that didn't work; I also researched using Javascript inside the view but it got complex due to the possibility of multiple, programmatically generated dropdowns and associated approve buttons.
+- calculating an end date required adding a dateTime delta of 7 days, and then rendering that dateTime as a string to be sent to Google API
+- Syncing will be possible, since we can know that every actual week will have a maximum of 1 Week object in our database, and also a maximum of 1 google calendar event. So rather than simply wiping gcal and pushing every week from the db when there is a change, it's possible to do incremental synchronization
 
 ? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
 
@@ -231,4 +233,4 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89) - Blog Post
 - [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku) - Blog Post
 - Stack Overflow: [500 Error When Debug False With Heroku And Django](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django), [Getting last Monday of a month](https://stackoverflow.com/questions/12796389/python-get-last-monday-of-july-2010/12796542), [Using Service Account with Google API](https://stackoverflow.com/questions/49480930/django-server-rw-access-to-self-owned-google-calendar)
-- [Google Developer Service Account](https://www.daimto.com/google-developer-console-service-account/) - Blog Post
+- [Intro to Google Developer Service Account](https://www.daimto.com/google-developer-console-service-account/) - Blog Post
