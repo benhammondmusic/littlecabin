@@ -128,7 +128,7 @@ def calendar(request):
     events = Week.objects.filter(start_date__year=display_year)
 
     # if user has a pending swap, don't display the swap buttons
-    current_user_has_pending_swaps = Swap.objects.filter(initiator=request.user).exists()
+    current_user_has_pending_swaps = Swap.objects.filter(initiator=request.user).filter(has_been_accepted=False).exists()
 
     # format events and add user group info
     for event in events:
@@ -137,7 +137,11 @@ def calendar(request):
 
         current_user_ownergroup = request.user.groups.all().exclude(name="member").exclude(name="admin").first()
         event.display_swap_btn = True
-        if current_user_has_pending_swaps or event.owner_group == current_user_ownergroup or not current_user_ownergroup:
+        if current_user_has_pending_swaps:
+            event.display_swap_btn = False
+        if event.owner_group == current_user_ownergroup:
+            event.display_swap_btn = False
+        if current_user_ownergroup == None:
             event.display_swap_btn = False
     
     # collect relevant swaps
