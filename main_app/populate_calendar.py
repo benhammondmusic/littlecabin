@@ -7,16 +7,56 @@ CAL_ID = config('CAL_ID')
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 SERVICE_ACCOUNT_FILE = './google-credentials.json'
 
-def populate_google_calendar(all_weeks):
+
+
+def swap_weeks_google_calendar(desired_week, offered_week):
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
     service = googleapiclient.discovery.build('calendar', 'v3', credentials=credentials)
 
-    events_result = service.events().list(calendarId=CAL_ID).execute()
+    events_result = service.events().list(calendarId=CAL_ID, maxResults=2500).execute()
     events = events_result.get('items', [])
-    event_id = events[0]['id']
-    #  event = events[0]
-    # service.events().update(calendarId=CAL_ID, eventId=event_id, body={"end":{"date":"2021-05-25"},"start":{"date":"2021-05-25"},"summary":"Little Cabin"}).execute()
 
+    # print(desired_week, offered_week)
+
+    # FIND THE 2 MATCHING EVENTS
+    desired_event_id = ""
+    offered_event_id = ""
+
+    for event in events:
+        # print(event["start"]["date"], desired_week.start_date)
+        # print(type(event["start"]["date"]), type(desired_week.start_date))
+
+        if event["start"]["date"] == str(desired_week.start_date):
+            desired_event_id = event["id"]
+            # print(desired_event_id)
+        if event["start"]["date"] == str(offered_week.start_date):
+            offered_event_id = event["id"]
+            # print(offered_event_id)
+
+
+    # SWAP AND THEN UPDATE GCAL
+    if desired_event_id and offered_event_id:
+
+        service.events().update(calendarId=CAL_ID, eventId=desired_event_id, body={"end":{"date":f'{offered_week.start_date + datetime.timedelta(days=7)}'},"start":{"date":f'{offered_week.start_date}'},'summary': f"{offered_week.owner_group}'s Week",}).execute()
+        service.events().update(calendarId=CAL_ID, eventId=offered_event_id, body={"end":{"date":f'{desired_week.start_date + datetime.timedelta(days=7)}'},"start":{"date":f'{desired_week.start_date}'},'summary': f"{desired_week.owner_group}'s Week",}).execute()
+        print("swapped gcal")
+    else:
+        print("Problem swapping gcal weeks")
+
+
+
+
+        
+
+
+def populate_google_calendar(all_weeks):
+    
+    credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    service = googleapiclient.discovery.build('calendar', 'v3', credentials=credentials)
+
+    events_result = service.events().list(calendarId=CAL_ID, maxResults=2500).execute()
+    events = events_result.get('items', [])
+    
     # DELETE ALL EXISTING EVENTS
     for e in events:
         event_id = e['id']

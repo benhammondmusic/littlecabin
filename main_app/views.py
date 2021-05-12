@@ -18,7 +18,7 @@ from django.contrib.auth.decorators import user_passes_test
 from .fetch_calendar import get_upcoming_events
 from django.http import HttpResponse
 
-from .populate_calendar import populate_google_calendar
+from .populate_calendar import populate_google_calendar, swap_weeks_google_calendar
 
 # for DB models
 from .models import Week, Postcard, Photo, User, Request, Swap
@@ -228,6 +228,9 @@ def approve_swap(request, swap_id):
     swap.save()
     desired_week.save()
     offered_week.save()
+
+    # incremental update to gcal
+    swap_weeks_google_calendar(desired_week, offered_week)
 
     return redirect('calendar')
 
