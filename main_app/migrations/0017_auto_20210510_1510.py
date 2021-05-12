@@ -7,12 +7,12 @@ def apply_migration(apps, schema_editor):
     Group.objects.bulk_create([
         Group(name=u'admin'),
         Group(name=u'member'),
-        Group(name=u'Hammy'),
-        Group(name=u'Toby'),
-        Group(name=u'Connie'),
-        Group(name=u'Cherie'),
-        Group(name=u'Tom'),
-        Group(name=u'Chris'),
+        Group(name=u'1-Hammy'),
+        Group(name=u'2-Toby'),
+        Group(name=u'3-Connie'),
+        Group(name=u'4-Cherie'),
+        Group(name=u'5-Tom'),
+        Group(name=u'6-Chris'),
     ])
 
     
