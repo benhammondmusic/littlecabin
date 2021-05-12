@@ -125,6 +125,11 @@ Since I was creating this project on my own, the function of my style guide was 
 
 ![Screenshot of HEX codes from color scheme](little-cabin-colors.png)
 
+### Fonts:
+
+- Main Text: Montserrat
+- Accent Headings: Raleway
+
 ### Terminology
 
 - **Property**: the family location and structure being managed. Might refer to a "camp", "cabin", "lake house", "vacation home", "cottage", or other regional terms
@@ -222,11 +227,13 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Mockflow](https://mockflow.com/) - Wireframes
 - [Figma](https://www.figma.com/) - Graphics
 - [Favicon.io](https://favicon.io/) - Favicon
+- https://www.remove.bg/
 
 ## Resources
 
 - [PngItem](https://www.pngitem.com/) - Icon
 - Unsplash: [Cabin Photo](https://unsplash.com/@olivier_twwli?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText), [Firewood Photo](https://unsplash.com/@markuswinkler?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText), [Watering Can Photo](https://unsplash.com/photos/uWfYjWM8oGM?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+- http://clipart-library.com/
 - [Koka](https://angrystudio.com/themes/koka-free-bootstrap-5-website-template/) - Bootstrap Template
 - [Route Back To Section IDs](https://engineertodeveloper.com/a-better-way-to-route-back-to-a-section-ids-in-django/) - Blog Post
 - [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9) - Blog Post

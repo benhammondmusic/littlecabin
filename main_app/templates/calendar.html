@@ -8,9 +8,10 @@
       <div class="col-12 col-lg-5">
         <div class="calendar-text pe-0 pe-md-5">
           <span class="pre-title text-dark small position-relative fw-bold text-uppercase">Calendar</span>
-          <h2 class="calendar-title text-dark section-title mt-3 mb-4">View Your Weeks; Offer Swaps or Sales</h2>
-          <a href="{% url 'reset_weeks' %}" class="align-middle btn btn-sm btn-info shadow-sm fw-bold">Reset Weeks</a>
-          <h3>{{display_year}} Schedule:</h3>
+          <h2 class="calendar-title text-dark section-title mt-3 mb-4">View / Swap Weeks</h2>
+          
+          <h3>{{display_year}} Schedule:</h3> <a href="{% url 'reset_weeks' %}" class="align-middle inline-block btn btn-sm btn-info shadow-sm fw-bold">(Testing Only) Reset Weeks</a>
+
 
           <ul class="calendar-list">
             {% for event in events %}
@@ -36,7 +37,6 @@
           </form>
 
           
-
           <form action="{% url 'calendar' %}" method="post">
             {% csrf_token %}
             <button name="display_year" value="{{ display_year|add:"1"}}" class="btn btn-warning m-4 d-inline-block fw-bold shadow-sm" type="submit">{{ display_year|add:"1"}} &raquo;</button>
