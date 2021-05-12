@@ -204,7 +204,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
   ```
 - implementing Swap objects (pending offers to swap Week objects between Groups, initiated and approved by Users). LOTS OF STUFF. this was hard
 - error after adding "created"; used default value of `1` which didn't make sense, and wasn't able to run `migrate` even after dropping and recreating the db. Had to manually go into the migrations folder and alter the value of `default=1` to `default=django.utils.timezone.now`.
-- setting up automatic population of db
+- setting up automatic creation of `owner_group`s in the db using a data migration.
 - ordering my groups, decided to append a number so they were sortable
 - avoiding name collisions; used `import calendar as calendar_lib` since I was already using `calendar` as a view method
 - displaying a dropdown `<select>` with every pending user displayed to an admin; admin can then choose the correct owner_group and approve, or deny the user and delete the uncredentialed user. This was also complex; mainly in deciding between using Django's built-in form handling, and digging through obscure and tangential examples. I decided to implement it myself, changing my approve button from being an `<a>` to being a `<button>` inside of a `<form`>, and then adding a hidden `<input>` to contain the `user.id` . I also placed the `<select>` inside the same form, and then made `home/` intercept post requests and process the incoming data by finding the User, finding the Group, then adding the user to that group.
