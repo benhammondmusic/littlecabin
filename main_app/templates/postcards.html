@@ -25,12 +25,12 @@
           {% endfor %}
           <div class="postcard-post-body p-4">
             <div class="postcard-post-meta clearfix">
-              <span href="#" class="postcard-post-tag text-dark fw-bold text-decoration-none me-4 small"> {{ card.postcard.greeting }}</span>
+              <h3 class="postcard-post-tag text-dark fw-bold text-decoration-none me-4 font-script">{{ card.postcard.greeting }}</h3>
             </div>
 
-            <h3 class="postcard-post-title mt-2 mb-0">{{ card.postcard.message }}</h3>
+            <p class="postcard-post-title mt-2 mb-0 font-script">{{ card.postcard.message }}</p>
 
-            <p class="post-date d-inline-block mt-2 small">
+            <p class="post-date d-inline-block mt-2 font-script">
               {{ card.author.first_name }} {{ card.author.last_name.0 }}. {% if card.postcard.owner|stringformat:"s" == user.username|stringformat:"s" %}
               <span class="postcard-btns bg-white rounded">
                 <a href="{% url 'update_postcard' card.postcard.id %}"><i alt="edit postcard" class="fas fa-pencil-alt mx-1 text-dark"></i></a><a href="{% url 'delete_postcard' card.postcard.id %}"><i alt="delete postcard" class="fas fa-trash mx-1 text-dark"></i></a>
@@ -38,7 +38,7 @@
               {% endif %}
             </p>
 
-            <em class="post-date d-block mt-2 small">{{ card.postcard.created|timesince}} ago</em>
+            <p class="post-date d-block mt-2 font-script">{{ card.postcard.created|timesince}} ago</p>
           </div>
         </div>
       </div>

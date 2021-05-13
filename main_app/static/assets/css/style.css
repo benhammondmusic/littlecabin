@@ -63,6 +63,9 @@ h6 {
   /* font-family: 'Nunito', sans-serif; */
   font-family: 'Raleway', sans-serif;
 }
+.font-script {
+  font-family: 'Sue Ellen Francisco', cursive;
+}
 .text-muted {
   color: var(--white) !important;
 }

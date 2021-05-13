@@ -9,8 +9,8 @@
       <div class="col-md-12 col-lg-6 order-2 order-lg-1 mt-4 mt-lg-0 pt-4 pt-lg-0">
         <div class="hero-content pe-md-0 pe-lg-5">
           <span class="pre-title text-dark small fw-bold inline-block position-relative text-uppercase">Welcome!</span>
-          <h1 class="hero-title text-dark mt-3">Little Cabin App<br class="d-none d-lg-block" /></h1>
-          {% comment %} <h2 class="hero-subtitle text-dark mt-3">Make Memories, Not Spreadsheets</h2> {% endcomment %}
+          <h1 class="hero-title text-dark mt-3">Little Cabin</h1>
+          <h2 class="hero-subtitle text-dark mt-3 font-script">Make Memories, Not Spreadsheets</h2>
           <p class="hero-text mt-3 mb-0"></p>
           {% if not user.is_authenticated %}
           <a href="{% url 'login' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Log In</a><a href="{% url 'register' %}" class="btn btn-dark bg-dark shadow-sm mx-3 mt-4 fw-bold">Register</a>
@@ -82,7 +82,7 @@
         <div class="about-box-text">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">About the App</span>
           <h2 class="about-box-title section-title text-dark mt-3 mb-4">Securely share your spot</h2>
-          <p>Little Cabin helps families create more memories, and fewer spreadsheets. It provides a unified web application with essential management tools such as:</p>
+          <p>Little Cabin is a single web app that provides multiple management tools such as:</p>
       
               <details class="mb-2">
               <summary><span class="h4">Group Calendar</span></summary>

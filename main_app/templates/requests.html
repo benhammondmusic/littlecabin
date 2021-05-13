@@ -19,9 +19,9 @@
                 <form action="{% url 'request_flip_is_done' unchecked_request.id %}" method="post">
                   {% csrf_token %}
 
-                  <button name="submit" value="{{unchecked_request.id}}" class="btn mx-0"><img title="mark request as complete" alt="unchecked item" src="{% static 'assets/images/uncheck.svg' %}" /></button>
+                  <button name="submit" value="{{unchecked_request.id}}" class="btn mx-0 px-0"><img title="mark request as complete" alt="unchecked item" src="{% static 'assets/images/uncheck.svg' %}" /></button>
 
-                  <a class="btn" href="{% url 'update_request' unchecked_request.id %}"><span title="edit request" class="unchecked">{{unchecked_request.item|title}}</span></a>
+                  <a class="btn px-1" href="{% url 'update_request' unchecked_request.id %}"><h3 title="edit request" class="unchecked font-script">{{unchecked_request.item|title}}</h3></a>
                 </form>
               </li>
               {% endfor%}
@@ -33,9 +33,9 @@
                 <form action="{% url 'request_flip_is_done' checked_request.id %}" method="post">
                   {% csrf_token %}
 
-                  <button name="submit" value="{{checked_request.id}}" class="btn"><img title="mark request as incomplete" alt="checked item" src="{% static 'assets/images/check.svg' %}" /></button>
+                  <button name="submit" value="{{checked_request.id}}" class="btn mx-0 px-0"><img title="mark request as incomplete" alt="checked item" src="{% static 'assets/images/check.svg' %}" /></button>
 
-                  <span class="checked">{{checked_request.item|title}}</span>
+                  <a class="btn px-1" href="{% url 'update_request' checked_request.id %}"><h3 class="checked font-script">{{checked_request.item|title}}</h3></a>
                 </form>
               </li>
               {% endfor%}
