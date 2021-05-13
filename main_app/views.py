@@ -168,11 +168,10 @@ def reset_weeks(request):
     # delete all existing weeks from DB
     Week.objects.all().delete()
 
-
     ownergroups = Group.objects.all().exclude(name="member").exclude(name="admin").order_by('name')
 
     # build Weeks for the next 10 years 
-    for yr in range(2021, 2023):
+    for yr in range(2021, 2024):
         month = calendar_lib.monthcalendar(yr, 5)
         may_mondays = [week[0] for week in month if week[0]>0]
 

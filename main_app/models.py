@@ -8,11 +8,9 @@ from datetime import datetime
 
 class Week(models.Model):
     owner_group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    # users = models.ManyToManyField(User)
     start_date = models.DateField('Start Date')
 
     def __str__(self):
-        print("INSIDE WEEK MODEL", self.start_date)
         return f"[{self.start_date} - {str(self.owner_group)[2:]}]"
 
     def get_absolute_url(self):
@@ -27,7 +25,6 @@ class Swap(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        print("INSDIE SWAP MODEL", self.desired_week)
         return f'{self.initiator.first_name} {self.initiator.last_name[0]}. wants {self.desired_week}; offers {self.offered_week}'
 
     def get_initiator_ownergroup(self):
@@ -43,9 +40,6 @@ class Swap(models.Model):
     def get_reciprocators(self):
         return User.objects.filter(groups__name=self.desired_week.owner_group)
 
-    
-
-
 
 class Postcard(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -55,7 +49,6 @@ class Postcard(models.Model):
 
     def __str__(self):
         formatedDate = self.created.strftime("%m %d, %Y")
-        
         return f'{self.greeting} - {self.owner} {formatedDate}'
 
     def get_absolute_url(self):

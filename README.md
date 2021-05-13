@@ -35,18 +35,22 @@ _As An Authorized User I Want To:_
 
 **Calendar**
 
-- See existing property schedule
+- See existing property schedule as list
+- See integrated Google Calendar to allow syncing to personal calendar
+- Offer to swap one of my weeks for another family's week
 
 **Requests**
 
 - Add a request
 - Mark a request as completed
 - Hide completed tasks
+- See completion progress of my requests and all requests in the last year
 
 **Info**
 
 - View emergency, legal, and other information about the property
 - View nearby business info
+- View my family tree
 
 **UI/UX**
 
@@ -62,13 +66,12 @@ _As An Authorized User I Want To:_
 
 - Sort the businesses by family recommendations, dynamically load via API
 - Recommend a business on the list
-- View my family tree
+
 - Upload a photo for my leave of the tree
 
 - "Agree" with an existing request to prioritize it
 
 - Offer one of my weeks up for sale
-- Offer to swap one of my weeks for another family's week
 - Request to purchase another family's week
 
 - Add an emoji reaction to someone's post
@@ -90,12 +93,6 @@ After the stories were in place, I categorized those stories, leaving me with th
 - Calendar
 - Requests
 - App Info
-  - Emergency Info
-  - Weekly Chores
-  - Local Business Recommendations
-  - Property History
-  - Family Tree
-  - Legal Trust Info
 
 ### Wireframes
 
@@ -156,6 +153,7 @@ Since I was creating this project on my own, the function of my style guide was 
 - PostgreSQL
 - Amazon AWS
 - Google Calendar API
+- Google Cloud Service Account
 - Heroku
 
 ### Django
@@ -216,7 +214,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - I would love to have the "Approve" buttons stay disabled until the admin selects a Group; I tried using `required` in the `<select>` but that didn't work; I also researched using Javascript inside the view but it got complex due to the possibility of multiple, programmatically generated dropdowns and associated approve buttons.
 - calculating an end date required adding a dateTime delta of 7 days, and then rendering that dateTime as a string to be sent to Google API
 - Syncing is possible, since we can know that every actual week will have a maximum of 1 Week object in our database, and also a maximum of 1 google calendar event. So rather than simply wiping gcal and pushing every week from the db when there is a change, it's possible to do incremental synchronization. Some strange errors were isolated and fixed by realizing that the get all events was actually being limited, thereby leaving some straggler events on the calendar. This was fixed by explicitly setting the maximum number of results to 2500 (the highest allowed): `events_result = service.events().list(calendarId=CAL_ID, maxResults=2500).execute()`. Some other errors involved typing; my Week model was using dateTime and the Google Calendar events use strings in the same format, so printing to debug didn't help until I included `type(start_date)`.
--
+- aligning automatically generated forms in Django; required displaying them as a table instead of `<p>` elements, and then adding my bootstrap classes to the table surrounding the template tag.
 
 ? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
 
