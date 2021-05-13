@@ -144,6 +144,7 @@ Since I was creating this project on my own, the function of my style guide was 
   - micro social media network offering "postcards" (short note with a photo)
   - collaborative "to-do" style list collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
   - knowledge center with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
+  - swapping the events on Google Calendar was resulting in all the data other than dates and owner names being erased; this ended up being a result of using `update()` (which sends a PUT request), rather than `patch()`, which sends a PATCH request. PUT was replacing the entire event object, whereas PATCH edits only the fields sent in the request and leaves the rest of the resource as is.
 
 ## Tech Used
 
