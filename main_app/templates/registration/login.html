@@ -14,7 +14,7 @@
           {% endif %}
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            <table>
+            <table class="d-flex flex-column align-items-center">
               {{ form.as_table }}
             </table>
             <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Log In" />

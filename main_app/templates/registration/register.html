@@ -6,9 +6,11 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <div class="section-head text-center mx-auto narrow">
-          <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Accounts</span>
-          <h2 class="section-title text-dark mt-3">Request New User Access</h2>
+        <div class="section-head mx-auto narrow">
+          <div class="text-center">
+            <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Accounts</span>
+            <h2 class="section-title text-dark mt-3">Request New User Access</h2>
+          </div>
           {% if user.is_authenticated %}
           <h3 class="error">{{user.username}} is logged in</h3>
           {% endif %}
@@ -19,11 +21,13 @@
             <table>
               {{ form.as_table }}
             </table>
-            <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Request Access" />
+
             <input type="hidden" name="next" value="{{ next }}" />
           </form>
-
-          <span class="helptext mt-4">Did you want to <a class="text-dark" href="{% url 'login' %}">login instead?</a></span>
+          <div class="text-center">
+            <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold align-self-center" value="Request Access" />
+            <span class="helptext mt-4">Did you want to <a class="text-dark" href="{% url 'login' %}">login instead?</a></span>
+          </div>
 
           <p class="section-subtitle mt-3 mb-0">Little Cabin App requires an administrator to approve ALL sign-ups before allowing access. Only authenticated family members will be able to utilize the app's features, such as calendar access, postcards and requests. If you have already been authorized, log in with an option below instead:</p>
         </div>
