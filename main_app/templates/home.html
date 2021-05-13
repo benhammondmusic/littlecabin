@@ -10,7 +10,7 @@
         <div class="hero-content pe-md-0 pe-lg-5">
           <span class="pre-title text-dark small fw-bold inline-block position-relative text-uppercase">Welcome!</span>
           <h1 class="hero-title text-dark mt-3">Little Cabin App<br class="d-none d-lg-block" /></h1>
-          <h2 class="hero-subtitle text-dark mt-3">Make Memories, Not Spreadsheets</h2>
+          {% comment %} <h2 class="hero-subtitle text-dark mt-3">Make Memories, Not Spreadsheets</h2> {% endcomment %}
           <p class="hero-text mt-3 mb-0"></p>
           {% if not user.is_authenticated %}
           <a href="{% url 'login' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Log In</a><a href="{% url 'register' %}" class="btn btn-dark bg-dark shadow-sm mx-3 mt-4 fw-bold">Register</a>
@@ -81,27 +81,27 @@
       <div class="col-12 col-lg-6">
         <div class="about-box-text">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">About the App</span>
-          <h2 class="about-box-title section-title text-dark mt-3 mb-4">Securely share your family get-away</h2>
-          <p>Little Cabin provides...</p>
+          <h2 class="about-box-title section-title text-dark mt-3 mb-4">Securely share your spot</h2>
+          <p>Little Cabin helps families create more memories, and fewer spreadsheets. It provides a unified web application with essential management tools such as:</p>
       
               <details class="mb-2">
-              <summary><span class="h4">A Calendar</span></summary>
-              <p>A shared group schedule with permissions-based week swapping and Google Calendar integration</p>
+              <summary><span class="h4">Group Calendar</span></summary>
+              <p>A shared schedule with permissions-based week swapping and Google Calendar integration</p>
               </details>
       
               <details class="mb-2">
-              <summary><span class="h4">"Postcards"</span></summary>
-              <p>A micro social media network allowing family members to share virtual "postcards" (short note with accompanying photos)</p>
+              <summary><span class="h4">"Postcard" Sharing</span></summary>
+              <p>A micro social media network allowing family members to share virtual "postcards" (short notes with accompanying photos uploaded from their device)</p>
               </details>
         
               <details class="mb-2">
-              <summary><span class="h4">"Requests"</span></summary>
-              <p>A collaborative to-do list, collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can edit or complete anyone's request, hide completed tasks, and real-time reports on task completion rates</p>
+              <summary><span class="h4">To-Do "Requests"</span></summary>
+              <p>A collaborative list collecting requests from members on maintenance items, purchase ideas, and other helpful suggestions. Members can edit or complete anyone's request, hide completed tasks, and view real-time reports on task completion rates</p>
               </details>
      
               <details class="mb-2">
-              <summary><span class="h4">Info</span></summary>
-              <p>A knowledge center with important information including contact info for local businesses and emergency protocols, historical information about the property, a family tree to see members, and could also be a repository for legal trust information, weekly chores, dues schedule, etc.</p>
+              <summary><span class="h4">Info Center</span></summary>
+              <p>A knowledge repository with helpful information including contact info for local businesses and emergency protocols, historical information about the property, a family tree to see members, and (coming soon) legal trust information, weekly chores, dues schedule, and more</p>
               </details>
  
         </div>
@@ -114,7 +114,7 @@
                 <a href="{% url "calendar" %}">
                   <i class="far fa-calendar-alt about-icon"></i>
                   <h3 class="about-title mt-3">Calendar</h3>
-                  <p class="about-text mb-0 small">See, Swap and Sell Weeks</p>
+                  <p class="about-text mb-0 small">See and Swap Weeks</p>
                 </a>
               </div>
             </div>

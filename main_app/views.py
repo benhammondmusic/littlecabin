@@ -35,16 +35,6 @@ from decouple import config
 S3_BASE_URL = config('S3_BASE_URL')
 BUCKET = config('BUCKET')
 
-
-# def oauth2callback(request):
-#     print("callback fn from google cal api oath register")
-#     print(request)
-#     return redirect('calendar')
-
-#
-# USER VIEWS / CLASSES
-#
-
 def is_family_member(user):
     if not user.is_active:
        return False
@@ -130,6 +120,9 @@ def calendar(request):
     # if user has a pending swap, don't display the swap buttons
     current_user_has_pending_swaps = Swap.objects.filter(initiator=request.user).filter(has_been_accepted=False).exists()
 
+    # if user is an admin, show extra buttons
+    user_is_admin = is_admin(request.user)
+
     # format events and add user group info
     for event in events:
         formatted_start_date = event.start_date.strftime("%b %-d")
@@ -154,7 +147,7 @@ def calendar(request):
         elif swap.get_desired_week_ownergroup() == current_user_ownergroup:
             incoming_swaps.append(swap)
 
-    context = {"display_year": display_year, "events": events, "outgoing_swaps":outgoing_swaps, "incoming_swaps":incoming_swaps}
+    context = {"display_year": display_year, "events": events, "outgoing_swaps":outgoing_swaps, "incoming_swaps":incoming_swaps, "user_is_admin": user_is_admin}
     return render(request, 'calendar.html', context)
 
 class Create_Week(LoginRequiredMixin, CreateView):

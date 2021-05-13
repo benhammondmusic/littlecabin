@@ -8,17 +8,19 @@
       <div class="col-12 col-lg-5">
         <div class="calendar-text pe-0 pe-md-5">
           <span class="pre-title text-dark small position-relative fw-bold text-uppercase">Calendar</span>
-          <h2 class="calendar-title text-dark section-title mt-3 mb-4">View / Swap Weeks</h2>
-          
-          <h3>{{display_year}} Schedule:</h3> <a href="{% url 'reset_weeks' %}" class="align-middle inline-block btn btn-sm btn-info shadow-sm fw-bold">(Testing Only) Reset Weeks</a>
+          <h2 class="calendar-title text-dark section-title mt-3 mb-1">Family Weeks</h2>
+          <details class="mb-4">
+          <summary>How To Use...</summary>
+          <p>This is the current family rotation schedule for the next 3 years. If you'd like to propose a swap, click the button next to the week you want. If a member of that week's owner group accepts, the dates will automatically swap on the calendar. </p>
+          </details>
 
-
+  <h3>{{display_year}} Schedule:</h3>
           <ul class="calendar-list">
             {% for event in events %}
             <li class="calendar-list-item my-2"><span class="align-middle">{{ event }} </span>
 
             {% if event.display_swap_btn  %}
-             <a href="{% url 'propose_swap' event.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold">Swap for this Week</a>
+             <a href="{% url 'propose_swap' event.id %}" class="mx-2 align-middle btn btn-xs btn-dark bg-dark shadow-sm fw-bold">Swap</a>
             {% endif %}
           </li>
             {% endfor %}
@@ -43,9 +45,7 @@
       </div>
       <div class="col-12 col-lg-7">
         <div class="wings position-relative p-5 mt-5 mt-lg-0">
-          <div class="video-box shadow-lg p-3 ps-1 ps-md-5 position-relative bg-light">
-
-          <iframe src="https://calendar.google.com/calendar/embed?height=300&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=NmNmcmh1MHBldWludG1nMG8xaGg4NTZmb3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23E67C73&amp;showTitle=0&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH" style="border-width:0" class="w-100" height="400" frameborder="0" scrolling="no"></iframe>
+          <div class="video-box shadow-lg p-3 ps-1 ps-md-5 position-relative bg-light rounded">
 
 
           <h4>Outgoing Swaps:</h4>
@@ -65,6 +65,13 @@
             <li class="text-secondary"><em >No swaps are pending your approval</em></li>
           {% endfor %}
           </ul>
+
+
+          <iframe src="https://calendar.google.com/calendar/embed?height=300&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=NmNmcmh1MHBldWludG1nMG8xaGg4NTZmb3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23E67C73&amp;showTitle=0&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=0&amp;showTz=0&amp;mode=MONTH" style="border-width:0" class="w-100 my-4" height="400" frameborder="0" scrolling="no"></iframe>
+
+          {% if user_is_admin %}
+           <a href="{% url 'reset_weeks' %}" class="align-middle inline-block btn btn-sm btn-info shadow-sm fw-bold">(Testing Only) Reset Weeks</a>
+          {% endif %}
 
           </div>
         </div>

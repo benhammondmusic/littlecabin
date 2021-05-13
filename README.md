@@ -122,6 +122,19 @@ Since I was creating this project on my own, the function of my style guide was 
 
 ![Screenshot of HEX codes from color scheme](little-cabin-colors.png)
 
+- white: #ffffff;
+- flash: #ffc107;
+- mid: #638129;
+- grey: #e1d7bc;
+- chill: #6da6b1
+- midgrey: #5f7383;
+- dark2: #346d7e
+- slate: #3d4852;
+- dark: #2c333a;
+- darker: #212529;
+- darkest: #29461a;
+- wood: #5e0b15;
+
 ### Fonts:
 
 - Main Text: Montserrat
@@ -145,6 +158,7 @@ Since I was creating this project on my own, the function of my style guide was 
   - collaborative "to-do" style list collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
   - knowledge center with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
   - swapping the events on Google Calendar was resulting in all the data other than dates and owner names being erased; this ended up being a result of using `update()` (which sends a PUT request), rather than `patch()`, which sends a PATCH request. PUT was replacing the entire event object, whereas PATCH edits only the fields sent in the request and leaves the rest of the resource as is.
+  - template I used has a slide-in side menu for smaller screen sizes, and by default the only way to close that menu (without clicking an item) is a tiny little "x" in the corner. Modern UX seems to trend towards clicking "off the popup" will work to close a menu, so I was able to understand how the template's JavaScript was working, and apply the same ` closeSidenavFunc()` in an event listener attached to the grayed out background that was covering the rest of the screen already.
 
 ## Tech Used
 

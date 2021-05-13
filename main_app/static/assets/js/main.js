@@ -2,11 +2,15 @@
 let openNav = document.getElementById('open-sidenav');
 let closeNav = document.getElementById('close-sidenav');
 let sideNav = document.getElementById('sidenav');
+let sideNavBackdrop = document.getElementById('sidenav-backdrop');
 let sideNavWrap = document.getElementById('sidenav-wrap');
 openNav.addEventListener('click', function () {
   openSidenavFunc(event, sideNav, sideNavWrap);
 });
 closeNav.addEventListener('click', function () {
+  closeSidenavFunc(event, sideNav, sideNavWrap);
+});
+sideNavBackdrop.addEventListener('click', function () {
   closeSidenavFunc(event, sideNav, sideNavWrap);
 });
 function openSidenavFunc(event, sideNav, sideNavWrap) {

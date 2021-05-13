@@ -55,7 +55,7 @@ def populate_google_calendar(all_weeks):
     for week in all_weeks:
         new_event = {
         'summary': f"{week.owner_group}'s Week",
-        'location': 'Fire Land D, Lovell, ME',
+        'location': 'Fire Lane D, Lovell, ME',
         'description': 'https://littlecabin.herokuapp.com',
         'start': {
             'date': f"{week.start_date}",
