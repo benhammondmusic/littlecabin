@@ -3,7 +3,7 @@ from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User, Group
 from django.urls import reverse
-
+from datetime import datetime
 
 
 class Week(models.Model):
@@ -12,7 +12,8 @@ class Week(models.Model):
     start_date = models.DateField('Start Date')
 
     def __str__(self):
-        return f'{self.start_date}: [{self.owner_group}]'
+        print("INSIDE WEEK MODEL", self.start_date)
+        return f"[{self.start_date} - {str(self.owner_group)[2:]}]"
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'week_id': self.id})
@@ -26,7 +27,8 @@ class Swap(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.initiator}:\n- would like ({self.desired_week})\n- offers ({self.offered_week})'
+        print("INSDIE SWAP MODEL", self.desired_week)
+        return f'{self.initiator.first_name} {self.initiator.last_name[0]}. wants {self.desired_week}; offers {self.offered_week}'
 
     def get_initiator_ownergroup(self):
         return self.initiator.groups.all().exclude(name="member").exclude(name="admin").first()
@@ -52,7 +54,8 @@ class Postcard(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        formatedDate = self.created.strftime("%Y-%m-%d")
+        formatedDate = self.created.strftime("%m %d, %Y")
+        
         return f'{self.greeting} - {self.owner} {formatedDate}'
 
     def get_absolute_url(self):

@@ -3,7 +3,7 @@
 <!-- login Start-->
 
 <section class="login section bg-white">
-  <div class="container">
+  <div class="container mt-5">
     <div class="row">
       <div class="col">
         <div class="section-head text-center mx-auto narrow">
@@ -14,7 +14,9 @@
           {% endif %}
           <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            <div class="d-flex flex-column align-items-center">{{ form.as_p }}</div>
+            <table>
+              {{ form.as_table }}
+            </table>
             <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Log In" />
 
             <input type="hidden" name="next" value="{{ next }}" />

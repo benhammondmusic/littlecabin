@@ -3,7 +3,7 @@
 <!-- content calendar-->
 
 <section class="calendar section section-bg position-relative">
-  <div class="container">
+  <div class="container mt-5">
     <div class="row align-items-center">
       <div class="col-12 col-lg-5">
         <div class="calendar-text pe-0 pe-md-5">
@@ -16,9 +16,6 @@
           <ul class="calendar-list">
             {% for event in events %}
             <li class="calendar-list-item my-2"><span class="align-middle">{{ event }} </span>
-            
-            
-  
 
             {% if event.display_swap_btn  %}
              <a href="{% url 'propose_swap' event.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold">Swap for this Week</a>
@@ -50,7 +47,7 @@
           <h4>Outgoing Swaps:</h4>
           <ul>
           {% for swap in outgoing_swaps %}
-            <li><em>{{swap}}</em><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-3">Withdraw</a></li>
+            <li><small>{{swap}}</small><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-3">Withdraw</a></li>
             {% empty %}
             <li class="text-secondary"><em>You have no pending swaps</em></li>
           {% endfor %}

@@ -3,7 +3,7 @@
 <!-- register Start-->
 
 <section class="login section bg-white">
-  <div class="container">
+  <div class="container mt-5">
     <div class="row">
       <div class="col">
         <div class="section-head text-center mx-auto narrow">
@@ -15,7 +15,10 @@
           <h3 class="error">{{error_message}}</h3>
 
           <form method="post" action="{% url 'register' %}">
-            {% csrf_token %} {{ form.as_p }}
+            {% csrf_token %}
+            <table>
+              {{ form.as_table }}
+            </table>
             <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold" value="Request Access" />
             <input type="hidden" name="next" value="{{ next }}" />
           </form>
