@@ -130,6 +130,7 @@ h6 {
 }
 .font-script {
   font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 2em;
 }
 .text-muted {
   color: var(--white) !important;

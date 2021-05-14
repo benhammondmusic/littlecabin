@@ -10,7 +10,7 @@
           {% comment %}
           <p class="section-subtitle mt-3 mb-0">Add a short greeting and a message</p>
           {% endcomment %}
-          <form action="" method="post">
+          <form action="" method="post" class="font-script">
             {% csrf_token %} {{ form.as_p }}
 
             <input type="submit" value="Continue" class="btn btn-warning shadow-sm mt-4 fw-bold" /><a class="btn btn-light shadow-sm mx-3 mt-4 fw-bold" href="{% url 'postcards'  %}">Cancel</a>

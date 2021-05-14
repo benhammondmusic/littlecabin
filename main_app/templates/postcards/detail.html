@@ -18,8 +18,8 @@
               {% for photo in photos %}
               <img alt="{{photo.alt_text}}" loading="lazy" class="responsive-img card-panel" width="100%" src="{{photo.url}}" />
               {% endfor%}
-              <h4 class="section-subtitle mt-3 mb-0">{{ postcard.greeting }}</h4>
-              <em>{{ postcard.message }}</em>
+              <h4 class="section-subtitle mt-3 mb-0 font-script">{{ postcard.greeting }}</h4>
+              <em class="font-script">{{ postcard.message }}</em>
             </div>
           </div>
         </div>
