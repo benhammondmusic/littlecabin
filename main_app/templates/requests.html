@@ -8,7 +8,7 @@
         <div class="section-head mt-5 mt-lg-0">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Requests</span>
           <h2 class="section-title text-dark mt-3">Ideas, Fixes, To-Do's</h2>
-          <p class="section-subtitle mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check the box. You can also edit any active request (spelling mistakes, clarifications, etc) by clicking on its text.</p>
+          <p class="section-subtitle text-dark mt-3">If you think of something that would benefit the property, add an item! If you're able to complete a task or it's no longer needed, check the box. You can also edit any active request (spelling mistakes, clarifications, etc) by clicking on its text.</p>
         </div>
         <div class="col-12"></div>
         <div class="requests-content mt-5 me-0 me-md-5">
@@ -60,8 +60,8 @@
           {% if show_user_bar %}
           <div class="my-4">
             <div class="clearfix">
-              <span id="user-requests" class="d-block w-75 float-start fw-bold small">Your Requests (All Time ✔)</span>
-              <span class="d-block w-25 float-end fw-bold small text-end">{{completion_rate_user}}%</span>
+              <span id="user-requests" class="d-block w-75 float-start fw-bold text-dark small">Your Requests (All Time ✔)</span>
+              <span class="d-block w-25 float-end fw-bold small text-end text-dark">{{completion_rate_user}}%</span>
             </div>
             <div class="progress mt-2">
               <div class="progress-bar bg-warning text-dark" role="progressbar" aria-labelledby="user-requests" style="width: {{completion_rate_user}}%" aria-valuenow="{{completion_rate_user}}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -70,8 +70,8 @@
           {% endif %}
           <div class="mt-4">
             <div class="clearfix">
-              <span id="all-requests-ytd" class="d-block w-75 float-start fw-bold small">All Requests (Year to Date ✔)</span>
-              <span class="d-block w-25 float-end fw-bold small text-end">{{completion_rate_past_year}}%</span>
+              <span id="all-requests-ytd" class="d-block w-75 float-start fw-bold text-dark small">All Requests (Year to Date ✔)</span>
+              <span class="d-block w-25 float-end fw-bold small text-end text-dark">{{completion_rate_past_year}}%</span>
             </div>
             <div class="progress mt-2">
               <div class="progress-bar bg-success text-dark" role="progressbar" aria-labelledby="all-requests-ytd" style="width: {{completion_rate_past_year}}%" aria-valuenow="{{completion_rate_past_year}}" aria-valuemin="0" aria-valuemax="100"></div>

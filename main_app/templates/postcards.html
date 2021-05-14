@@ -7,7 +7,7 @@
         <div class="section-head text-center mx-auto narrow">
           <span class="pre-title small position-relative fw-bold text-dark text-uppercase">Postcards</span>
           <h2 class="section-title text-dark mt-3">Memories and More</h2>
-          <p class="section-subtitle mt-3 mb-0">View recent postcards, and create your own.</p>
+          <p class="section-subtitle text-dark mt-3 mb-0">View recent postcards, and create your own.</p>
 
           <a href="{% url 'create_postcard' %}" class="btn btn-warning shadow-sm my-4 fw-bold">Create a Postcard</a>
         </div>
@@ -25,20 +25,20 @@
           {% endfor %}
           <div class="postcard-post-body p-4">
             <div class="postcard-post-meta clearfix">
-              <h3 class="postcard-post-tag text-dark fw-bold text-decoration-none me-4 font-script">{{ card.postcard.greeting }}</h3>
+              <h2 class="postcard-post-tag text-dark fw-bold text-decoration-none me-4 font-script">{{ card.postcard.greeting }}</h2>
             </div>
 
-            <p class="postcard-post-title mt-2 mb-0 font-script">{{ card.postcard.message }}</p>
+            <h3 class="postcard-post-title mt-2 mb-0 text-dark font-script">{{ card.postcard.message }}</h3>
 
-            <p class="post-date d-inline-block mt-2 font-script">
+            <h3 class="post-date d-inline-block mt-2 text-dark font-script">
               {{ card.author.first_name }} {{ card.author.last_name.0 }}. {% if card.postcard.owner|stringformat:"s" == user.username|stringformat:"s" %}
               <span class="postcard-btns bg-white rounded">
                 <a href="{% url 'update_postcard' card.postcard.id %}"><i alt="edit postcard" class="fas fa-pencil-alt mx-1 text-dark"></i></a><a href="{% url 'delete_postcard' card.postcard.id %}"><i alt="delete postcard" class="fas fa-trash mx-1 text-dark"></i></a>
               </span>
               {% endif %}
-            </p>
+            </h3>
 
-            <p class="post-date d-block mt-2 font-script">{{ card.postcard.created|timesince}} ago</p>
+            <small class="post-date d-block text-dark mt-2">{{ card.postcard.created|timesince}} ago</small>
           </div>
         </div>
       </div>

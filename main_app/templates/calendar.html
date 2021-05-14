@@ -10,14 +10,14 @@
           <span class="pre-title text-dark small position-relative fw-bold text-uppercase">Calendar</span>
           <h2 class="calendar-title text-dark section-title mt-3 mb-1">Family Weeks</h2>
           <details class="mb-4">
-          <summary>How To Use...</summary>
+          <summary class="text-dark">How To Use...</summary>
           <p>This is the current family rotation schedule for the next 3 years. If you'd like to propose a swap, click the button next to the week you want. If a member of that week's owner group accepts, the dates will automatically swap on the calendar. </p>
           </details>
 
-  <h3>{{display_year}} Schedule:</h3>
+  <h3 class="text-dark">{{display_year}} Schedule:</h3>
           <ul class="calendar-list">
             {% for event in events %}
-            <li class="calendar-list-item my-2"><span class="align-middle">{{ event }} </span>
+            <li class="calendar-list-item my-2 text-dark"><span class="align-middle">{{ event }} </span>
 
             {% if event.display_swap_btn  %}
              <a href="{% url 'propose_swap' event.id %}" class="mx-2 align-middle btn btn-xs btn-dark bg-dark shadow-sm fw-bold">Swap</a>
@@ -48,19 +48,19 @@
           <div class="video-box shadow-lg p-3 ps-1 ps-md-5 position-relative bg-light rounded">
 
 
-          <h4>Outgoing Swaps:</h4>
+          <h4 class="text-dark">Outgoing Swaps:</h4>
           <ul>
           {% for swap in outgoing_swaps %}
-            <li><small>{{swap}}</small><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-3">Withdraw</a></li>
+            <li class="text-dark"><small >{{swap}}</small><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-3">Withdraw</a></li>
             {% empty %}
             <li class="text-secondary"><em>You have no pending swaps</em></li>
           {% endfor %}
           </ul>
 
-          <h4>Incoming Swaps:</h4>
+          <h4 class="text-dark">Incoming Swaps:</h4>
           <ul>
           {% for swap in incoming_swaps %}
-            <li><small>{{swap}}</small><a href="{% url 'approve_swap' swap.id %}" class="align-middle btn btn-sm btn-dark bg-dark shadow-sm fw-bold mx-3">Approve</a><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Deny</a></li>
+            <li class="text-dark"><small>{{swap}}</small><a href="{% url 'approve_swap' swap.id %}" class="align-middle btn btn-sm btn-warning shadow-sm fw-bold mx-3">Approve</a><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Deny</a></li>
             {% empty %}
             <li class="text-secondary"><em >No swaps are pending your approval</em></li>
           {% endfor %}
