@@ -99,7 +99,7 @@ h6 {
   padding: 120px 0;
 }
 .section-bg {
-  background: linear-gradient(to right, rgb(250 250 250), rgb(219 219 219 / 35%)), url(../images/dot-bg.png);
+  background: linear-gradient(to right, rgb(250 250 250), rgb(219 219 219 / 35%)), url("../images/dot-bg.2fdcad8c5eb4.png");
 }
 .section-title {
   font-size: 2.9rem;
