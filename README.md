@@ -232,6 +232,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - aligning automatically generated forms in Django; required displaying them as a table instead of `<p>` elements, and then adding my bootstrap classes to the table surrounding the template tag.
 - adding a "Demo Login" button to allow people quickly just checking out the app to have a useable account and populated data from other auto-generated users. Not every person is going to create an account just to check out your little project, so making it as easy as possible to see what's behind the login screen
 - adding a theme switcher; I adapted a light/dark mode tutorial to just adjust the colors. Eventually it would be great to have a lake theme, mountain theme, beach theme, and other relevant vacation vibes. The theme switcher relies on CSS variables which I was already using, so it would pretty quick to set up. It also records the user's preference in localstorage, so the theme persists between sessions.
+- I wanted a visual representation of the family, not only for the historical and social aspect, but also to represent to people viewing the app exactly how complicated managing so many user in sub-families can be. If I were building in React I would have created a dynamic, component based family tree, and I still may. But for now, I decided to just create a static image and to use the tree as an exercise in learning Figma, which I have recently been exploring.
 
 ? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
 
