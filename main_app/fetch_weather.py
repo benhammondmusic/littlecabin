@@ -13,7 +13,7 @@ def update_current_weather():
 
     current_conditions = weather_response["weather"][0]["description"]
     current_temp = int(weather_response["main"]["temp"])
-    print("***WEATHER***", current_conditions, current_temp)
+    # print("***WEATHER***", current_conditions, current_temp)
     return {"conditions": current_conditions, "temp": current_temp}
     #  &deg;
 
