@@ -11,16 +11,14 @@ Designer Website - https://angrystudio.com
 :root {
   /* 
 #29461a #638129 #5E0B15 #ffc107 #e1d7bc #ffffff
-#212529 #2c333a #3d4852 #5f7383 #346d7e #6da6b1 
+#212529 #2c333a #5f7383 #346d7e #6da6b1 
 */
 
   --white: #ffffff;
   --flash: #ffc107;
   --grey: #e1d7bc;
-  --slate: #3d4852;
   --dark: #2c333a;
-  --darker: #212529;
-  --darkest: #29461a;
+  --color: #29461a;
   --wood: #5e0b15;
 }
 
@@ -28,10 +26,8 @@ Designer Website - https://angrystudio.com
   --white: #ffffff;
   --flash: #7a918d;
   --grey: #e1d7bc;
-  --slate: #3d4852;
   --dark: #2c333a;
-  --darker: #3993dd;
-  --darkest: #736372;
+  --color: #336699;
   --wood: #5e0b15;
 }
 
@@ -112,7 +108,6 @@ body {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 ::-webkit-scrollbar-thumb {
-  /* background: var(--darker); */
   border-radius: 10px;
 }
 h1,
@@ -136,7 +131,7 @@ h6 {
   color: var(--white) !important;
 }
 .bg-dark {
-  background: var(--darkest) !important;
+  background: var(--color) !important;
 }
 .narrow {
   max-width: 800px;
@@ -146,8 +141,8 @@ h6 {
 }
 .bg-success,
 .btn-success {
-  background-color: var(--darker) !important;
-  border-color: var(--darker) !important;
+  background-color: var(--dark) !important;
+  border-color: var(--dark) !important;
 }
 .btn-group-xs > .btn,
 .btn-xs {
@@ -210,7 +205,7 @@ h6 {
   max-height: 1.2rem;
 }
 .primary-nav .navbar-nav .nav-link {
-  color: var(--darkest);
+  color: var(--color);
   font-weight: 500;
   padding-right: 1.2rem;
   padding-left: 1.2rem;
@@ -334,7 +329,7 @@ h6 {
 /*-- login --*/
 .login-box-icon {
   font-size: 3rem;
-  color: var(--darkest);
+  color: var(--color);
 }
 .login-box-title {
   font-size: 1.225rem;
@@ -401,7 +396,7 @@ form ul li {
 }
 
 /* .about-text {
-  color: var(--darkest);
+  color: var(--color);
 } */
 
 /*-- postcard --*/

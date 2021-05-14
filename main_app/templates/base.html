@@ -106,9 +106,11 @@
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
-          {% if user.is_authenticated %}
-          <em class="mx-4 nav-item text-dark">{{user.first_name|title}} {% if user.groups.all.0 == None %} (pending) {% endif %} </em>
-          {% endif %}
+          <div class="d-flex flex-column no-wrap w-100 align-items-center">
+            {% if user.is_authenticated %}
+            <em class="mx-4 nav-item text-dark">{{user.first_name|title}} {% if user.groups.all.0 == None %} (pending) {% endif %} </em>
+            {% endif %}
+          </div>
         </div>
       </div>
     </nav>
@@ -123,6 +125,12 @@
         </div>
         {% endcomment %}
         <div class="sidenav-menu mt-5">
+        {% if user.is_authenticated %}
+          <div class="mb-5">
+            <p class="px-0">Hi {{user.first_name|title}}!</p>
+            <small>Camp Weather:</br> {% current_weather %}&deg;</small>
+          </div>
+        {% endif %}
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link px-0" href="{% url 'home' %}">Home</a>
