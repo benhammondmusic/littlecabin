@@ -13,7 +13,8 @@
           <h2 class="hero-subtitle text-dark mt-3 font-script">Make Memories, Not Spreadsheets</h2>
           <p class="hero-text mt-3 mb-0"></p>
           {% if not user.is_authenticated %}
-          <a href="{% url 'login' %}" class="btn btn-warning shadow-sm mt-4 fw-bold">Log In</a><a href="{% url 'register' %}" class="btn btn-dark bg-dark shadow-sm mx-3 mt-4 fw-bold">Register</a>
+          <a href="{% url 'demo' %}" class="btn btn-light shadow-sm mr-2 mt-4 fw-bold">Use Demo Account</a>
+          <a href="{% url 'login' %}" class="btn btn-warning shadow-sm mx-2 mt-4 fw-bold">Log In</a><a href="{% url 'register' %}" class="btn btn-dark bg-dark shadow-sm mx-2 mt-4 fw-bold">Register</a>
           {% endif %}
         </div>
       </div>

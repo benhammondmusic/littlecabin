@@ -241,6 +241,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Figma](https://www.figma.com/) - Graphics
 - [Favicon.io](https://favicon.io/) - Favicon
 - https://www.remove.bg/
+- [Random User API](https://randomuser.me/api/)
 
 ## Resources
 

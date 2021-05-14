@@ -18,6 +18,10 @@ from django.contrib.auth.decorators import user_passes_test
 from .fetch_calendar import get_upcoming_events
 from django.http import HttpResponse
 
+# for Demo - Random Users
+import requests as api_requests
+import random
+
 from .populate_calendar import populate_google_calendar, swap_weeks_google_calendar
 
 # for DB models
@@ -80,6 +84,70 @@ def home(request):
     owner_groups = Group.objects.all().exclude(name="admin").order_by('name')
     context = {"pending_users": pending_users, "owner_groups":owner_groups}
     return render(request, 'home.html', context)
+
+def create_random_user():
+    
+    json_results = api_requests.get('https://randomuser.me/api/').json()["results"][0]
+    first_name = json_results["name"]["first"]
+    last_name = json_results["name"]["last"]
+    username_email = json_results["email"]
+    password= json_results["login"]["password"]
+
+    # Create user and save to the database
+    user = User.objects.create_user(username_email, username_email, password)
+    
+    # Update fields and then save again
+    user.first_name = first_name
+    user.last_name = last_name
+    user.save()
+    return user
+
+
+def demo(request):
+    print("using demo account")
+    demo_user = User.objects.get(username="demo@benhammond.tech")
+    # log in as existing demo user
+    login(request, demo_user)
+
+    # create a pending user that requires family placement
+    random_pending_user = create_random_user()
+
+    # create some requests under the pending user
+    item = f"Clean {random_pending_user.first_name}'s bunk bed"
+    request1 = Request(owner=random_pending_user, item=item)
+    request1.save()
+    request2 = Request(owner=random_pending_user, item="Scoop out the fireplace ash")
+    request2.save()
+
+    # create another random user and assign to a family
+    random_approved_user = create_random_user()
+
+    # assign this approved used to a random family group (other than Tom which will contain the DEMO user)
+    member_group = Group.objects.get(name="member")
+    owner_groups = Group.objects.all().exclude(name="admin").exclude(name="member").exclude(name="5-Tom")
+    random_owner_group = random.choice(owner_groups)
+
+    member_group.user_set.add(random_approved_user)
+    random_owner_group.user_set.add(random_approved_user)
+
+    # create an incoming swaps for Demo's 1st week FROM the random approved user, offering random's first week
+
+    demo_owner_group = Group.objects.get(name="5-Tom")
+    possible_desired_weeks = Week.objects.filter(owner_group=demo_owner_group)
+    desired_week = possible_desired_weeks[0]
+
+    initiator = random_approved_user
+    initiator_ownergroup = random_owner_group # from above
+    initiators_weeks = Week.objects.filter(owner_group=initiator_ownergroup)
+    offered_week = initiators_weeks[0]
+
+    swap = Swap(initiator=initiator,desired_week=desired_week, offered_week=offered_week)
+    swap.save()
+
+    # create some postcards under the Demo user's account
+
+
+    return redirect('home')
 
 def register(request):
     error_message = ''
