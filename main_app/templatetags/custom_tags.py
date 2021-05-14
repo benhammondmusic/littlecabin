@@ -21,9 +21,9 @@ def current_weather():
 
     # if no weather in DB, fetch it from API and store to DB as well
     if not weather:
-        print("no stored weather")
+        # print("no stored weather")
         weather_dict = update_current_weather()
-        print("fetching current weather via API") 
+        # print("fetching current weather via API") 
         weather = WeatherReport()
         weather.temp = weather_dict["temp"]
         weather.conditions = weather_dict["conditions"]  
@@ -32,9 +32,9 @@ def current_weather():
     # if it exists in DB, use if it's less than 10 minutes old, else refetch from API
     now = timezone.now()
     if now - weather.created > timezone.timedelta(minutes = 10):
-        print("stored weather out of date" )
+        # print("stored weather out of date" )
         weather_dict = update_current_weather()
-        print("refreshing current weather via API") 
+        # print("refreshing current weather via API") 
         weather = WeatherReport()
         weather.temp = weather_dict["temp"]
         weather.conditions = weather_dict["conditions"]  
@@ -43,7 +43,7 @@ def current_weather():
 
     temp = weather.temp
     conditions = weather.conditions
-    print("TEMP", temp, "CONDITIONS", conditions)
+    # print("TEMP", temp, "CONDITIONS", conditions)
 
     weather_string = f'{conditions} {temp}'
     return weather_string
