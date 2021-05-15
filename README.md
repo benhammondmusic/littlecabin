@@ -16,6 +16,7 @@ My initial planning started by writing out my user stories, and conceptually wor
 _As A User (Not Logged In) I Want To:_
 
 - View information about the app itself, and understand why I would want to make an account for an existing managed property, or use the app for my own property
+- View app in a variety of themes (dark, light, eventually forest, beach, mountain, etc)
 
 _As An Authorized User I Want To:_
 
@@ -24,6 +25,7 @@ _As An Authorized User I Want To:_
 - Register a new account, and be automatically pre-approved based on an admin "whitelist"
 - Log in to my existing account, using the email address I registered with
 - Log out of an account
+- View the current weather conditions at my family property
 
 **Postcards**
 
@@ -60,20 +62,13 @@ _As An Authorized User I Want To:_
 **Stretch Goals**
 
 - Log in using Facebook, Google, etc
-
-- View app in a variety of themes (dark, light, forest, beach, mountain, etc)
 - Signup for notifications (text, email) when actions occur such as a request for one of my weeks is made, or a family member reacts to one of my postcards
-
 - Sort the businesses by family recommendations, dynamically load via API
 - Recommend a business on the list
-
-- Upload a photo for my leave of the tree
-
+- Upload a photo for my leaf of the tree
 - "Agree" with an existing request to prioritize it
-
 - Offer one of my weeks up for sale
 - Request to purchase another family's week
-
 - Add an emoji reaction to someone's post
 
 ### Structure
@@ -120,20 +115,21 @@ Since I was creating this project on my own, the function of my style guide was 
 
 ### Colors:
 
-![Screenshot of HEX codes from color scheme](little-cabin-colors.png)
+Light Mode (default)
+--white: #ffffff;
+--flash: #ffc107;
+--grey: #e1d7bc;
+--dark: #2c333a;
+--color: #29461a;
+--wood: #5e0b15;
 
-- white: #ffffff;
-- flash: #ffc107;
-- mid: #638129;
-- grey: #e1d7bc;
-- chill: #6da6b1
-- midgrey: #5f7383;
-- dark2: #346d7e
-- slate: #3d4852;
-- dark: #2c333a;
-- darker: #212529;
-- darkest: #29461a;
-- wood: #5e0b15;
+[data-theme='dark']
+--white: #0c1445;
+--flash: #5c54a4;
+--grey: #f8e48b;
+--dark: #ffffff;
+--color: #4c408e;
+--wood: #6ab0f1;
 
 ### Fonts:
 
@@ -169,6 +165,8 @@ Since I was creating this project on my own, the function of my style guide was 
 - Amazon AWS
 - Google Calendar API
 - Google Cloud Service Account
+- Open Weather API
+- Random User API
 - Heroku
 
 ### Django
@@ -233,8 +231,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - adding a "Demo Login" button to allow people quickly just checking out the app to have a useable account and populated data from other auto-generated users. Not every person is going to create an account just to check out your little project, so making it as easy as possible to see what's behind the login screen
 - adding a theme switcher; I adapted a light/dark mode tutorial to just adjust the colors. Eventually it would be great to have a lake theme, mountain theme, beach theme, and other relevant vacation vibes. The theme switcher relies on CSS variables which I was already using, so it would pretty quick to set up. It also records the user's preference in localstorage, so the theme persists between sessions. I learned several things throughout this process, including the benefits of naming your variables based on their role or context, rather than their general color. Also, learned how to place bootstrap color utility classes `bg-dark` on containing `<div>`s to cascade that color class to all the contained text elements(`<p>`, `<a>`, etc) rather than adding classes to every element
 - I wanted a visual representation of the family, not only for the historical and social aspect, but also to represent to people viewing the app exactly how complicated managing so many user in sub-families can be. If I were building in React I would have created a dynamic, component based family tree, and I still may. But for now, I decided to just create a static image and to use the tree as an exercise in learning Figma, which I have recently been exploring.
-
-? https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django
+- I wanted to let members view the current weather conditions at the property; this turned out to be significantly more involved than anticipated. I first need to make a call to the weather api, which was straightforward, particularly compared to the Google Calendar API. Next I needed a way of displaying the info, and settled on the side nav menu since it would be available on every page. However, the API is rate-limited and there would be no need to recall the API every time the page loaded, but instead every several minutes. To accomplish this, I created a model `WeatherReport` which stored the temp, conditions, and timestamp. Then, whenever the page is reloaded, it checked the freshness of the weather report in the database and repings the API as needed. Also significantly tricky was sending variable data (the weather conditions) to my `base.html` template which was providing my nav and footer for every page. To do this, I created another custom template tag (similar to how I was able to add anchor links partway down my home page). This allowed me to run the logic needed in a python file, and then call and retrieve the string answer in my template using `{% current_weather %}
 
 ## Tools and Libraries
 
@@ -245,6 +242,7 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Favicon.io](https://favicon.io/) - Favicon
 - https://www.remove.bg/
 - [Random User API](https://randomuser.me/api/)
+- [Open Weather API](https://openweathermap.org/)
 
 ## Resources
 
@@ -256,7 +254,16 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - [Extending UserCreationForm](https://dev.to/yahaya_hk/usercreation-form-with-multiple-fields-in-django-ek9) - Blog Post
 - [Quickstart Google Calendar API - Python](https://developers.google.com/calendar/quickstart/python) - Guide
 - [Accessibility for Hamburger Menu](https://medium.com/@linlinghao/accessibility-for-hamburger-menu-a37fa9617a89) - Blog Post
-- [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku) - Blog Post
+- [Adding Google Cloud Credentials To Heroku](https://devdojo.com/bryanborge/adding-google-cloud-credentials-to-heroku) Blog Post
 - Stack Overflow: [500 Error When Debug False With Heroku And Django](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django), [Getting last Monday of a month](https://stackoverflow.com/questions/12796389/python-get-last-monday-of-july-2010/12796542), [Using Service Account with Google API](https://stackoverflow.com/questions/49480930/django-server-rw-access-to-self-owned-google-calendar)
 - [Intro to Google Developer Service Account](https://www.daimto.com/google-developer-console-service-account/) - Blog Post
+- [Google Cal Integration Django](https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django)
 - [Light/Dark Mode with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) - Blog Post
+
+## Repo
+
+- [GitHub](https://github.com/benhammondmusic/littlecabin/)
+
+## Deployed Website
+
+- [littlecabin.herokuapp.com](https://littlecabin.herokuapp.com)
