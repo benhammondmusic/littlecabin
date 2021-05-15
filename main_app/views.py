@@ -192,7 +192,10 @@ def calendar(request):
     # if user is an admin, show extra buttons
     user_is_admin = is_admin(request.user)
 
+    
     # format events and add user group info
+    current_user_ownergroup = None
+
     for event in events:
         formatted_start_date = event.start_date.strftime("%b %-d")
         event.start_date = formatted_start_date

@@ -45,24 +45,24 @@
       </div>
       <div class="col-12 col-lg-7">
         <div class="wings position-relative p-5 mt-5 mt-lg-0">
-          <div class="video-box shadow-lg p-3 ps-1 ps-md-5 position-relative bg-light rounded">
+          <div class="video-box shadow-lg p-3 ps-1 ps-md-5 position-relative bg-white text-dark rounded">
 
 
-          <h4 class="text-dark">Outgoing Swaps:</h4>
+          <h4>Outgoing Swaps:</h4>
           <ul>
           {% for swap in outgoing_swaps %}
-            <li class="text-dark"><small >{{swap}}</small><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-3">Withdraw</a></li>
+            <li><small >{{swap}}</small><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold mx-3">Withdraw</a></li>
             {% empty %}
-            <li class="text-secondary"><em>You have no pending swaps</em></li>
+            <li><small>You have no pending swaps</small></li>
           {% endfor %}
           </ul>
 
-          <h4 class="text-dark">Incoming Swaps:</h4>
+          <h4>Incoming Swaps:</h4>
           <ul>
           {% for swap in incoming_swaps %}
-            <li class="text-dark"><small>{{swap}}</small><a href="{% url 'approve_swap' swap.id %}" class="align-middle btn btn-sm btn-warning shadow-sm fw-bold mx-3">Approve</a><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Deny</a></li>
+            <li><small>{{swap}}</small><a href="{% url 'approve_swap' swap.id %}" class="align-middle btn btn-sm btn-warning shadow-sm fw-bold mx-3">Approve</a><a href="{% url 'delete_swap' swap.id %}" class="align-middle btn btn-sm btn-danger shadow-sm fw-bold">Deny</a></li>
             {% empty %}
-            <li class="text-secondary"><em >No swaps are pending your approval</em></li>
+            <li><small >No swaps are pending your approval</small></li>
           {% endfor %}
           </ul>
 
