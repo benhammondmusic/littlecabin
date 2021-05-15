@@ -4,10 +4,10 @@
 
 ### Little Cabin is a single web app that provides multiple management tools such as:
 
-- A shared schedule with permissions-based week swapping and Google Calendar integration
-- A micro social media network allowing family members to share virtual "postcards" (short notes with accompanying photos uploaded from their device)
-- A collaborative list collecting requests from members on maintenance items, purchase ideas, and other helpful suggestions. Members can edit or complete anyone's request, hide completed tasks, and view real-time reports on task completion rates
-- A knowledge repository with helpful information including contact info for local businesses and emergency protocols, historical information about the property, a family tree to see members, and (coming soon) legal trust information, weekly chores, dues schedule, and more
+- Shared Group Calendar
+- Private Social Media Network
+- Collaborative To-Do List
+- Info Center
 
 ## Project Planning
 
@@ -114,6 +114,8 @@ To assist in developing the data models, I sketched an ERD (entity relationship 
 Since I was creating this project on my own, the function of my style guide was more to help me keep track of design and copy ideas that I liked, rather than to strictly guide team members on a unified style. The choices certainly evolved and shifted as the app expanded, but updating the guide as the "source of truth" was essential to the workflow, even when working alone. It saves time to be able to copy/paste HEX color codes, font styles, terminology and slogans, etc, and reduces executive function required to make all of those tiny decisions over and over.
 
 ### Colors:
+
+![Hex Colors](colors.png)
 
 Light Mode (default)
 --white: #ffffff;
