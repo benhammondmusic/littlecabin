@@ -2,12 +2,12 @@
 
 ![Securely share your family's get-away and memories](little-cabin-meta.png)
 
-Secure, family-only web application providing:
+### Little Cabin is a single web app that provides multiple management tools such as:
 
-- **shared group calendar** with permissions-based week swapping and selling
-- **social network** offering "postcards" (short note with a photo)
-- **collaborative todo list** collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
-- **knowledge center** with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
+- A shared schedule with permissions-based week swapping and Google Calendar integration
+- A micro social media network allowing family members to share virtual "postcards" (short notes with accompanying photos uploaded from their device)
+- A collaborative list collecting requests from members on maintenance items, purchase ideas, and other helpful suggestions. Members can edit or complete anyone's request, hide completed tasks, and view real-time reports on task completion rates
+- A knowledge repository with helpful information including contact info for local businesses and emergency protocols, historical information about the property, a family tree to see members, and (coming soon) legal trust information, weekly chores, dues schedule, and more
 
 ## Project Planning
 
@@ -148,13 +148,11 @@ Light Mode (default)
 - **Title**: Little Cabin App
 - **Subtitle**: Securely share your family get-away
 - **Tagline**: Make Memories, Not Spreadsheets
-- **Summary**: Little Cabin is a...
-  - shared group calendar with permissions-based week swapping and selling
-  - micro social media network offering "postcards" (short note with a photo)
-  - collaborative "to-do" style list collecting requests from members on maintenance items, purchase ideas, or other helpful suggestions. Members can "agree" and upvote requests
-  - knowledge center with important information including legal trust information, weekly chores, dues schedule, contact info for local businesses and emergency protocols
-  - swapping the events on Google Calendar was resulting in all the data other than dates and owner names being erased; this ended up being a result of using `update()` (which sends a PUT request), rather than `patch()`, which sends a PATCH request. PUT was replacing the entire event object, whereas PATCH edits only the fields sent in the request and leaves the rest of the resource as is.
-  - template I used has a slide-in side menu for smaller screen sizes, and by default the only way to close that menu (without clicking an item) is a tiny little "x" in the corner. Modern UX seems to trend towards clicking "off the popup" will work to close a menu, so I was able to understand how the template's JavaScript was working, and apply the same ` closeSidenavFunc()` in an event listener attached to the grayed out background that was covering the rest of the screen already.
+- **Summary**: Little Cabin is a single web app that provides multiple management tools such as:
+  - A shared schedule with permissions-based week swapping and Google Calendar integration
+  - A micro social media network allowing family members to share virtual "postcards" (short notes with accompanying photos uploaded from their device)
+  - A collaborative list collecting requests from members on maintenance items, purchase ideas, and other helpful suggestions. Members can edit or complete anyone's request, hide completed tasks, and view real-time reports on task completion rates
+  - A knowledge repository with helpful information including contact info for local businesses and emergency protocols, historical information about the property, a family tree to see members, and (coming soon) legal trust information, weekly chores, dues schedule, and more
 
 ## Tech Used
 
@@ -182,7 +180,9 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - organizing your headings hierarchy (`<h1>`-`<h6>`); in general there should only by one `<h1>`, and all subheadings should be in order (e.g. don't skip `<h3>` by going directly from an `<h2>` to an `<h4>`)
 - ensuring the color contrast every bit of text and its background is high enough to be read
 
-## Problems Solved (work in progress)
+## Problems Solved
+
+> This Section will be formatted and split off into multiple blog posts and tweets in hopes of savings fellow devs and future me from making the same mistakes
 
 - Building the project from the user's perspective, i.e. getting a working frontend displayed as quickly as possible. integrating an existing design into an extensible Django base template
 - fixing deployment issues with DEBUG config vars
@@ -232,6 +232,8 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - adding a theme switcher; I adapted a light/dark mode tutorial to just adjust the colors. Eventually it would be great to have a lake theme, mountain theme, beach theme, and other relevant vacation vibes. The theme switcher relies on CSS variables which I was already using, so it would pretty quick to set up. It also records the user's preference in localstorage, so the theme persists between sessions. I learned several things throughout this process, including the benefits of naming your variables based on their role or context, rather than their general color. Also, learned how to place bootstrap color utility classes `bg-dark` on containing `<div>`s to cascade that color class to all the contained text elements(`<p>`, `<a>`, etc) rather than adding classes to every element
 - I wanted a visual representation of the family, not only for the historical and social aspect, but also to represent to people viewing the app exactly how complicated managing so many user in sub-families can be. If I were building in React I would have created a dynamic, component based family tree, and I still may. But for now, I decided to just create a static image and to use the tree as an exercise in learning Figma, which I have recently been exploring.
 - I wanted to let members view the current weather conditions at the property; this turned out to be significantly more involved than anticipated. I first need to make a call to the weather api, which was straightforward, particularly compared to the Google Calendar API. Next I needed a way of displaying the info, and settled on the side nav menu since it would be available on every page. However, the API is rate-limited and there would be no need to recall the API every time the page loaded, but instead every several minutes. To accomplish this, I created a model `WeatherReport` which stored the temp, conditions, and timestamp. Then, whenever the page is reloaded, it checked the freshness of the weather report in the database and repings the API as needed. Also significantly tricky was sending variable data (the weather conditions) to my `base.html` template which was providing my nav and footer for every page. To do this, I created another custom template tag (similar to how I was able to add anchor links partway down my home page). This allowed me to run the logic needed in a python file, and then call and retrieve the string answer in my template using `{% current_weather %}
+- swapping the events on Google Calendar was resulting in all the data other than dates and owner names being erased; this ended up being a result of using `update()` (which sends a PUT request), rather than `patch()`, which sends a PATCH request. PUT was replacing the entire event object, whereas PATCH edits only the fields sent in the request and leaves the rest of the resource as is.
+- template I used has a slide-in side menu for smaller screen sizes, and by default the only way to close that menu (without clicking an item) is a tiny little "x" in the corner. Modern UX seems to trend towards clicking "off the popup" will work to close a menu, so I was able to understand how the template's JavaScript was working, and apply the same ` closeSidenavFunc()` in an event listener attached to the grayed out background that was covering the rest of the screen already.
 
 ## Tools and Libraries
 
