@@ -118,20 +118,22 @@ Since I was creating this project on my own, the function of my style guide was 
 ![Hex Colors](colors.png)
 
 Light Mode (default)
---white: #ffffff;
---flash: #ffc107;
---grey: #e1d7bc;
---dark: #2c333a;
---color: #29461a;
---wood: #5e0b15;
+
+- white: #ffffff
+- flash: #ffc107
+- grey: #e1d7bc
+- dark: #2c333a
+- color: #29461a
+- wood: #5e0b15
 
 [data-theme='dark']
---white: #0c1445;
---flash: #5c54a4;
---grey: #f8e48b;
---dark: #ffffff;
---color: #4c408e;
---wood: #6ab0f1;
+
+- white: #0c1445
+- flash: #5c54a4
+- grey: #f8e48b
+- dark: #ffffff
+- color: #4c408e
+- wood: #6ab0f1
 
 ### Fonts:
 
