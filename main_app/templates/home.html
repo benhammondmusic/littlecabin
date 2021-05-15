@@ -3,7 +3,7 @@
 <!-- Hero Section Start-->
 
 
-<section class="hero bg-white">
+<section class="hero bg-white text-dark">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-12 col-lg-6 order-2 order-lg-1 mt-4 mt-lg-0 pt-4 pt-lg-0">
@@ -32,7 +32,7 @@
 <!-- Hero Section End-->
 
 {% if pending_users %}
-<section class="mt-4 pending bg-white">
+<section class="mt-4 pending text-dark bg-white">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-12 col-lg-6 order-2 order-lg-1 mt-5 mt-lg-0 pt-4 pt-lg-0">
@@ -48,7 +48,7 @@
             <form action="" method="post">
             {% csrf_token %}
             <input type="hidden" name="pending_user_id" value="{{pending_user.id}}" />
-            <select name="pending_user_ownergroup" required>
+            <select class="btn-light shadow-sm p-1" name="pending_user_ownergroup" required>
                 <option value="" selected disabled hidden>Choose Owner-Group</option>
                 {% for owner_group in owner_groups %}
                 <option value="{{ owner_group }}">{{ owner_group }}</option>
@@ -110,8 +110,8 @@
       <div class="col-12 col-lg-6">
         <div class="about-wrap text-center ps-0 ps-lg-5">
           <div class="row gx-3">
-            <div class="col-6 col-lg-6">
-              <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
+            <div class="col-6 col-lg-6 ">
+              <div class="about-box mt-3 px-4 py-4 py-md-5 bg-warning shadow-sm ">
                 <a href="{% url "calendar" %}">
                   <i class="far fa-calendar-alt about-icon"></i>
                   <h3 class="about-title mt-3">Calendar</h3>
@@ -119,8 +119,8 @@
                 </a>
               </div>
             </div>
-            <div class="col-6 col-lg-6">
-              <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
+            <div class="col-6 col-lg-6 ">
+              <div class="about-box mt-3 px-4 py-4 py-md-5  bg-warning shadow-sm ">
                 <a href="{% url "postcards" %}">
                   <i class="fas fa-mail-bulk about-icon"></i>
                   <h3 class="about-title mt-3">Postcards</h3>
@@ -128,8 +128,8 @@
                 </a>
               </div>
             </div>
-            <div class="col-6 col-lg-6">
-              <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
+            <div class="col-6 col-lg-6 ">
+              <div class="about-box mt-3 px-4 py-4 py-md-5 bg-warning shadow-sm ">
                 <a href="{% url "requests" %}">
                   <i class="fas fa-tools about-icon"></i>
                   <h3 class="about-title mt-3">Requests</h3>
@@ -137,8 +137,8 @@
                 </a>
               </div>
             </div>
-            <div class="col-6 col-lg-6">
-              <div class="about-box bg-white mt-3 px-4 py-4 py-md-5">
+            <div class="col-6 col-lg-6 ">
+              <div class="about-box mt-3 px-4 py-4 py-md-5 bg-warning shadow-sm ">
                 <a href="{% url "info" %}">
                   <i class="fas fa-info-circle about-icon"></i>
                   <h3 class="about-title mt-3">Info</h3>

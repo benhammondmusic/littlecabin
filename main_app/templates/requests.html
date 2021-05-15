@@ -21,7 +21,7 @@
 
                   <button name="submit" value="{{unchecked_request.id}}" class="btn mx-0 px-0"><img title="mark request as complete" alt="unchecked item" src="{% static 'assets/images/uncheck.svg' %}" /></button>
 
-                  <a class="btn px-1" href="{% url 'update_request' unchecked_request.id %}"><h3 title="edit request" class="unchecked font-script">{{unchecked_request.item|title}}</h3></a>
+                  <a class="btn px-1" href="{% url 'update_request' unchecked_request.id %}"><h3 title="edit request" class="unchecked font-script text-dark">{{unchecked_request.item|title}}</h3></a>
                 </form>
               </li>
               {% endfor%}
@@ -35,7 +35,7 @@
 
                   <button name="submit" value="{{checked_request.id}}" class="btn mx-0 px-0"><img title="mark request as incomplete" alt="checked item" src="{% static 'assets/images/check.svg' %}" /></button>
 
-                  <a class="btn px-1" href="{% url 'update_request' checked_request.id %}"><h3 class="checked font-script">{{checked_request.item|title}}</h3></a>
+                  <a class="btn px-1" href="{% url 'update_request' checked_request.id %}"><h3 class="checked font-script text-dark">{{checked_request.item|title}}</h3></a>
                 </form>
               </li>
               {% endfor%}
@@ -63,7 +63,7 @@
               <span id="user-requests" class="d-block w-75 float-start fw-bold text-dark small">Your Requests (All Time ✔)</span>
               <span class="d-block w-25 float-end fw-bold small text-end text-dark">{{completion_rate_user}}%</span>
             </div>
-            <div class="progress mt-2">
+            <div class="progress mt-2 bg-white">
               <div class="progress-bar bg-warning text-dark" role="progressbar" aria-labelledby="user-requests" style="width: {{completion_rate_user}}%" aria-valuenow="{{completion_rate_user}}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
@@ -73,7 +73,7 @@
               <span id="all-requests-ytd" class="d-block w-75 float-start fw-bold text-dark small">All Requests (Year to Date ✔)</span>
               <span class="d-block w-25 float-end fw-bold small text-end text-dark">{{completion_rate_past_year}}%</span>
             </div>
-            <div class="progress mt-2">
+            <div class="progress mt-2 bg-white">
               <div class="progress-bar bg-success text-dark" role="progressbar" aria-labelledby="all-requests-ytd" style="width: {{completion_rate_past_year}}%" aria-valuenow="{{completion_rate_past_year}}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>

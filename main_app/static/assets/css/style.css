@@ -23,12 +23,12 @@ Designer Website - https://angrystudio.com
 }
 
 [data-theme='dark'] {
-  --white: #ffffff;
-  --flash: #7a918d;
-  --grey: #e1d7bc;
-  --dark: #2c333a;
-  --color: #336699;
-  --wood: #5e0b15;
+  --white: #0c1445;
+  --flash: #5c54a4;
+  --grey: #f8e48b;
+  --dark: #ffffff;
+  --color: #4c408e;
+  --wood: #6ab0f1;
 }
 
 /* stylize theme toggle */
@@ -93,6 +93,7 @@ input:checked + .slider:before {
 /*-- General Styles --*/
 body {
   color: var(--white);
+  background-color: var(--white);
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   line-height: 1.8rem;
@@ -130,8 +131,38 @@ h6 {
 .text-muted {
   color: var(--white) !important;
 }
+.text-dark {
+  color: var(--dark) !important;
+}
+.text-grey {
+  color: grey !important;
+}
+.text-white {
+  color: var(--white) !important;
+}
+.text-always-white {
+  color: #fff;
+}
 .bg-dark {
-  background: var(--color) !important;
+  background-color: var(--color) !important;
+}
+.bg-white {
+  background-color: var(--white) !important;
+}
+.bg-success {
+  background-color: var(--color) !important;
+}
+.bg-light,
+.btn-light {
+  background-color: var(--color) !important;
+  border-color: var(--color) !important;
+  color: var(--white);
+}
+.bg-warning,
+.btn-warning {
+  background-color: var(--flash) !important;
+  border-color: var(--flash) !important;
+  color: var(--dark) !important;
 }
 .narrow {
   max-width: 800px;
@@ -154,6 +185,13 @@ h6 {
 .btn-danger {
   background-color: var(--wood) !important;
   border-color: var(--wood) !important;
+  color: var(--white) !important;
+}
+.btn-dark,
+bg-dark {
+  background-color: var(--dark) !important;
+  border-color: var(--dark) !important;
+  color: var(--white);
 }
 .pre-title:after {
   content: '';
@@ -169,7 +207,8 @@ h6 {
   padding: 120px 0;
 }
 .section-bg {
-  background: linear-gradient(to right, rgb(255 255 255), rgb(239 239 239 / 35%)), url(../images/dot-bg.png);
+  background-color: var(--white);
+  /* background: linear-gradient(to right, rgb(255 255 255), rgb(239 239 239 / 35%)), url(../images/dot-bg.png); */
 }
 .section-title {
   font-size: 2.9rem;
@@ -427,15 +466,26 @@ form ul li {
 }
 
 /*--Footer --*/
+.footer {
+  color: #fff;
+  /* var(--white); */
+}
 .footer .email-me {
-  color: var(--flash);
+  color: #fff;
+  text-decoration: none;
+  /* var(--white); */
 }
 .footer a {
-  color: var(--grey);
+  color: #fff;
+  /* var(--white); */
+  /* text-decoration: none; */
+}
+.footer li a {
   text-decoration: none;
 }
 .footer a:hover {
-  color: var(--white);
+  color: #fff;
+  /* var(--white); */
 }
 .footer-logo {
   max-width: 140px;

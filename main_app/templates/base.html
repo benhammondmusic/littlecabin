@@ -43,39 +43,39 @@
   <body>
     <nav id="primary-navbar" class="primary-nav navbar navbar-expand-lg navbar-light bg-white fixed-top font-nunito">
       <div class="container px-4 px-sm-0">
-        <a class="navbar-brand" href="{% url 'home' %}"><img alt="" src="{% static 'assets/images/cabin.png' %}" class="cabin-icon px-1" />Little Cabin</a>
+        <a class="navbar-brand text-dark" href="{% url 'home' %}"><img alt="" src="{% static 'assets/images/cabin.png' %}" class="cabin-icon px-1 text-dark" />Little Cabin</a>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">Home</a>
+              <a class="nav-link text-dark" href="{% url 'home' %}">Home</a>
             </li>
 
             {% if user.is_authenticated %}
 
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'postcards' %}">Postcards</a>
+              <a class="nav-link text-dark" href="{% url 'postcards' %}">Postcards</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'calendar' %}">Calendar</a>
+              <a class="nav-link text-dark" href="{% url 'calendar' %}">Calendar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'requests' %}">Requests</a>
+              <a class="nav-link text-dark" href="{% url 'requests' %}">Requests</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'info' %}">Info</a>
+              <a class="nav-link text-dark" href="{% url 'info' %}">Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-link text-dark" href="{% url 'logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% anchor 'home' 'about' %}">About</a>
+              <a class="nav-link text-dark" href="{% anchor 'home' 'about' %}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-link text-dark" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register</a>
+              <a class="nav-link text-dark" href="{% url 'register' %}">Register</a>
             </li>
             {% endif %} {% comment %}
             <li class="nav-item">
@@ -99,8 +99,8 @@
         </div>
 
         <div id="nav-menu-right" class="d-flex flex-nowrap align-items-center">
-          <button aria-label="open nav menu" id="open-sidenav" class="open-sidenav bg-transparent border-0 ms-2">
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#212529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <button aria-label="open nav menu" id="open-sidenav" class="open-sidenav bg-white border-0 ms-2">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#565656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -117,7 +117,7 @@
     <!-- Off Canvas Menu Start-->
     <div id="sidenav-wrap">
       <span id="sidenav-backdrop" class="sidenav-backdrop"></span>
-      <div id="sidenav" class="sidenav font-nunito bg-dark px-4">
+      <div id="sidenav" class="sidenav font-nunito bg-dark text-white px-4">
         <a href="#" id="close-sidenav" class="close-sidenav text-decoration-none text-white">&times;</a>
         {% comment %}
         <div class="sidenav-logo mt-5 pt-5">
@@ -127,8 +127,8 @@
         <div class="sidenav-menu mt-5">
         {% if user.is_authenticated %}
           <div class="mb-5">
-            <p class="px-0">Hi {{user.first_name|title}}!</p>
-            <small>Camp Weather:</br> {% current_weather %}&deg;</small>
+            <h3 class="px-0">Hi {{user.first_name|title}}!</h3>
+            <h4>Camp Weather:</br> {% current_weather %}&deg;</small>
           </div>
         {% endif %}
           <ul class="nav flex-column">
@@ -221,19 +221,19 @@
     {% block content %} {% endblock %}
 
     <!--Footer Start-->
-    <footer class="footer bg-dark text-muted pt-0 pt-lg-5">
+    <footer class="footer bg-dark pt-0 pt-lg-5">
       <div class="container">
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-6">
             <div class="footer-col mt-5 pe-4">
-              <h3 class="footer-title text-white mb-4">Little Cabin</h3>
-              <p class="mb-0">Little Cabin App by <a href="https://benhammond.tech">Ben Hammond</a> is open-sourced on <a href="https://github.com/benhammondmusic/littlecabin/">GitHub</a>. Please <a href="mailto:hello@benhammond.tech">reach out</a> if you'd like to build something together.</p>
+              <h3 class="footer-title mb-4">Little Cabin</h3>
+              <p class="mb-0">Little Cabin App by <a href="https://benhammond.tech">Ben Hammond</a> is open-sourced on <a  href="https://github.com/benhammondmusic/littlecabin/">GitHub</a>. Please <a href="mailto:hello@benhammond.tech">reach out</a> if you'd like to build something together.</p>
             </div>
           </div>
 
           <div class="col-12 col-sm-6 col-md-4 col-lg-2">
             <div class="footer-col mt-5">
-              <h3 class="footer-title text-white mb-4">Account</h3>
+              <h3 class="footer-title mb-4">Account</h3>
               <ul class="list-unstyled mb-0">
                 <li class="mb-2"><a href="{% url 'home' %}">Home</a></li>
                 <li class="mb-2"><a href="{% url 'login' %}">Login</a></li>
@@ -244,7 +244,7 @@
           </div>
           <div class="col-12 col-sm-6 col-md-4 col-lg-2">
             <div class="footer-col mt-5">
-              <h3 class="footer-title text-white mb-4">Apps</h3>
+              <h3 class="footer-title mb-4">Apps</h3>
               <ul class="list-unstyled mb-0">
                 <li class="mb-2"><a href="{% url 'calendar' %}">Calendar</a></li>
                 <li class="mb-2"><a href="{% url 'postcards' %}">Postcards</a></li>
@@ -255,10 +255,10 @@
           </div>
           <div class="col-12 col-sm-12 col-md-4 col-lg-2">
             <div class="footer-col footer-contact mt-5">
-              <h3 class="footer-title text-white mb-4">Report A Bug</h3>
+              <h3 class="footer-title mb-4">Report A Bug</h3>
               <div>
                 <i class="far fa-paper-plane me-2 email-me"></i>
-                <a href="mailto:hello@benhammond.tech"> Email Admin</a>
+                <a class="email-me" href="mailto:hello@benhammond.tech"> Email Admin</a>
               </div>
             </div>
           </div>
@@ -273,10 +273,10 @@
             <div class="footer-social clearfix">
               <ul class="list-unstyled mb-0 float-md-none float-lg-end">
                 <li class="d-inline-block">
-                  <a href="https://www.facebook.com/groups/120800281344839"><img alt="facebook icon" src="{% static 'assets/images/facebook.svg' %}" /></a>
+                  <a href="https://www.facebook.com/groups/120800281344839"><img  alt="facebook icon" src="{% static 'assets/images/facebook.svg' %}" /></a>
                 </li>
                 <li class="d-inline-block me-2">
-                  <a href="https://www.youtube.com/playlist?list=PLmOUcKjFU7sjBvy6aUGOg0I1sGGfdobzN"><img alt="youtube icon" src="{% static 'assets/images/youtube.svg' %}" /></a>
+                  <a href="https://www.youtube.com/playlist?list=PLmOUcKjFU7sjBvy6aUGOg0I1sGGfdobzN"><img   alt="youtube icon" src="{% static 'assets/images/youtube.svg' %}" /></a>
                 </li>
                 <li class="d-inline-block me-2">
                   <a href="https://github.com/benhammondmusic/littlecabin/"><img alt="github icon" src="{% static 'assets/images/github.svg' %}" /></a>
