@@ -146,6 +146,9 @@ h6 {
 .bg-dark {
   background-color: var(--color) !important;
 }
+.bg-wood {
+  background-color: var(--wood) !important;
+}
 .bg-white {
   background-color: var(--white) !important;
 }
