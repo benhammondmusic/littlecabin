@@ -23,11 +23,11 @@
             </table>
 
             <input type="hidden" name="next" value="{{ next }}" />
+            <div class="text-center">
+              <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold align-self-center" value="Request Access" />
+              <span class="helptext mt-4">Did you want to <a class="text-dark" href="{% url 'login' %}">login instead?</a></span>
+            </div>
           </form>
-          <div class="text-center">
-            <input type="submit" class="btn btn-warning shadow-sm mt-4 fw-bold align-self-center" value="Request Access" />
-            <span class="helptext mt-4">Did you want to <a class="text-dark" href="{% url 'login' %}">login instead?</a></span>
-          </div>
 
           <p class="section-subtitle mt-3 mb-0">Little Cabin App requires an administrator to approve ALL sign-ups before allowing access. Only authenticated family members will be able to utilize the app's features, such as calendar access, postcards and requests. If you have already been authorized, log in with an option below instead:</p>
         </div>
