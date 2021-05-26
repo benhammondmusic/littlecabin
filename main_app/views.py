@@ -15,8 +15,6 @@ from .forms import CustomAuthenticationForm
 from django.contrib.auth.decorators import user_passes_test
 
 # for Google Calendar API
-from .fetch_calendar import get_upcoming_events
-# from django.http import HttpResponse
 from .populate_calendar import populate_google_calendar, swap_weeks_google_calendar
 
 

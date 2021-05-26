@@ -13,8 +13,3 @@ class WeatherTestCase(TestCase):
         self.assertEqual(type(current_weather_obj["conditions"]), str)
         self.assertGreater(current_weather_obj["temp"], -50)
         self.assertLess(current_weather_obj["temp"], 150)
-
-
-
-
-#  
