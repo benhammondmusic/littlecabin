@@ -6,6 +6,7 @@ LOCATION = 'zip=04051'
 WEATHER_URL = f'http://api.openweathermap.org/data/2.5/weather?{LOCATION}&units=imperial&appid={WEATHER_KEY}'
 
 
+# HAS TEST
 def update_current_weather():
 
     weather_response = api_requests.get(WEATHER_URL).json()

@@ -84,6 +84,7 @@ def home(request):
     context = {"pending_users": pending_users, "owner_groups":owner_groups}
     return render(request, 'home.html', context)
 
+# HAS TEST
 def create_random_user():
     
     json_results = api_requests.get('https://randomuser.me/api/').json()["results"][0]
