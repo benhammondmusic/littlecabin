@@ -184,6 +184,12 @@ Following the ethos of "accessibility is not a feature", I am making an effort t
 - organizing your headings hierarchy (`<h1>`-`<h6>`); in general there should only by one `<h1>`, and all subheadings should be in order (e.g. don't skip `<h3>` by going directly from an `<h2>` to an `<h4>`)
 - ensuring the color contrast every bit of text and its background is high enough to be read
 
+## Testing
+
+This project was my first experience integrating unit testing. I utilized Django's existing `test.py` file and created class-based tests which extend the `TestCase` class. This allowed me to use methods such as `assertEquals`, `assertGreater`, `assertLess`, and `assertIn` to test the returned values from some of my more "pure" functions that were handling the business logic. The first places I've added tests were in functions that access external API services including fetching weather info and generating random user information as part of my demo feature. Adding tests is always important, but particularly for 3rd-party data such as an API call where one isn't in control of the response object and the structure or typing could change without warning.
+
+It became very clear in this process how important it is to keep your functions as small and focused as possible; in some cases it's difficult to add tests because my functions are too sprawling and touch too many parts of the code at once. My goal going forward will be to unitize the functions and write the tests alongside the functions, to keep ideas clear and extensible.
+
 ## Problems Solved
 
 > This Section will be formatted and split off into multiple blog posts and tweets in hopes of savings fellow devs and future me from making the same mistakes
