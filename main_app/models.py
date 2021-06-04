@@ -77,6 +77,7 @@ class Request(models.Model):
         return reverse('detail', kwargs={'request_id': self.id})  
 
 
+# CURRENTLY NOT IMPLEMENTED
 class Agree(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     request = models.ForeignKey(Request, on_delete=models.CASCADE)    
