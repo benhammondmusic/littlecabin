@@ -11,4 +11,4 @@ staticfiles/admin/img/* linguist-vendored
 staticfiles/admin/js/* linguist-vendored
 staticfiles/admin/js/admin/* linguist-vendored
 staticfiles/admin/js/* linguist-vendored
-main_app/migrations/*
+main_app/migrations/* linguist-vendored
