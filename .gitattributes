@@ -9,3 +9,5 @@ staticfiles/admin/css/* linguist-vendored
 staticfiles/admin/fonts/* linguist-vendored
 staticfiles/admin/img/* linguist-vendored
 staticfiles/admin/js/* linguist-vendored
+staticfiles/admin/js/admin/* linguist-vendored
+staticfiles/admin/js/* linguist-vendored
