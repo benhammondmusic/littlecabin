@@ -1,2 +1,16 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+staticfiles/* linguist-vendored
+staticfiles/assets/* linguist-vendored
+staticfiles/assets/css/* linguist-vendored
+staticfiles/assets/favicons/* linguist-vendored
+staticfiles/assets/images/* linguist-vendored
+staticfiles/assets/js/* linguist-vendored
+staticfiles/admin/* linguist-vendored
+staticfiles/admin/css/* linguist-vendored
+staticfiles/admin/fonts/* linguist-vendored
+staticfiles/admin/img/* linguist-vendored
+staticfiles/admin/js/* linguist-vendored
+staticfiles/admin/js/admin/* linguist-vendored
+staticfiles/admin/js/* linguist-vendored
+main_app/migrations/*
