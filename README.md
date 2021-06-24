@@ -233,21 +233,7 @@ It became very clear in this process how important it is to keep your functions 
 - I wanted a visual representation of the family, not only for the historical and social aspect, but also to represent to people viewing the app exactly how complicated managing so many user in sub-families can be. If I were building in React I would have created a dynamic, component based family tree, and I still may. But for now, I decided to just create a static image and to use the tree as an exercise in learning Figma, which I have recently been exploring.
 - I wanted to let members view the current weather conditions at the property; this turned out to be significantly more involved than anticipated. I first need to make a call to the weather api, which was straightforward, particularly compared to the Google Calendar API. Next I needed a way of displaying the info, and settled on the side nav menu since it would be available on every page. However, the API is rate-limited and there would be no need to recall the API every time the page loaded, but instead every several minutes. To accomplish this, I created a model `WeatherReport` which stored the temp, conditions, and timestamp. Then, whenever the page is reloaded, it checked the freshness of the weather report in the database and repings the API as needed. Also significantly tricky was sending variable data (the weather conditions) to my `base.html` template which was providing my nav and footer for every page. To do this, I created another custom template tag (similar to how I was able to add anchor links partway down my home page). This allowed me to run the logic needed in a python file, and then call and retrieve the string answer in my template using `{% current_weather %}
 - template I used has a slide-in side menu for smaller screen sizes, and by default the only way to close that menu (without clicking an item) is a tiny little "x" in the corner. Modern UX seems to trend towards clicking "off the popup" will work to close a menu, so I was able to understand how the template's JavaScript was working, and apply the same ` closeSidenavFunc()` in an event listener attached to the grayed out background that was covering the rest of the screen already.
-- Connecting Google Calendar API to Deployed Django App on Heroku
-
-<details>
-<summary>(expand Google Cal API items)</summary>
-<br />https://developers.google.com/calendar/quickstart/python
-<br />https://github.com/googleworkspace/python-samples/issues/134
-<br />https://stackoverflow.com/questions/63956706/google-drive-api-quickstart-py-error-400-redirect-uri-mismatch
-<br />need to add credentials file, and need to gitignore it
-<br />need to run Google's Python "quickstart" commands INSIDE the env
-<br />https://github.com/googleworkspace/python-samples/issues/134
-<br />https://stackoverflow.com/questions/63956706/google-drive-api-quickstart-py-error-400-redirect-uri-mismatch
-<br />deploying to Heroku with Google Cloud Platform which requires a `credentials.json`, had to move the json file to the floor, change the name, install a special buildpack, and add two new config vars. still wasn't able to get the credentialing screen to display to the user (instead it was logging the link in the Heroku logs).
-<br />Syncing is possible, since we can know that every actual week will have a maximum of 1 Week object in our database, and also a maximum of 1 google calendar event. So rather than simply wiping gcal and pushing every week from the db when there is a change, it's possible to do incremental synchronization. Some strange errors were isolated and fixed by realizing that the get all events was actually being limited, thereby leaving some straggler events on the calendar. This was fixed by explicitly setting the maximum number of results to 2500 (the highest allowed): `events_result = service.events().list(calendarId=CAL_ID, maxResults=2500).execute()`. Some other errors involved typing; my Week model was using dateTime and the Google Calendar events use strings in the same format, so printing to debug didn't help until I included `type(start_date)`.
-<br />swapping the events on Google Calendar was resulting in all the data other than dates and owner names being erased; this ended up being a result of using `update()` (which sends a PUT request), rather than `patch()`, which sends a PATCH request. PUT was replacing the entire event object, whereas PATCH edits only the fields sent in the request and leaves the rest of the resource as is.
-</details>
+- [Connecting Google Cal API and Django on Heroku](https://blog.benhammond.tech/connecting-google-cal-api-and-django)
 
 ## Tools and Libraries
 
@@ -275,6 +261,10 @@ It became very clear in this process how important it is to keep your functions 
 - [Intro to Google Developer Service Account](https://www.daimto.com/google-developer-console-service-account/) - Blog Post
 - [Google Cal Integration Django](https://stackoverflow.com/questions/37754999/google-calendar-integration-with-django)
 - [Light/Dark Mode with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) - Blog Post
+
+## Blog Posts on [blog.benhammond.tech](https://blog.benhammond.tech)
+
+- [Connecting Google Cal API and Django on Heroku](https://blog.benhammond.tech/connecting-google-cal-api-and-django)
 
 ## Repo
 
