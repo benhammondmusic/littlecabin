@@ -1,6 +1,5 @@
 {
   "buildpacks": [
-    "heroku/python",
-    "https://github.com/buyersight/heroku-google-application-credentials-buildpack"
+    "heroku/python"
   ]
 }
